@@ -1,1 +1,1 @@
-export { HelloWorld } from './src/HelloWorld.js';
+export { HelloWorld } from './src/hello-world/hello-world.js';

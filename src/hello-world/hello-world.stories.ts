@@ -1,5 +1,5 @@
 import { html, TemplateResult } from 'lit-html';
-import '../hello-world.js';
+import './hello-world.register.js';
 
 export default {
   title: 'HelloWorld',

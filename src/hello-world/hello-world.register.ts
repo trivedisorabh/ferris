@@ -1,3 +1,3 @@
-import { HelloWorld } from './src/HelloWorld.js';
+import { HelloWorld } from './hello-world.js';
 
 window.customElements.define('hello-world', HelloWorld);

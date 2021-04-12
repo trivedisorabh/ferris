@@ -1,7 +1,7 @@
 import { html, fixture, expect } from '@open-wc/testing';
 
-import { HelloWorld } from '../src/HelloWorld.js';
-import '../hello-world.js';
+import { HelloWorld } from './hello-world.js';
+import './hello-world.register.js';
 
 describe('HelloWorld', () => {
   it('has a default text "Hello World!"', async () => {
