@@ -1,6 +1,6 @@
 {
-  "name": "@skf/design-systems",
-  "version": "0.0.2",
+  "name": "@skf/dsm-hello-world",
+  "version": "0.0.3",
   "description": "Webcomponent hello-world following open-wc recommendations",
   "author": "hello-world",
   "license": "MIT",
