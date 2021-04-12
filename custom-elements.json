@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "hello-world",
+      "description": "A component which says hello to a name",
+      "properties": [
+        {
+          "name": "name",
+          "type": "String",
+          "description": "The name to say Hello to",
+          "default": "World"
+        }
+      ],
+      "events": [],
+      "slots": [],
+      "cssProperties": [
+        {
+          "name": "--hello-world-text-color",
+          "description": "Main Text Color",
+          "type": "Color"
+        }
+      ]
+    }
+  ]
+}
