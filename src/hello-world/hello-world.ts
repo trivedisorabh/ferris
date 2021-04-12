@@ -5,7 +5,7 @@ export class HelloWorld extends LitElement {
     :host {
       display: block;
       padding: 25px;
-      color: var(--hello-world-text-color, #00a);
+      color: var(--hello-world-text-color, #0a0);
     }
   `;
 
