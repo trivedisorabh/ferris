@@ -1,0 +1,32 @@
+pool:
+  demands:
+    - sh
+    - npm
+
+trigger:
+  - main
+
+steps:
+  - checkout: self
+    clean: true
+    persistCredentials: true
+
+  - task: NodeTool@0
+    displayName: "Use Node v14.14.0"
+    inputs:
+      versionSpec: 14.14.0
+
+  - script: npm install --global yarn@1.22.4
+    displayName: "Install yarn"
+
+  - script: yarn install --frozen-lockfile
+    displayName: "Install dependencies"
+
+  - script: yarn build
+    displayName: "Build"
+
+  - script: yarn lint
+    displayName: "Linting"
+
+  - script: yarn test
+    displayName: "Testing"
