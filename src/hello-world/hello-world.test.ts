@@ -4,24 +4,24 @@ import { HelloWorld } from './hello-world.js';
 import './hello-world.register.js';
 
 describe('HelloWorld', () => {
-  it('has a default text "Hello World!"', async () => {
-    const el = await fixture<HelloWorld>(html`<hello-world></hello-world>`);
+	it('has a default text "Hello World!"', async () => {
+		const el = await fixture<HelloWorld>(html`<hello-world></hello-world>`);
 
-    expect(el.name).to.equal('World');
-  });
+		expect(el.name).to.equal('World');
+	});
 
-  it('can override the name via attribute', async () => {
-    const name = 'Bob';
-    const el = await fixture<HelloWorld>(
-      html`<hello-world name=${name}></hello-world>`
-    );
+	it('can override the name via attribute', async () => {
+		const name = 'Bob';
+		const el = await fixture<HelloWorld>(
+			html`<hello-world name=${name}></hello-world>`
+		);
 
-    expect(el.name).to.equal(name);
-  });
+		expect(el.name).to.equal(name);
+	});
 
-  it('passes the a11y audit', async () => {
-    const el = await fixture<HelloWorld>(html`<hello-world></hello-world>`);
+	it('passes the a11y audit', async () => {
+		const el = await fixture<HelloWorld>(html`<hello-world></hello-world>`);
 
-    await expect(el).shadowDom.to.be.accessible();
-  });
+		await expect(el).shadowDom.to.be.accessible();
+	});
 });
