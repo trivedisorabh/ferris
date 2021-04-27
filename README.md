@@ -1,6 +1,6 @@
 # SKF Design Systems - hello-world
 
-This webcomponent follows the [open-wc](https://github.com/open-wc/open-wc) recommendation.
+This web component follows the [open-wc](https://github.com/open-wc/open-wc) recommendation.
 
 ## Installation
 
@@ -12,7 +12,7 @@ yarn i hello-world
 
 ```html
 <script type="module">
-  import 'hello-world/hello-world.js';
+	import 'hello-world/hello-world.js';
 </script>
 
 <hello-world></hello-world>
@@ -93,3 +93,7 @@ yarn start
 ```
 
 To run a local development server that serves the basic demo located in `demo/index.html`
+
+## License
+
+Copyright SKF 2021
