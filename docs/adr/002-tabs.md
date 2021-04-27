@@ -1,19 +1,19 @@
 # Title
 
-`YYYY-MM-DD`
+`2021-04-26`
 
 ## Status
 
-`❓ Proposed | ✅ Accepted | 🚫 Rejected | 🪦 Deprecated | ↗️ Superseded`
+`✅ Accepted`
 
 ## Context
 
-What is the issue that we're seeing that is motivating this decision or change?
+We need to have a uniform mode of indentation so that there are no unnecessary diffs in PRs from different people.
 
 ## Decision
 
-What is the change that we're proposing and/or doing?
+We will use tabs for indentation.
 
 ## Consequences
 
-What becomes easier or more difficult to do because of this change?
+For most developers this has no impact at all. For those few that need to change their indentation width for readability, they now have the option to do so.
