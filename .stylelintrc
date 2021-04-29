@@ -12,6 +12,11 @@
 			"declarations"
 		],
     "order/properties-alphabetical-order": true,
-    "indentation": "tab"
+    "indentation": "tab",
+    "no-eol-whitespace": [
+      true,
+      "ignore": ["empty-lines"]
+    ],
+    "no-missing-end-of-source-newline": null
   }
 }

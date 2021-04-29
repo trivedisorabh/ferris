@@ -18,7 +18,7 @@ yarn i hello-world
 <hello-world></hello-world>
 ```
 
-## Linting with ESLint, Prettier, and Types
+## Linting with ESLint, Prettier, Stylelint and Types
 
 To scan the project for linting errors, run
 
@@ -26,30 +26,10 @@ To scan the project for linting errors, run
 yarn lint
 ```
 
-You can lint with ESLint and Prettier individually as well
-
-```bash
-yarn lint:eslint
-```
-
-```bash
-yarn lint:prettier
-```
-
 To automatically fix many linting errors, run
 
 ```bash
 yarn format
-```
-
-You can format using ESLint and Prettier individually as well
-
-```bash
-yarn format:eslint
-```
-
-```bash
-yarn format:prettier
 ```
 
 ## Testing with Web Test Runner
