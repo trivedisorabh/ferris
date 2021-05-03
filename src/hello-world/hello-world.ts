@@ -3,9 +3,9 @@ import { css, html, LitElement, property } from 'lit-element';
 export class HelloWorld extends LitElement {
 	static styles = css`
 		:host {
-			color: var(--hello-world-text-color, #0a0);
 			display: block;
 			padding: 25px;
+			color: var(--hello-world-text-color, #0a0);
 		}
 	`;
 
