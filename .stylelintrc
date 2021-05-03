@@ -1,24 +1,29 @@
 {
-  "extends": [
-    "stylelint-config-standard",
-    "stylelint-config-idiomatic-order"
-  ],
-  "ignoreFiles": [
-    "node_modules"
-  ],
-  "plugins": [
+	"extends": [
+		"stylelint-config-standard",
+		"stylelint-config-idiomatic-order"
+	],
+	"ignoreFiles": [
+		"node_modules",
+		"**/**/*.tokens.ts"
+	],
+	"plugins": [
 		"stylelint-order"
 	],
-  "rules": {
-    "order/order": [
+	"rules": {
+		"order/order": [
 			"custom-properties",
 			"declarations"
 		],
-    "indentation": "tab",
-    "no-eol-whitespace": [
-      true,
-      "ignore": ["empty-lines"]
-    ],
-    "no-missing-end-of-source-newline": null
-  }
+		"indentation": "tab",
+		"no-eol-whitespace": [
+			true,
+			{
+				"ignore": [
+					"empty-lines"
+				]
+			}
+		],
+		"no-missing-end-of-source-newline": null
+	}
 }
