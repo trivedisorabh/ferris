@@ -25,15 +25,8 @@ interface ArgTypes {
 	small?: boolean;
 }
 
-const Template: Story<ArgTypes> = ({
-	buttonText,
-	onClick,
-	disabled,
-	small,
-}: ArgTypes) => html`
-	<skf-button @click=${onClick} ?disabled=${disabled} ?small=${small}>
-		${buttonText}
-	</skf-button>
+const Template: Story<ArgTypes> = ({ buttonText, onClick, disabled, small }: ArgTypes) => html`
+	<skf-button @click=${onClick} ?disabled=${disabled} ?small=${small}> ${buttonText} </skf-button>
 `;
 
 export const Regular = Template.bind({});

@@ -11,9 +11,7 @@ describe('Button', () => {
 	});
 
 	it('sets the right class when the small attribute is applied', async () => {
-		const element = await fixture<Button>(
-			html`<skf-button small>Small</skf-button>`
-		);
+		const element = await fixture<Button>(html`<skf-button small>Small</skf-button>`);
 
 		const buttonElement = element.shadowRoot?.querySelector('button');
 
@@ -21,9 +19,7 @@ describe('Button', () => {
 	});
 
 	it('disables the button when the disabled attribute is applied', async () => {
-		const element = await fixture<Button>(
-			html`<skf-button disabled>Disabled</skf-button>`
-		);
+		const element = await fixture<Button>(html`<skf-button disabled>Disabled</skf-button>`);
 
 		const buttonElement = element.shadowRoot?.querySelector('button');
 

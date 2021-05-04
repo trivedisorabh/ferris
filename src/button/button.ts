@@ -55,10 +55,7 @@ export class Button extends LitElement {
 	}
 
 	render() {
-		return html`<button
-			?disabled=${this.disabled}
-			class="${this.small ? 'small' : ''}"
-		>
+		return html`<button ?disabled=${this.disabled} class="${this.small ? 'small' : ''}">
 			<slot></slot>
 		</button>`;
 	}
