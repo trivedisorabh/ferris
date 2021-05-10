@@ -1,12 +1,20 @@
 import { css } from 'lit-element';
 // TODO: replace this with actual, downloaded design tokens
 export const tokens = {
-	buttonPrimaryBgColor: css`#0F58D6`,
+	buttonPrimaryBgColor: css`rgb(15, 88, 214)`,
 	buttonPrimaryHoverBgColor: css`rgb(12, 74, 182)`,
 	buttonPrimaryActiveBgColor: css`rgba(9, 57, 139)`,
 	buttonPrimaryTextColor: css`#FFFFFF`,
+
+	buttonSecondaryBgColor: css`#fff`,
+	buttonSecondaryBorderColor: css`rgb(15, 88, 214)`,
+	buttonSecondaryTextColor: css`rgb(15, 88, 214)`,
+	buttonSecondaryHoverBgColor: css`rgb(235, 236, 238)`,
+	buttonSecondaryActiveBgColor: css`rgb(226, 228, 231)`,
+
 	buttonDisabledBgColor: css`rgb(235, 236, 238)`,
 	buttonDisabledTextColor: css`rgb(170, 175, 184)`,
+
 	buttonHorizontalPadding: css`16px`,
 	buttonMinWidth: css`130px`,
 	buttonSmallMinWidth: css`80px`,
