@@ -1,4 +1,4 @@
-import { html, css, LitElement, property } from 'lit-element';
+import { css, html, LitElement, property } from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map';
 import { tokens } from './button.tokens';
 
