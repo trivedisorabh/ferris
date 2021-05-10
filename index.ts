@@ -1,1 +1,1 @@
-export { Button } from './src/button/button.js';
+export { Button } from './src/components/button/button.js';
