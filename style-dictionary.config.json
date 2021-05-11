@@ -6,12 +6,12 @@
 			"buildPath": "src/tokens/",
 			"files": [
 				{
-					"destination": "all.js",
+					"destination": "all.ts",
 					"format": "javascript/es6"
 				},
 				{
 					"format": "javascript/es6",
-					"destination": "color.js",
+					"destination": "color.ts",
 					"filter": {
 						"attributes": {
 							"category": "color"
