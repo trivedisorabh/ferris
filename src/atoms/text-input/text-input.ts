@@ -1,29 +1,5 @@
 import { css, html, LitElement, property } from 'lit-element';
-
-type InputType =
-	| 'button'
-	| 'checkbox'
-	| 'color'
-	| 'date'
-	| 'datetime-local'
-	| 'datetime'
-	| 'email'
-	| 'file'
-	| 'hidden'
-	| 'image'
-	| 'month'
-	| 'number'
-	| 'password'
-	| 'radio'
-	| 'range'
-	| 'reset'
-	| 'search'
-	| 'submit'
-	| 'tel'
-	| 'text'
-	| 'time'
-	| 'url'
-	| 'week';
+import { InputType } from '../../types/input-type.js';
 
 type TextInputTypes = Extract<
 	InputType,
