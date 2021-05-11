@@ -2,8 +2,6 @@ import { css, html, LitElement, property } from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map';
 import { tokens } from './button.tokens';
 
-type variant = 'primary' | 'secondary';
-
 export class Button extends LitElement {
 	@property({ type: Boolean })
 	disabled: boolean = false;
@@ -12,7 +10,7 @@ export class Button extends LitElement {
 	small: boolean = false;
 
 	@property({ type: String })
-	variant: variant = 'primary';
+	variant: 'primary' | 'secondary' | 'link' = 'primary';
 
 	static get styles() {
 		return css`
@@ -26,6 +24,12 @@ export class Button extends LitElement {
 				font-weight: bold;
 				transition-duration: ${tokens.transitionDuration};
 				transition-property: background-color, color;
+			}
+
+			button.small {
+				min-width: ${tokens.buttonSmallMinWidth};
+				height: 30px;
+				font-size: 0.875rem;
 			}
 
 			button.primary {
@@ -56,6 +60,25 @@ export class Button extends LitElement {
 				background-color: ${tokens.buttonSecondaryActiveBgColor};
 			}
 
+			button.link {
+				min-width: initial;
+				padding: 0;
+				border: none;
+				background: none;
+				color: ${tokens.buttonLinkTextColor};
+			}
+
+			button.link:disabled,
+			button.link:disabled:hover,
+			button.link:disabled:active {
+				background: none;
+			}
+
+			button.link:hover:not(:disabled) {
+				text-decoration-line: underline;
+				text-decoration-thickness: 2px;
+			}
+
 			button:focus-visible {
 				outline-color: ${tokens.buttonPrimaryBgColor};
 				outline-offset: 2px;
@@ -80,12 +103,6 @@ export class Button extends LitElement {
 					outline-width: 2px;
 				}
 			}
-
-			button.small {
-				min-width: ${tokens.buttonSmallMinWidth};
-				height: 30px;
-				font-size: 0.875rem;
-			}
 		`;
 	}
 
@@ -94,6 +111,7 @@ export class Button extends LitElement {
 			small: this.small,
 			primary: this.variant === 'primary',
 			secondary: this.variant === 'secondary',
+			link: this.variant === 'link',
 		});
 	}
 

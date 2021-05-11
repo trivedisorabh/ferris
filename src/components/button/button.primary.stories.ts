@@ -13,7 +13,7 @@ export const buttonCommonArgTypes = {
 };
 
 export default {
-	title: 'Button/Primary',
+	title: 'Form/Button/Primary',
 	component: 'skf-button',
 	argTypes: buttonCommonArgTypes,
 	includeStories: /^[A-Z]/,

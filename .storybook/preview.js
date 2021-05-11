@@ -19,3 +19,11 @@ export const decorators = [
 		${Story()}
 	</div>`,
 ];
+
+export const parameters = {
+	options: {
+		storySort: {
+			method: 'alphabetical',
+		},
+	},
+};

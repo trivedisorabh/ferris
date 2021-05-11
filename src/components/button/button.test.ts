@@ -1,4 +1,4 @@
-import { html, fixture, expect } from '@open-wc/testing';
+import { expect, fixture, html } from '@open-wc/testing';
 import { Button } from './button.js';
 import './button.register.js';
 
@@ -26,6 +26,12 @@ describe('Button', () => {
 		);
 		const buttonElement = element.shadowRoot?.querySelector('button');
 		await expect(buttonElement?.classList.contains('secondary')).to.equal(true);
+	});
+
+	it('sets the right class when variant link is applied', async () => {
+		const element = await fixture<Button>(html`<skf-button variant="link">Secondary</skf-button>`);
+		const buttonElement = element.shadowRoot?.querySelector('button');
+		await expect(buttonElement?.classList.contains('link')).to.equal(true);
 	});
 
 	it('disables the button when the disabled attribute is applied', async () => {

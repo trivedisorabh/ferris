@@ -6,6 +6,8 @@ export const tokens = {
 	buttonPrimaryActiveBgColor: css`rgba(9, 57, 139)`,
 	buttonPrimaryTextColor: css`#FFFFFF`,
 
+	buttonLinkTextColor: css`rgb(15, 88, 214)`,
+
 	buttonSecondaryBgColor: css`#fff`,
 	buttonSecondaryBorderColor: css`rgb(15, 88, 214)`,
 	buttonSecondaryTextColor: css`rgb(15, 88, 214)`,

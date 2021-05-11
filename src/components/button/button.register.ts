@@ -1,3 +1,5 @@
 import { Button } from './button.js';
 
-window.customElements.define('skf-button', Button);
+if (!window.customElements.get('skf-button')) {
+	window.customElements.define('skf-button', Button);
+}
