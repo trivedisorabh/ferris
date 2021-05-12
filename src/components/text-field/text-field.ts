@@ -1,7 +1,7 @@
 import { css, html, LitElement, property } from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map';
+import { TextInput } from '~atoms/text-input/text-input.js';
 import '../../atoms/label/label.register.js';
-import { TextInput } from '../../atoms/text-input/text-input.js';
 import '../../atoms/text-input/text-input.register.js';
 
 export class TextField extends LitElement {

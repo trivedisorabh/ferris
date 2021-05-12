@@ -1,5 +1,5 @@
 import { css, html, LitElement, property } from 'lit-element';
-import { InputType } from '../../types/input-type.js';
+import { InputType } from '~types/input-type.js';
 
 type TextInputTypes = Extract<
 	InputType,
