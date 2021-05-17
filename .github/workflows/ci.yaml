@@ -34,17 +34,11 @@ jobs:
       - run: yarn build
       - run: yarn lint
       - run: yarn test
-      - name: Publish to Percy
-        uses: percy/storybook-action@v0.1.6
-        with:
-          custom-command: "yarn storybook:percy"
-        env:
-          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
       - name: Publish to Chromatic
         uses: chromaui/action@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          buildScriptName: "storybook:build"
+          buildScriptName: 'storybook:build'
           exitOnceUploaded: true
           exitZeroOnChanges: true

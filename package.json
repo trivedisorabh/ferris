@@ -22,7 +22,6 @@
 		"test:watch": "tsc && concurrently -k -r \"tsc --watch --preserveWatchOutput\" \"wtr --watch\"",
 		"storybook": "tsc && concurrently -k -r \"tsc --watch --preserveWatchOutput\" \"wds -c .storybook/server.mjs\"",
 		"storybook:build": "tsc && build-storybook",
-		"storybook:percy": "tsc && build-storybook && percy-storybook --widths=320,1280",
 		"storybook:chromatic": "npx chromatic --build-script-name storybook:build --exit-once-uploaded",
 		"tokens:refresh": "yarn tokens:download && yarn tokens:build",
 		"tokens:download": "scripts/dsm-style-download.sh",
@@ -35,7 +34,6 @@
 	"devDependencies": {
 		"@open-wc/eslint-config": "^4.2.0",
 		"@open-wc/testing": "^2.5.32",
-		"@percy/storybook": "^3.3.1",
 		"@storybook/web-components": "^6.2.7",
 		"@typescript-eslint/eslint-plugin": "^4.21.0",
 		"@typescript-eslint/parser": "^4.21.0",
