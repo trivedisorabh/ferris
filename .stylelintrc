@@ -3,10 +3,6 @@
 		"stylelint-config-standard",
 		"stylelint-config-idiomatic-order"
 	],
-	"ignoreFiles": [
-		"node_modules",
-		"**/**/*.tokens.ts"
-	],
 	"plugins": [
 		"stylelint-no-unsupported-browser-features",
 		"stylelint-order"

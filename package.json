@@ -16,7 +16,7 @@
 		"lint": "yarn lint:eslint && yarn lint:stylelint && yarn lint:prettier",
 		"lint:prettier": "prettier \"**/*.{js,ts,tsx}\" --check --ignore-path .gitignore",
 		"lint:eslint": "eslint --ext .js,.ts,.tsx . --ignore-path .gitignore",
-		"lint:stylelint": "stylelint \"**/*.{js,ts,tsx}\" --ignore-path .gitignore --ignore-pattern \"*.tokens.ts\"",
+		"lint:stylelint": "stylelint \"**/*.{js,ts,tsx}\"",
 		"format": "yarn format:eslint && yarn format:stylelint && yarn format:prettier",
 		"format:prettier": "prettier \"**/*.{js,ts,tsx}\" --write --ignore-path .gitignore",
 		"format:eslint": "eslint --ext .js,.ts,.tsx . --fix --ignore-path .gitignore",
