@@ -1,49 +1,33 @@
 {
 	"name": "@skf/design-systems",
 	"version": "0.0.5",
-	"description": "Webcomponent hello-world following open-wc recommendations",
-	"author": "hello-world",
+	"description": "UI component monorepo",
 	"license": "UNLICENSED",
-	"main": "dist/index.js",
-	"module": "dist/index.js",
+	"private": true,
+	"workspaces": [
+		"packages/*"
+	],
 	"scripts": {
-		"start": "tsc && concurrently -k -r \"tsc --watch --preserveWatchOutput\" \"wds\"",
-		"build": "tsc",
-		"prepublish": "tsc",
-		"lint": "yarn lint:eslint && yarn lint:stylelint && yarn lint:prettier",
-		"lint:prettier": "prettier \"**/*.ts\" --check --ignore-path .gitignore",
-		"lint:eslint": "eslint --ext .ts,.html . --ignore-path .gitignore",
-		"lint:stylelint": "stylelint \"**/*.ts\" --ignore-path .gitignore",
-		"format": "yarn format:eslint && yarn format:stylelint && yarn format:prettier",
-		"format:prettier": "prettier \"**/*.ts\" --write --ignore-path .gitignore",
-		"format:eslint": "eslint --ext .ts,.html . --fix --ignore-path .gitignore",
-		"format:stylelint": "stylelint \"**/*.ts\" --fix --ignore-path .gitignore",
-		"test": "tsc && wtr --coverage",
-		"test:watch": "tsc && concurrently -k -r \"tsc --watch --preserveWatchOutput\" \"wtr --watch\"",
-		"storybook": "tsc && concurrently -k -r \"tsc --watch --preserveWatchOutput\" \"wds -c .storybook/server.mjs\"",
-		"storybook:build": "tsc && build-storybook",
-		"storybook:chromatic": "npx chromatic --build-script-name storybook:build --exit-once-uploaded",
 		"tokens:refresh": "yarn tokens:download && yarn tokens:build",
 		"tokens:download": "scripts/dsm-style-download.sh",
-		"tokens:build": "style-dictionary build --config ./style-dictionary.config.json"
+		"tokens:build": "style-dictionary build --config ./style-dictionary.config.json",
+		"build-storybook": "yarn workspace @skf/ferris-wc storybook:build",
+		"chromatic": "chromatic",
+		"lint": "yarn lint:eslint && yarn lint:stylelint && yarn lint:prettier",
+		"lint:prettier": "prettier \"**/*.{js,ts,tsx}\" --check --ignore-path .gitignore",
+		"lint:eslint": "eslint --ext .js,.ts,.tsx . --ignore-path .gitignore",
+		"lint:stylelint": "stylelint \"**/*.{js,ts,tsx}\" --ignore-path .gitignore --ignore-pattern \"*.tokens.ts\"",
+		"format": "yarn format:eslint && yarn format:stylelint && yarn format:prettier",
+		"format:prettier": "prettier \"**/*.{js,ts,tsx}\" --write --ignore-path .gitignore",
+		"format:eslint": "eslint --ext .js,.ts,.tsx . --fix --ignore-path .gitignore",
+		"format:stylelint": "stylelint \"**/*.{js,ts,tsx}\" --fix --ignore-path .gitignore"
 	},
 	"dependencies": {
-		"lit-element": "^2.4.0",
-		"lit-html": "^1.3.0"
+		"stylelint-no-unsupported-browser-features": "^4.1.4"
 	},
 	"devDependencies": {
-		"@open-wc/eslint-config": "^4.2.0",
-		"@open-wc/testing": "^2.5.32",
-		"@storybook/web-components": "^6.2.7",
-		"@typescript-eslint/eslint-plugin": "^4.21.0",
-		"@typescript-eslint/parser": "^4.21.0",
-		"@web/dev-server": "^0.1.11",
-		"@web/dev-server-storybook": "^0.3.5",
-		"@web/test-runner": "^0.12.19",
+		"@open-wc/eslint-config": "^4.3.0",
 		"chromatic": "^5.7.1",
-		"concurrently": "^5.3.0",
-		"eslint": "^7.24.0",
-		"eslint-config-prettier": "^7.2.0",
 		"husky": "^4.3.8",
 		"lint-staged": "^10.5.4",
 		"prettier": "^2.2.1",
@@ -51,9 +35,7 @@
 		"stylelint": "^13.13.0",
 		"stylelint-config-idiomatic-order": "^8.1.0",
 		"stylelint-config-standard": "^22.0.0",
-		"stylelint-order": "^4.1.0",
-		"tslib": "^2.2.0",
-		"typescript": "^4.2.4"
+		"stylelint-order": "^4.1.0"
 	},
 	"husky": {
 		"hooks": {
@@ -61,7 +43,7 @@
 		}
 	},
 	"lint-staged": {
-		"*.ts": [
+		"*.{js,ts,tsx}": [
 			"eslint --fix",
 			"stylelint --fix",
 			"prettier --write"

@@ -1,0 +1,24 @@
+##
+# Browsers that we support
+#
+# @link https://browserslist.dev/
+# @link https://github.com/browserslist/browserslist
+##
+
+# The last 2 versions for each browser
+last 2 versions
+
+# Browsers versions selected by global usage statistics
+>= 1%
+
+# All Node.js versions, which are still maintained by Node.js Foundation
+maintained node versions
+
+# No browsers without official support or updates for 24 months
+not dead
+
+# Not IE: we are not sorry
+not ie 11
+
+# Not Opera Mini
+not op_mini all

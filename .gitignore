@@ -4,19 +4,21 @@
 ## system files
 .DS_Store
 
+## log files
+*.log
+
 ## npm
-/node_modules/
-/npm-debug.log
+node_modules/
 
 ## testing
-/coverage/
+coverage/
 
 ## temp folders
 /.tmp/
 
 # build
 /_site/
-/dist/
+dist/
 /out-tsc/
 
-storybook-static
+storybook-static/

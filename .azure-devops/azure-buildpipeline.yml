@@ -1,3 +1,6 @@
+# This pipeline runs in Azure Devops, but is triggered from Github. It could
+# be used as a backup or complement to the Github actions, if we don't get a good integration going.
+
 pool:
   demands:
     - sh
@@ -7,26 +10,29 @@ trigger:
   - main
 
 steps:
-  - checkout: self
-    clean: true
-    persistCredentials: true
+  - script: echo "The Azure pipeline has run!"
+    displayName: 'A step in a pipeline triggered by Github.'
 
-  - task: NodeTool@0
-    displayName: "Use Node v14.14.0"
-    inputs:
-      versionSpec: 14.14.0
+  # - checkout: self
+  #   clean: true
+  #   persistCredentials: true
 
-  - script: npm install --global yarn@1.22.4
-    displayName: "Install yarn"
+  # - task: NodeTool@0
+  #   displayName: "Use Node v14.14.0"
+  #   inputs:
+  #     versionSpec: 14.14.0
 
-  - script: yarn install --frozen-lockfile
-    displayName: "Install dependencies"
+  # - script: npm install --global yarn@1.22.4
+  #   displayName: "Install yarn"
 
-  - script: yarn build
-    displayName: "Build"
+  # - script: yarn install --frozen-lockfile
+  #   displayName: "Install dependencies"
 
-  - script: yarn lint
-    displayName: "Linting"
+  # - script: yarn build
+  #   displayName: "Build"
 
-  - script: yarn test
-    displayName: "Testing"
+  # - script: yarn lint
+  #   displayName: "Linting"
+
+  # - script: yarn test
+  #   displayName: "Testing"

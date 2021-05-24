@@ -1,0 +1,31 @@
+{
+	"compilerOptions": {
+		"allowSyntheticDefaultImports": true,
+		"baseUrl": "./",
+		"declaration": true,
+		"esModuleInterop": false,
+		"experimentalDecorators": true,
+		"importHelpers": true,
+		"incremental": true,
+		"inlineSources": true,
+		"jsx": "react",
+		"lib": ["es2017", "dom"],
+		"module": "esnext",
+		"moduleResolution": "node",
+		"noEmitOnError": true,
+		"noImplicitAny": true,
+		"outDir": "dist",
+		"paths": {
+			"~atoms/*": ["./src/atoms/*"],
+			"~components/*": ["./src/components/*"],
+			"~tokens/*": ["./src/tokens/*"],
+			"~types/*": ["./src/types/*"]
+		},
+		"rootDir": "./",
+		"sourceMap": true,
+		"strict": true,
+		"target": "es2018"
+	},
+	"include": ["./src/**/*", "index.ts"],
+	"exclude": ["node_modules"]
+}
