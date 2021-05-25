@@ -8,6 +8,8 @@ export type { TextInputProps } from './atoms/text-input/TextInput';
 /**
  * Components
  */
+export { default as Breadcrumbs } from './components/breadcrumb/Breadcrumb';
+export type { BreadcrumbProps } from './components/breadcrumb/Breadcrumb';
 export { default as Button } from './components/button/Button';
 export type { ButtonProps } from './components/button/Button';
 export { default as TextField } from './components/text-field/TextField';
