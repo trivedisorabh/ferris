@@ -1,36 +1,17 @@
 {
 	"source": [".tmp/**/*.json"],
 	"platforms": {
-		"web-react": {
+		"web": {
 			"transformGroup": "js",
 			"buildPath": "packages/react/src/tokens/",
 			"files": [
 				{
-					"destination": "all.ts",
+					"destination": "All.ts",
 					"format": "javascript/es6"
 				},
 				{
 					"format": "javascript/es6",
-					"destination": "color.ts",
-					"filter": {
-						"attributes": {
-							"category": "color"
-						}
-					}
-				}
-			]
-		},
-		"web-components": {
-			"transformGroup": "js",
-			"buildPath": "packages/web-components/src/tokens/",
-			"files": [
-				{
-					"destination": "all.ts",
-					"format": "javascript/es6"
-				},
-				{
-					"format": "javascript/es6",
-					"destination": "color.ts",
+					"destination": "Colors.ts",
 					"filter": {
 						"attributes": {
 							"category": "color"

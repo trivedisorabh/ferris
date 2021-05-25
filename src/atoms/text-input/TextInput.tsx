@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import React from 'react';
-import { InputType } from '~types/input-type';
+import { InputType } from '~types/InputType';
 
 /**
  * @category Props

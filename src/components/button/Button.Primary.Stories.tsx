@@ -25,7 +25,7 @@ export interface Story<T> {
 	argTypes?: Record<string, unknown>;
 }
 
-export const ButtonTpl: Story<ButtonProps> = ({
+export const buttonTpl: Story<ButtonProps> = ({
 	children,
 	variant,
 	isDisabled,
@@ -41,24 +41,24 @@ export const ButtonTpl: Story<ButtonProps> = ({
 	</Button>
 );
 
-export const Regular = ButtonTpl.bind({});
+export const Regular = buttonTpl.bind({});
 Regular.args = {
 	children: 'Regular',
 };
 
-export const RegularDisabled = ButtonTpl.bind({});
+export const RegularDisabled = buttonTpl.bind({});
 RegularDisabled.args = {
 	children: 'Regular Disabled',
 	isDisabled: true,
 };
 
-export const Small = ButtonTpl.bind({});
+export const Small = buttonTpl.bind({});
 Small.args = {
 	children: 'Small',
 	small: true,
 };
 
-export const SmallDisabled = ButtonTpl.bind({});
+export const SmallDisabled = buttonTpl.bind({});
 SmallDisabled.args = {
 	children: 'Small Disabled',
 	isDisabled: true,

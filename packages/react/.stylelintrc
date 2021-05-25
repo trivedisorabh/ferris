@@ -1,8 +1,0 @@
-{
-	"extends": "../../.stylelintrc",
-	"rules": {
-		"no-descending-specificity": null,
-		"no-duplicate-selectors": null
-	},
-	"syntax": "css-in-js"
-}

@@ -8,23 +8,23 @@
 		"importHelpers": true,
 		"incremental": true,
 		"inlineSources": true,
+		"jsx": "react",
 		"lib": ["es2017", "dom"],
 		"module": "esnext",
 		"moduleResolution": "node",
 		"noEmitOnError": true,
 		"noImplicitAny": true,
-		"outDir": "dist",
+		"outDir": "./dist",
 		"paths": {
 			"~atoms/*": ["./src/atoms/*"],
 			"~components/*": ["./src/components/*"],
 			"~tokens/*": ["./src/tokens/*"],
 			"~types/*": ["./src/types/*"]
 		},
-		"rootDir": "./",
 		"sourceMap": true,
 		"strict": true,
 		"target": "es2018"
 	},
-	"include": ["./src/**/*.ts", "index.ts"],
+	"include": ["./src/**/*"],
 	"exclude": ["node_modules"]
 }
