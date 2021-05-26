@@ -17,7 +17,7 @@ interface Story<T> {
 	argTypes?: Record<string, unknown>;
 }
 
-const breadcrumbTpl: Story<BreadcrumbProps> = ({
+const Template: Story<BreadcrumbProps> = ({
 	ariaCurrentLabel,
 	items,
 	isSmall,
@@ -25,13 +25,22 @@ const breadcrumbTpl: Story<BreadcrumbProps> = ({
 	<Breadcrumb ariaCurrentLabel={ariaCurrentLabel} items={items} isSmall={isSmall} />
 );
 
-export const Default = breadcrumbTpl.bind({});
+const items = [
+	{ label: 'Folder One', href: 'https://www.skf.com' },
+	{ label: 'Folder Two', href: 'https://www.skf.com' },
+	{ label: 'Folder Three', href: 'https://www.skf.com' },
+	{ label: 'Folder Four (Current)', href: 'https://www.skf.com' },
+];
+
+export const Default = Template.bind({});
 Default.args = {
 	ariaCurrentLabel: 'location',
-	items: [
-		{ label: 'Folder One', href: 'https://www.skf.com' },
-		{ label: 'Folder Two', href: 'https://www.skf.com' },
-		{ label: 'Folder Three', href: 'https://www.skf.com' },
-		{ label: 'Folder Four', href: 'https://www.skf.com' },
-	],
+	items: items,
+};
+
+export const Small = Template.bind({});
+Small.args = {
+	ariaCurrentLabel: 'location',
+	items: items,
+	isSmall: true,
 };

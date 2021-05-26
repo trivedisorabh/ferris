@@ -57,7 +57,7 @@ type StRootProps = Pick<BreadcrumbProps, 'isSmall'>;
 
 const StRoot = styled.nav(
 	({ isSmall }: StRootProps) => css`
-		font-size: ${isSmall && '0.75rem'};
+		font-size: ${isSmall && '0.875rem'};
 	`
 );
 
