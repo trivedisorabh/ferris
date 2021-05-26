@@ -2,9 +2,13 @@ import React, { ReactElement } from 'react';
 import Breadcrumb, { BreadcrumbProps } from './Breadcrumb';
 
 export default {
-	title: 'Navigation/Breadcrumbs',
-	component: 'skf-breadcrumbs',
-	includeStories: /^[A-Z]/,
+	title: 'Navigation/Breadcrumb',
+	component: Breadcrumb,
+	argTypes: {
+		ariaCurrentLabel: {
+			control: { type: 'select', options: ['location', 'page'] },
+		},
+	},
 };
 
 interface Story<T> {
@@ -13,12 +17,17 @@ interface Story<T> {
 	argTypes?: Record<string, unknown>;
 }
 
-const breadcrumbTpl: Story<BreadcrumbProps> = ({ items }: BreadcrumbProps) => (
-	<Breadcrumb items={items} />
+const breadcrumbTpl: Story<BreadcrumbProps> = ({
+	ariaCurrentLabel,
+	items,
+	isSmall,
+}: BreadcrumbProps) => (
+	<Breadcrumb ariaCurrentLabel={ariaCurrentLabel} items={items} isSmall={isSmall} />
 );
 
-export const Interactive = breadcrumbTpl.bind({});
-Interactive.args = {
+export const Default = breadcrumbTpl.bind({});
+Default.args = {
+	ariaCurrentLabel: 'location',
 	items: [
 		{ label: 'Folder One', href: 'https://www.skf.com' },
 		{ label: 'Folder Two', href: 'https://www.skf.com' },
