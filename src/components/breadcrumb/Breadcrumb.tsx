@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { AriaAttributes } from 'react';
 
 /**
  * @category Props
@@ -10,8 +10,10 @@ export interface BreadcrumbItem {
 	label: string;
 }
 
+type AriaLabels = AriaAttributes['aria-current'];
+
 export interface BreadcrumbProps {
-	ariaCurrentLabel: 'location' | 'page';
+	ariaCurrentLabel: Extract<AriaLabels, 'location' | 'page'>;
 	items: BreadcrumbItem[];
 	isSmall?: boolean;
 }
