@@ -4,6 +4,6 @@
 		"dbaeumer.vscode-eslint",
 		"stylelint.vscode-stylelint",
 		"ms-vsliveshare.vsliveshare",
-		"runem.lit-plugin"
+		"jpoissonnier.vscode-styled-components"
 	]
 }
