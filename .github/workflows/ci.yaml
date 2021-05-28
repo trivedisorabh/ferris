@@ -32,7 +32,7 @@ jobs:
             ${{ runner.os }}-yarn-
       - run: yarn install --frozen-lockfile
       - run: yarn lint
-      #- run: yarn workspace @skf/ferris-wc test
+      - run: yarn test
       - name: Publish to Chromatic
         uses: chromaui/action@v1
         with:

@@ -11,13 +11,13 @@ export interface ButtonProps {
 	isDisabled?: boolean;
 	onClick: () => void;
 	small?: boolean;
-	variant: 'primary' | 'secondary' | 'link';
+	variant?: 'primary' | 'secondary' | 'link';
 }
 
 /**
  * @category Template
  */
-const Button = ({ children, isDisabled, onClick, small, variant }: ButtonProps) => (
+const Button = ({ children, isDisabled, onClick, small, variant = 'primary' }: ButtonProps) => (
 	<StButton disabled={isDisabled} small={small} onClick={onClick} variant={variant}>
 		{children}
 	</StButton>
