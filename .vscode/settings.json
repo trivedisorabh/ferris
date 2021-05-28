@@ -7,5 +7,6 @@
 	"files.insertFinalNewline": true,
 	"files.trimTrailingWhitespace": true,
 	"javascript.updateImportsOnFileMove.enabled": "always",
-	"typescript.updateImportsOnFileMove.enabled": "always"
+	"typescript.preferences.importModuleSpecifier": "non-relative",
+	"typescript.updateImportsOnFileMove.enabled": "always",
 }
