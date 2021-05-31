@@ -2,10 +2,22 @@
 
 Introduction here...
 
-## Installation
+## Setup
+
+### Dependencies
+
+We use [Yarn]() as a package manager. After cloning, install all dependencies by running:
 
 ```bash
 yarn install
+```
+
+### Running Storybook
+
+[Storybook]() is our main tool for prototyping and working with components. Start storybook by running:
+
+```bash
+yarn storybook
 ```
 
 ## Workflow
@@ -19,31 +31,31 @@ yarn install
    - Make sure your that your new PR meets the "pre commit checklist" below before continuing.
    - Assign yourself (you are also responsible for closing it).
    - Select related project (if any)
-   - Select realted milstone (if feasible)
+   - Select related milestone (if feasible)
    - Link related story (if any)
    - Let the team know about the new PR and get it reviewed together with one or more participants.
 
 ### Pre-commit checklist
 
 1. Does it look correct?
-   <br>
-   A well formatted and structured component is both easier to read and work with. Pass on something you’re proud of.
+
+   A well formatted and structured component is both easy to read and work with. Pass on something you’re proud of.
 
 2. Does it scale?
-   <br>
-   In next sprint we might want to increase the functionality. Can we do that without having to re-factor the whole thing?
 
-3. Does the browser console contain errors?
-   <br>
-   Try to solve any browser console error.
+   We might want to extend the functionality of the component. Can we do that without having to re-factor the whole thing?
+
+3. Does the browser console contain logs?
+
+   Try to solve any browser console errors and warnings. We want these to be relevant if they ever appear, and we don't want to pass on unnecessary logging to our users.
 
 4. Does it build properly?
-   <br>
+
    Run “yarn test" to ensure a working build before raising the PR.
 
 ## Example component
 
-Use empty linebreaks generously to group statements that shares a common objective in the scope.
+Use empty line breaks generously to group statements that shares a common objective in the scope.
 
 ```tsx
 // Prefer category based imports. Avoid relative imports '../../../SampleComponent'
@@ -115,34 +127,6 @@ To automatically fix many linting errors, run
 ```bash
 yarn format
 ```
-
-## Demoing with Storybook
-
-To run a local instance of Storybook for your component, run
-
-```bash
-yarn storybook
-```
-
-To build a production version of Storybook, run
-
-```bash
-yarn storybook:build
-```
-
-## Tooling configs
-
-For most of the tools, the configuration is in the `package.json` to reduce the amount of files in your project.
-
-If you customize the configuration a lot, you can consider moving them to individual files.
-
-## Local Demo with `web-dev-server`
-
-```bash
-yarn start
-```
-
-To run a local development server that serves the basic demo located in `demo/index.html`
 
 ## License
 
