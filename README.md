@@ -18,7 +18,9 @@ yarn install
 4. Create PR
    - Make sure your that your new PR meets the "pre commit checklist" below before continuing.
    - Assign yourself (you are also responsible for closing it).
-   - Select related project/sprint and link any related story.
+   - Select related project
+   - Select realted milstone (if feasible)
+   - Link related story (if any)
    - Let the team know about the new PR and get it reviewed together with one or more participants.
 
 ### Pre-commit checklist
