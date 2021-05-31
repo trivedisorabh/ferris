@@ -98,6 +98,7 @@ type StProps = Pick<Sample, 'isSomething'> & {
 	isLocalProp?: boolean;
 };
 
+// The root element name is based on the main component name (Sample in this case), prefix with "St" for Styled.
 const StSample = styled.div(
 	({ isLocalProp, isSomething }: StProps) => css`
 		color: ${isLocalProp && 'black'};
