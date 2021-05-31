@@ -84,21 +84,24 @@ import Text from '~atoms/text/Text';
 // Use empty line breaks generously to group statements that shares a common objective in the scope.
 
 // Exported interfaces should use `[ComponentName]` as name space.
-export interface SampleBar {
-	baz: number;
+export interface SampleItem {
+	bar: number;
 }
 
 export interface SampleProps {
 	foo: string;
-	bar: SampleBar[];
+	items: SampleItem[];
 	isSomething?: boolean;
 }
 
 // Deconstruct props parameter.
-const Sample = ({ foo, bar, isSomething }: SampleProps) => {
+const Sample = ({ foo, items, isSomething }: SampleProps) => {
 	// Return a component hierarchy.
 	return (
 		<StSample isLocalProp={foo} isSomething={isSomething}>
+			{items.map(({ baz }, index) => (
+				<StItem key={index}>{bar}</StItem>
+			))}
 			<Foo />
 		</StSample>
 	);
@@ -115,13 +118,17 @@ type StProps = Pick<Sample, 'isSomething'> & {
 };
 
 // We use Emotion to style the components
-// The root element name is based on the main component name, prefixed with "St" for Styled.
+// The root element name is based on the main component name. All elements are prefixed with "St" for Styled.
 const StSample = styled.div(
 	({ isLocalProp, isSomething }: StProps) => css`
 		color: ${isLocalProp && 'black'};
 		opacity: ${isSomething && '0.5'};
 	`
 );
+
+const StItem = styled.div`
+	display: inline-flex;
+`;
 ```
 
 ## Usage in an external app
