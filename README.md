@@ -2,9 +2,7 @@
 
 Introduction here...
 
-## Setup
-
-### Dependencies
+## Install dependencies
 
 We use [Yarn]() as a package manager. After cloning, install all dependencies by running:
 
@@ -12,12 +10,32 @@ We use [Yarn]() as a package manager. After cloning, install all dependencies by
 yarn install
 ```
 
-### Running Storybook
+## Running Storybook
 
 [Storybook]() is our main tool for prototyping and working with components. Start storybook by running:
 
 ```bash
 yarn storybook
+```
+
+## Tests
+
+### Unit tests
+
+### Visual regression tests
+
+## Code style
+
+To scan the project for linting errors, run
+
+```bash
+yarn lint
+```
+
+To automatically fix many linting errors, run
+
+```bash
+yarn format
 ```
 
 ## Workflow
@@ -53,9 +71,9 @@ yarn storybook
 
    Run “yarn test" to ensure a working build before raising the PR.
 
-## Example component
+## Sample component
 
-Use empty line breaks generously to group statements that shares a common objective in the scope.
+This component demonstrates our development guidelines and style conventions
 
 ```tsx
 // Prefer category based imports. Avoid relative imports '../../../SampleComponent'
@@ -63,17 +81,16 @@ import Colors from '~tokens/colors/Colors';
 import Foo from '~components/Foo';
 import Text from '~atoms/text/Text';
 
-// Exported interfaces should use `[componentName]` as name space.
+// Use empty line breaks generously to group statements that shares a common objective in the scope.
 
-// [componentName]Bar
+// Exported interfaces should use `[ComponentName]` as name space.
 export interface SampleBar {
 	baz: number;
 }
 
-// [componentName]Props
 export interface SampleProps {
-	bar: SampleBar[];
 	foo: string;
+	bar: SampleBar[];
 	isSomething?: boolean;
 }
 
@@ -86,19 +103,19 @@ const Sample = ({ foo, bar, isSomething }: SampleProps) => {
 		</StSample>
 	);
 
-	// TODO: Use this prefix for code snippets that requires attention later on.
+	// TODO: This is code that requires attention later on. It does not need to be fixed in the current PR.
 };
 
+// The component is the default export
 export default Sample;
 
-/**
- * Styles
- */
+// An interface can extend/use a part of an existing interface
 type StProps = Pick<Sample, 'isSomething'> & {
 	isLocalProp?: boolean;
 };
 
-// The root element name is based on the main component name (Sample in this case), prefix with "St" for Styled.
+// We use Emotion to style the components
+// The root element name is based on the main component name, prefixed with "St" for Styled.
 const StSample = styled.div(
 	({ isLocalProp, isSomething }: StProps) => css`
 		color: ${isLocalProp && 'black'};
@@ -107,26 +124,12 @@ const StSample = styled.div(
 );
 ```
 
-## Usage
+## Usage in an external app
 
 ```tsx
 import { Sample } from '@skf/ferris';
 
 <Sample isSomething={bar} />;
-```
-
-## Linting with ESLint, Prettier, Stylelint and Types
-
-To scan the project for linting errors, run
-
-```bash
-yarn lint
-```
-
-To automatically fix many linting errors, run
-
-```bash
-yarn format
 ```
 
 ## License
