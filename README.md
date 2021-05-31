@@ -18,7 +18,7 @@ yarn install
 4. Create PR
    - Make sure your that your new PR meets the "pre commit checklist" below before continuing.
    - Assign yourself (you are also responsible for closing it).
-   - Select related project
+   - Select related project (if any)
    - Select realted milstone (if feasible)
    - Link related story (if any)
    - Let the team know about the new PR and get it reviewed together with one or more participants.
@@ -33,15 +33,11 @@ yarn install
    <br>
    In next sprint we might want to increase the functionality. Can we do that without having to re-factor the whole thing?
 
-3. Does the console contain errors?
+3. Does the browser console contain errors?
    <br>
    Try to solve any browser console error.
 
-4. Does it lint ok?
-   <br>
-   Fix any lint errors early on so that the PR is clean from unnecessary errors.
-
-5. Does it build properly?
+4. Does it build properly?
    <br>
    Run “yarn test" to ensure a working build before raising the PR.
 
@@ -64,8 +60,8 @@ export interface SampleBar {
 
 // [componentName]Props
 export interface SampleProps {
-	foo: string;
 	bar: SampleBar[];
+	foo: string;
 	isSomething?: boolean;
 }
 
@@ -86,16 +82,25 @@ export default Sample;
 /**
  * Styles
  */
-type StProps = Pick<Sample, 'isSomething'>;
+type StProps = Pick<Sample, 'isSomething'> & {
+	isLocalProp?: boolean;
+};
 
 const StSample = styled.div(
-	({ isSomething }: StProps) => css`
+	({ isLocalProp, isSomething }: StProps) => css`
+		color: ${isLocalProp && 'black'};
 		opacity: ${isSomething && '0.5'};
 	`
 );
 ```
 
 ## Usage
+
+```tsx
+import { Sample } from '@skf/ferris';
+
+<Sample isSomething={bar} />;
+```
 
 ## Linting with ESLint, Prettier, Stylelint and Types
 
@@ -109,20 +114,6 @@ To automatically fix many linting errors, run
 
 ```bash
 yarn format
-```
-
-## Testing with Web Test Runner
-
-To run the suite of Web Test Runner tests, run
-
-```bash
-yarn test
-```
-
-To run the tests in watch mode (for &lt;abbr title=&#34;test driven development&#34;&gt;TDD&lt;/abbr&gt;, for example), run
-
-```bash
-yarn test:watch
 ```
 
 ## Demoing with Storybook
