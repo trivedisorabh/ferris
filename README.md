@@ -112,23 +112,35 @@ const Sample = ({ foo, items, isSomething }: SampleProps) => {
 // The component is the default export
 export default Sample;
 
-// An interface can extend/use a part of an existing interface
-type StProps = Pick<Sample, 'isSomething'> & {
-	isLocalProp?: boolean;
+// Styled component related interfaces can extend/use prop(s) from the main component interface(s)
+type StSampleProps = Pick<SampleProps, 'isSomething'> & {
+	isStyleProp?: boolean;
 };
 
-// We use Emotion to style the components
-// The root element name is based on the main component name. All elements are prefixed with "St" for Styled.
+// We use Emotion to style the components.
+// The root element name is based on the main component name.
+// All styled components are prefixed with "St" for Styled.
 const StSample = styled.div(
-	({ isLocalProp, isSomething }: StProps) => css`
+	({ isLocalProp, isSomething }: StSampleProps) => css`
 		color: ${isLocalProp && 'black'};
 		opacity: ${isSomething && '0.5'};
 	`
 );
 
-const StItem = styled.div`
-	display: inline-flex;
-`;
+interface StItemProps {
+	fooBar: boolean;
+}
+
+const StItem = styled.div(
+	({ fooBar }: StItemProps) => css`
+		display: flex;
+
+		${fooBar &&
+		css`
+			display: inline-flex;
+		`}
+	`
+);
 ```
 
 ## Usage in an external app
