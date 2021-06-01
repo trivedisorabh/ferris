@@ -2,6 +2,23 @@
 
 Introduction here...
 
+---
+
+- [Install dependencies](#install-dependencies)
+- [Running Storybook](#running-storybook)
+- [Workflow](#workflow)
+  - [Pre-commit checklist](#pre-commit-checklist)
+- [Sample component](#sample-component)
+- [Tests](#tests)
+  - [Unit tests](#unit-tests)
+  - [Visual regression tests](#visual-regression-tests)
+  - [Code style](#code-style)
+- [Usage in an external app](#usage-in-an-external-app)
+- [Tools & Technologies]()
+- [License](#license)
+
+---
+
 ## Install dependencies
 
 We use [Yarn]() as a package manager. After cloning, install all dependencies by running:
@@ -18,26 +35,6 @@ yarn install
 yarn storybook
 ```
 
-## Tests
-
-### Unit tests
-
-### Visual regression tests
-
-## Code style
-
-To scan the project for linting errors, run
-
-```bash
-yarn lint
-```
-
-To automatically fix many linting errors, run
-
-```bash
-yarn format
-```
-
 ## Workflow
 
 1. Assign GitHub ticket to yourself
@@ -46,7 +43,7 @@ yarn format
    - Push code **early** and **often**.
    - Feature branches are allowed to be broken.
 4. Create PR
-   - Make sure your that your new PR meets the "pre commit checklist" below before continuing.
+   - Make sure your that your new PR meets the [Pre-commit checklist](#pre-commit-checklist) below before continuing.
    - Assign yourself (you are also responsible for closing it).
    - Select related project (if any)
    - Select related milestone (if feasible)
@@ -69,7 +66,7 @@ yarn format
 
 4. Does it build properly?
 
-   Run “yarn test" to ensure a working build before raising the PR.
+   Run all available [tests](#tests) to ensure a working build before raising the PR.
 
 ## Sample component
 
@@ -119,7 +116,7 @@ type StSampleProps = Pick<SampleProps, 'isSomething'> & {
 
 // We use Emotion to style the components.
 // The root element name is based on the main component name.
-// All styled components are prefixed with "St" for Styled.
+// All styled components/elements are prefixed with "St" for Styled.
 const StSample = styled.div(
 	({ isLocalProp, isSomething }: StSampleProps) => css`
 		color: ${isLocalProp && 'black'};
@@ -143,13 +140,42 @@ const StItem = styled.div(
 );
 ```
 
+## Tests
+
+### Unit tests
+
+### Visual regression tests
+
+## Code style
+
+To scan the project for linting errors, run
+
+```bash
+yarn lint
+```
+
+To automatically fix many linting errors, run
+
+```bash
+yarn format
+```
+
 ## Usage in an external app
 
 ```tsx
 import { Sample } from '@skf/ferris';
 
-<Sample isSomething={bar} />;
+<Sample isSomething={appProp} />;
 ```
+
+## Tools & Technologies
+
+- [Chromatic](https://www.chromatic.com/)
+- [Emotion](https://emotion.sh/docs/@emotion/css)
+- [React](https://reactjs.org/tutorial/tutorial.html)
+- [Storybook](https://storybook.js.org/)
+- [Style Dictionary](https://amzn.github.io/style-dictionary/)
+- [TypeScript](https://www.typescriptlang.org/)
 
 ## License
 
