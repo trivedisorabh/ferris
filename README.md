@@ -14,7 +14,7 @@ Introduction here...
   - [Visual regression tests](#visual-regression-tests)
   - [Code style](#code-style)
 - [Usage in an external app](#usage-in-an-external-app)
-- [Tools & Technologies]()
+- [Tools & Technologies](#tools-&-technologies)
 - [License](#license)
 
 ---
