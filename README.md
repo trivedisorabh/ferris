@@ -174,7 +174,7 @@ To automatically fix many linting errors and format the code, run:
 yarn format
 ```
 
-## ADR
+## 🏛 ADR
 
 We use [architecture decision records](docs/adr) to record the motivation and consequences of all out architectural decisions. If you are new, this can be a good point to start reading in order to get a grip on the architectural state of the project.
 
