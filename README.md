@@ -1,8 +1,8 @@
 # SKF Ferris UI Library
 
-Introduction here...
+The Ferris UI Library is a collection of components that is meant to facilitate the creation of web applications across the global SKF organization. It is based on the [Web Applications design system](https://skf.invisionapp.com/dsm/ab-skf/4-web-applications?mode=preview). Using Ferris will give apps a SKF look and feel, and will let users focus on building business logic and features, instead of worrying about the basics.
 
----
+## Developing and contributing
 
 - [Install dependencies](#install-dependencies)
 - [Running Storybook](#running-storybook)
@@ -12,7 +12,7 @@ Introduction here...
 - [Tests](#tests)
   - [Unit tests](#unit-tests)
   - [Visual regression tests](#visual-regression-tests)
-  - [Code style](#code-style)
+- [Code style](#code-style)
 - [Usage in an external app](#usage-in-an-external-app)
 - [Tools & Technologies](#tools-&-technologies)
 - [License](#license)
@@ -21,15 +21,15 @@ Introduction here...
 
 ## Install dependencies
 
-We use [Yarn]() as a package manager. After cloning, install all dependencies by running:
+We use [Yarn](https://yarnpkg.com/) as a package manager. After cloning, install all dependencies by running:
 
 ```bash
-yarn install
+yarn
 ```
 
 ## Running Storybook
 
-[Storybook]() is our main tool for prototyping and working with components. Start storybook by running:
+[Storybook](https://storybook.js.org/) is our main tool for prototyping and working with components. Start storybook by running:
 
 ```bash
 yarn storybook
@@ -37,14 +37,15 @@ yarn storybook
 
 ## Workflow
 
-1. Assign GitHub ticket to yourself
-2. Create a short lived, single purpose feature branch (feature/[ticketNumber]\_Ticket_Name)
-3. Publish feature branch immediately
+We use the "[git-flow]()" branching strategy when working in the repo. Take the following steps when you want to make a contribution:
+
+1. Assign a GitHub issue to yourself
+2. Create a feature branch (feature/issue#\_ticket_name)
    - Push code **early** and **often**.
    - Feature branches are allowed to be broken.
-4. Create PR
-   - Make sure your that your new PR meets the [Pre-commit checklist](#pre-commit-checklist) below before continuing.
-   - Assign yourself (you are also responsible for closing it).
+3. Create Pull Request when done
+   - Make sure your that your code meets the [Pre-commit checklist](#pre-commit-checklist).
+   - Assign yourself to the PR (you are also responsible for merging it).
    - Select related project (if any)
    - Select related milestone (if feasible)
    - Link related story (if any)
@@ -142,7 +143,25 @@ const StItem = styled.div(
 
 ## Tests
 
+We continuously run tests to ensure that the components look and behave the way they're supposed to.
+
 ### Unit tests
+
+Unit tests are run using [Jest](https://jestjs.io/) as a test runner and [Testing library](https://testing-library.com/) as a helper toolkit. These tests ensure the functionality of a component - that the user interactions produce the expected results. Run the unit tests with the command
+
+```bash
+yarn test
+```
+
+To run the tests continuously while developing, run
+
+```bash
+yarn test:watch
+```
+
+### Code coverage
+
+When the unit tests run they also generate a code coverage report. While it is not a requirement to reach 100% coverage (or any other set amount), looking at the uncovered parts in the report can be a great help when thinking about what tests to write.
 
 ### Visual regression tests
 
