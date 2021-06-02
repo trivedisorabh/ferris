@@ -1,25 +1,10 @@
-# SKF Ferris UI Library
+# 🎡 SKF Ferris UI Library
 
 The Ferris UI Library is a collection of components that is meant to facilitate the creation of web applications across the global SKF organization. It is based on the [Web Applications design system](https://skf.invisionapp.com/dsm/ab-skf/4-web-applications?mode=preview). Using Ferris will give apps a SKF look and feel, and will let users focus on building business logic and features, instead of worrying about the basics.
 
-## Developing and contributing
+# 👩‍💻 Developing and contributing
 
-- [Install dependencies](#install-dependencies)
-- [Running Storybook](#running-storybook)
-- [Workflow](#workflow)
-  - [Pre-commit checklist](#pre-commit-checklist)
-- [Sample component](#sample-component)
-- [Tests](#tests)
-  - [Unit tests](#unit-tests)
-  - [Visual regression tests](#visual-regression-tests)
-- [Code style](#code-style)
-- [Usage in an external app](#usage-in-an-external-app)
-- [Tools & Technologies](#tools-&-technologies)
-- [License](#license)
-
----
-
-## Install dependencies
+## 🚚 Install dependencies
 
 We use [Yarn](https://yarnpkg.com/) as a package manager. After cloning, install all dependencies by running:
 
@@ -27,31 +12,34 @@ We use [Yarn](https://yarnpkg.com/) as a package manager. After cloning, install
 yarn
 ```
 
-## Running Storybook
+## 📖 Running Storybook
 
-[Storybook](https://storybook.js.org/) is our main tool for prototyping and working with components. Start storybook by running:
+[Storybook](https://storybook.js.org/) is our main tool for prototyping and working with components. As you work on features or fixes, you will write stories and make sure that the components work in the Storybook environment.
+
+Start storybook by running:
 
 ```bash
 yarn storybook
 ```
 
-## Workflow
+## 🎢 Workflow
 
-We use the "[git-flow]()" branching strategy when working in the repo. Take the following steps when you want to make a contribution:
+We use the "[git-flow](docs/adr/005-git-flow.md)" branching strategy when working in the repo. Take the following steps when you want to make a contribution:
 
 1. Assign a GitHub issue to yourself
 2. Create a feature branch (feature/issue#\_ticket_name)
    - Push code **early** and **often**.
    - Feature branches are allowed to be broken.
 3. Create Pull Request when done
-   - Make sure your that your code meets the [Pre-commit checklist](#pre-commit-checklist).
-   - Assign yourself to the PR (you are also responsible for merging it).
-   - Select related project (if any)
-   - Select related milestone (if feasible)
-   - Link related story (if any)
-   - Let the team know about the new PR and get it reviewed together with one or more participants.
+   - Make sure your that your code meets the pre-PR checklist.
+   - Assign yourself to the PR.
+   - Select related project (if any).
+   - Select related milestone (if feasible).
+   - Link related issue (if any).
+   - Let the team know about the new PR and .get it reviewed together with one or more participants.
+   - Merge the PR when all checks have passed.
 
-### Pre-commit checklist
+### 📝 Pre-PR checklist
 
 1. Does it look correct?
 
@@ -59,7 +47,7 @@ We use the "[git-flow]()" branching strategy when working in the repo. Take the 
 
 2. Does it scale?
 
-   We might want to extend the functionality of the component. Can we do that without having to re-factor the whole thing?
+   We might want to extend the functionality of the component. Can it be done without having to re-factor the whole thing?
 
 3. Does the browser console contain logs?
 
@@ -67,11 +55,11 @@ We use the "[git-flow]()" branching strategy when working in the repo. Take the 
 
 4. Does it build properly?
 
-   Run all available [tests](#tests) to ensure a working build before raising the PR.
+   Run the unit tests locally to catch errors before they appear in the build process.
 
-## Sample component
+## 🧩 Sample component
 
-This component demonstrates our development guidelines and style conventions
+This component demonstrates our development guidelines and style conventions.
 
 ```tsx
 // Prefer category based imports. Avoid relative imports '../../../SampleComponent'
@@ -97,7 +85,7 @@ const Sample = ({ foo, items, isSomething }: SampleProps) => {
 	// Return a component hierarchy.
 	return (
 		<StSample isLocalProp={foo} isSomething={isSomething}>
-			{items.map(({ baz }, index) => (
+			{items.map(({ bar }, index) => (
 				<StItem key={index}>{bar}</StItem>
 			))}
 			<Foo />
@@ -141,11 +129,11 @@ const StItem = styled.div(
 );
 ```
 
-## Tests
+## 🚧 Tests
 
 We continuously run tests to ensure that the components look and behave the way they're supposed to.
 
-### Unit tests
+### 🧰 Unit tests
 
 Unit tests are run using [Jest](https://jestjs.io/) as a test runner and [Testing library](https://testing-library.com/) as a helper toolkit. These tests ensure the functionality of a component - that the user interactions produce the expected results. Run the unit tests with the command
 
@@ -159,43 +147,50 @@ To run the tests continuously while developing, run
 yarn test:watch
 ```
 
-### Code coverage
+### 📊 Code coverage
 
-When the unit tests run they also generate a code coverage report. While it is not a requirement to reach 100% coverage (or any other set amount), looking at the uncovered parts in the report can be a great help when thinking about what tests to write.
+When the unit tests run they also generate a code coverage report. While it is not a requirement to reach 100% coverage (or any other set amount), looking at the uncovered parts in the report can be a great help when thinking about what tests to write, and what behaviour to cover.
 
-### Visual regression tests
+### 👀 Visual regression tests
 
-## Code style
+When a PR is made, a build of Storybook will be made and sent to our visual testing service, Chromatic
+When a PR is made, a build of Storybook will be made and sent to our visual testing service, [Chromatic](https://www.chromatic.com/). Here all the stories will be screenshot and compared on a pixel-by-pixel basis. If there are any visual changes to the components you must either fix these, or go to Chromatic via the lint in the "UI tests" check in the PR, and approve the changes. This indicates that your changes are intentional.
 
-To scan the project for linting errors, run
+The link in the check called "UI review" must be sent to a designer for approval, if it does not pass automatically.
+
+## 👩‍🎤 Code style
+
+We recommend that you configure your development environment to automatically lint the code as you type, and format on save, but you can also perform these steps manually.
+
+To scan the project for linting errors, run:
 
 ```bash
 yarn lint
 ```
 
-To automatically fix many linting errors, run
+To automatically fix many linting errors and format the code, run:
 
 ```bash
 yarn format
 ```
 
-## Usage in an external app
+## ADR
 
-```tsx
-import { Sample } from '@skf/ferris';
+We use [architecture decision records](docs/adr) to record the motivation and consequences of all out architectural decisions. If you are new, this can be a good point to start reading in order to get a grip on the architectural state of the project.
 
-<Sample isSomething={appProp} />;
-```
+## 🛠 Tools & Technologies
 
-## Tools & Technologies
+Here are links to the tools and technologies we use in the project.
 
 - [Chromatic](https://www.chromatic.com/)
 - [Emotion](https://emotion.sh/docs/@emotion/css)
+- [Jest](https://jestjs.io/)
 - [React](https://reactjs.org/tutorial/tutorial.html)
 - [Storybook](https://storybook.js.org/)
 - [Style Dictionary](https://amzn.github.io/style-dictionary/)
+- [Testing library](https://testing-library.com/)
 - [TypeScript](https://www.typescriptlang.org/)
 
-## License
+## 🧑‍⚖️ License
 
 Copyright SKF 2021
