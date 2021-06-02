@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react';
 import TextField, { TextFieldProps } from './TextField';
 
 export default {
-	title: 'Form/TextField',
+	title: 'Form/Text Field',
 	component: 'skf-text-field',
 	argTypes: {
 		description: { control: 'text' },
