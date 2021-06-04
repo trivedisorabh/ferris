@@ -29,6 +29,7 @@ We use the "[git-flow](docs/adr/005-git-flow.md)" branching strategy when workin
 1. Assign a GitHub issue to yourself
 2. Create a feature branch (feature/issue#\_ticket_name)
    - Push code **early** and **often**.
+   - Commit messages are linted and must follow a predefined set of rules. See [here].(#Commitlint).
    - Feature branches are allowed to be broken.
 3. Create Pull Request when done
    - Make sure your that your code meets the pre-PR checklist.
@@ -38,6 +39,20 @@ We use the "[git-flow](docs/adr/005-git-flow.md)" branching strategy when workin
    - Link related issue (if any).
    - Let the team know about the new PR and .get it reviewed together with one or more participants.
    - Merge the PR when all checks have passed.
+
+### 🆑 Commitlint
+
+All commit messages must follow the following pattern: ` <Type>(Optional scope): <Description>`.
+
+Available types are:
+
+- Feature
+- Fix
+- Docs
+- Style
+- Refactor
+- Test
+- Revert
 
 ### 📝 Pre-PR checklist
 
