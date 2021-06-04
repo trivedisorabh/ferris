@@ -1,7 +1,7 @@
 import { buttonCommonArgTypes, buttonTpl } from './Button.Primary.stories';
 
 export default {
-	title: 'Form/Button/Secondary',
+	title: 'Form/Button/Link',
 	component: 'skf-button',
 	argTypes: {
 		...buttonCommonArgTypes,
