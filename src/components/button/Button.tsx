@@ -40,13 +40,13 @@ type StButtonProps = Pick<ButtonProps, 'small' | 'variant'>;
 
 const StButton = styled.button(
 	({ small, variant }: StButtonProps) => css`
-		min-width: ${tokens.buttonMinWidth};
-		height: 40px;
-		padding: 0 ${tokens.buttonHorizontalPadding};
 		border-radius: ${tokens.buttonBorderRadius};
 		cursor: pointer;
 		font-size: 1rem;
 		font-weight: bold;
+		height: 40px;
+		min-width: ${tokens.buttonMinWidth};
+		padding: 0 ${tokens.buttonHorizontalPadding};
 		transition-duration: ${tokens.transitionDuration};
 		transition-property: background-color, color;
 
@@ -69,23 +69,23 @@ const StButton = styled.button(
 		&:disabled,
 		&:disabled:hover,
 		&:disabled:active {
-			border: none;
 			background-color: ${tokens.buttonDisabledBgColor};
+			border: none;
 			color: ${tokens.buttonDisabledTextColor};
 			cursor: not-allowed;
 		}
 
 		${small &&
 		css`
-			min-width: ${tokens.buttonSmallMinWidth};
-			height: 30px;
 			font-size: 0.875rem;
+			height: 30px;
+			min-width: ${tokens.buttonSmallMinWidth};
 		`}
 
 		${variant === 'primary' &&
 		css`
-			border: none;
 			background-color: ${tokens.buttonPrimaryBgColor};
+			border: none;
 			color: ${tokens.buttonPrimaryTextColor};
 
 			&:hover {
@@ -99,8 +99,8 @@ const StButton = styled.button(
 
 		${variant === 'secondary' &&
 		css`
-			border: 1px solid ${tokens.buttonSecondaryBorderColor};
 			background-color: ${tokens.buttonSecondaryBgColor};
+			border: 1px solid ${tokens.buttonSecondaryBorderColor};
 			color: ${tokens.buttonSecondaryTextColor};
 
 			&:hover {
@@ -114,11 +114,11 @@ const StButton = styled.button(
 
 		${variant === 'link' &&
 		css`
+			background: none;
+			border: none;
+			color: ${tokens.buttonLinkTextColor};
 			min-width: initial;
 			padding: 0;
-			border: none;
-			background: none;
-			color: ${tokens.buttonLinkTextColor};
 
 			&:disabled,
 			&:disabled:hover,
