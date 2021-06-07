@@ -43,9 +43,9 @@ export default TextInput;
  * @category Styles
  */
 const StTextInput = styled.input`
-	padding: 0.25rem;
-	border: 1px solid #ccc;
 	background: #fff;
+	border: 1px solid #ccc;
+	padding: 0.25rem;
 
 	&:disabled {
 		background: #ddd;
