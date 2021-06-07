@@ -27,10 +27,10 @@ export default Label;
  * @category Styles
  */
 const StLabel = styled.label`
-	display: flex;
-	margin: 0 0 0.25rem;
 	color: #333;
+	display: flex;
 	font-weight: bold;
+	margin: 0 0 0.25rem;
 `;
 
 const StLabelSymbol = styled.i`
