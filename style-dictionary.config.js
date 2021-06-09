@@ -7,10 +7,21 @@ const JsonToTS = require('json-to-ts');
 const StyleDictionary = require('style-dictionary');
 const { minifyDictionary } = StyleDictionary.formatHelpers;
 
+/**
+ * Helpers
+ */
+
+/* Helper to simplify filtering within files */
+function getFilter(cat) {
+	return { attributes: { category: cat } };
+}
+
+/* Returns the first key in passed object */
 function getCategory(obj) {
 	return Object.keys(obj)[0];
 }
 
+/* Transforms the category name to PascalCase */
 function toPascalCase(str) {
 	const words = str.match(/[a-z]+/gi);
 	if (!words) return '';
@@ -21,6 +32,9 @@ function toPascalCase(str) {
 		.join('');
 }
 
+/**
+ * Formatters
+ */
 StyleDictionary.registerFormat({
 	name: 'custom/typescript/module-declarations',
 	formatter: function ({ dictionary }) {
@@ -42,75 +56,18 @@ StyleDictionary.registerFormat({
 });
 
 /**
- * Filters
+ * Transforms
  */
-
-// Color
-StyleDictionary.registerFilter({
-	name: 'isColor',
-	matcher: function (token) {
-		return token.attributes.category === 'color';
-	},
-});
-
-// Font-family
-StyleDictionary.registerFilter({
-	name: 'isFontFamily',
-	matcher: function (token) {
-		return token.attributes.category === 'font-family';
-	},
-});
-
-// Font-size
-StyleDictionary.registerFilter({
-	name: 'isFontSize',
-	matcher: function (token) {
-		return token.attributes.category === 'font-size';
-	},
-});
-
-// Font-weight
-StyleDictionary.registerFilter({
-	name: 'isFontWeight',
-	matcher: function (token) {
-		return token.attributes.category === 'font-weight';
-	},
-});
-
-// Line-height
-StyleDictionary.registerFilter({
-	name: 'isLineHeight',
-	matcher: function (token) {
-		return token.attributes.category === 'line-height';
-	},
-});
-
-// Size
-StyleDictionary.registerFilter({
-	name: 'isSize',
-	matcher: function (token) {
-		return token.attributes.category === 'size';
-	},
-});
-
-// Spacing
-StyleDictionary.registerFilter({
-	name: 'isSpacing',
-	matcher: function (token) {
-		return token.attributes.category === 'spacing';
-	},
-});
-
 StyleDictionary.registerTransform({
 	name: 'size/custom',
 	type: 'value',
+	transitive: true,
 	transformer: function (token) {
 		switch (token.attributes.category) {
-			case 'font-size':
-			case 'spacing':
-				return (parseInt(token.original.value) / 16).toString() + 'rem';
+			case 'size':
+				return token.value + 'px';
 			default:
-				return token.original.value + 'px';
+				return token.value;
 		}
 	},
 });
@@ -123,42 +80,42 @@ module.exports = {
 	platforms: {
 		default: {
 			buildPath: './src/tokens/',
-			transforms: ['attribute/cti', 'name/cti/pascal', 'size/custom', 'color/rgb'],
+			transforms: ['attribute/cti', 'name/cti/camel', 'color/rgb'],
 			files: [
 				{
-					format: 'custom/typescript/module-declarations',
 					destination: './colors/Colors.ts',
-					filter: 'isColor',
+					format: 'custom/typescript/module-declarations',
+					filter: getFilter('color'),
 				},
 				{
+					destination: './fonts/Fonts.ts',
+					filter: getFilter('font'),
 					format: 'custom/typescript/module-declarations',
-					destination: './font-families/FontFamilies.ts',
-					filter: 'isFontFamily',
 				},
 				{
-					format: 'custom/typescript/module-declarations',
 					destination: './font-sizes/FontSizes.ts',
-					filter: 'isFontSize',
+					filter: getFilter('font-size'),
+					format: 'custom/typescript/module-declarations',
 				},
 				{
-					format: 'custom/typescript/module-declarations',
 					destination: './font-weights/FontWeights.ts',
-					filter: 'isFontWeight',
+					filter: getFilter('font-weight'),
+					format: 'custom/typescript/module-declarations',
 				},
 				{
-					format: 'custom/typescript/module-declarations',
 					destination: './line-heights/LineHeights.ts',
-					filter: 'isLineHeight',
+					filter: getFilter('line-height'),
+					format: 'custom/typescript/module-declarations',
 				},
 				{
-					format: 'custom/typescript/module-declarations',
 					destination: './sizes/Sizes.ts',
-					filter: 'isSize',
+					filter: getFilter('size'),
+					format: 'custom/typescript/module-declarations',
 				},
 				{
-					format: 'custom/typescript/module-declarations',
 					destination: './spacings/Spacings.ts',
-					filter: 'isSpacing',
+					filter: getFilter('spacing'),
+					format: 'custom/typescript/module-declarations',
 				},
 			],
 		},

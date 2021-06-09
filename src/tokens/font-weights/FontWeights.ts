@@ -4,8 +4,8 @@ interface FontWeight {
 }
 
 const FontWeights: FontWeight = {
-	bold: '700px',
-	normal: '400px',
+	bold: '700',
+	normal: '400',
 };
 
 export default FontWeights;

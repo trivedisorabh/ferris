@@ -5,9 +5,9 @@ interface LineHeight {
 }
 
 const LineHeights: LineHeight = {
-	compact: '1.25px',
-	normal: '1.5px',
-	reset: '1px',
+	compact: '1.25',
+	normal: '1.5',
+	reset: '1',
 };
 
 export default LineHeights;

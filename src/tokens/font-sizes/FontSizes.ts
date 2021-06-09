@@ -1,7 +1,7 @@
 interface FontSize {
-	l: string;
-	m: string;
-	s: string;
+	lg: string;
+	md: string;
+	sm: string;
 	xl: string;
 	xs: string;
 	xxl: string;
@@ -10,9 +10,9 @@ interface FontSize {
 }
 
 const FontSizes: FontSize = {
-	l: '1.125rem',
-	m: '1rem',
-	s: '0.875rem',
+	lg: '1.125rem',
+	md: '1rem',
+	sm: '0.875rem',
 	xl: '1.25rem',
 	xs: '0.75rem',
 	xxl: '1.5rem',
