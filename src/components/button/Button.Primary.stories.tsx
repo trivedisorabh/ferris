@@ -1,4 +1,5 @@
 import React, { ReactElement } from 'react';
+import GlobalStyles from 'src/common/global-styles/GlobalStyles';
 import Button, { ButtonProps } from './Button';
 
 export const buttonCommonArgTypes = {
@@ -31,14 +32,17 @@ export const buttonTpl: Story<ButtonProps> = ({
 	isDisabled,
 	small,
 }: ButtonProps) => (
-	<Button
-		isDisabled={isDisabled}
-		onClick={() => alert('Dummy click')}
-		small={small}
-		variant={variant}
-	>
-		{children}
-	</Button>
+	<>
+		<GlobalStyles />
+		<Button
+			isDisabled={isDisabled}
+			onClick={() => alert('Dummy click')}
+			small={small}
+			variant={variant}
+		>
+			{children}
+		</Button>
+	</>
 );
 
 export const Regular = buttonTpl.bind({});
