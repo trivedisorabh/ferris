@@ -21,7 +21,7 @@
 		"storybook": "start-storybook",
 		"tokens:build": "style-dictionary build --config ./style-dictionary.config.js",
 		"tokens:download": "scripts/dsm-style-download.sh",
-		"tokens:refresh": "yarn tokens:download && yarn tokens:build",
+		"tokens:update": "yarn tokens:download && yarn tokens:build",
 		"test": "jest --coverage",
 		"test:watch": "jest --watch"
 	},
