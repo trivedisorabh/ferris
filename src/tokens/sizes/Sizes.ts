@@ -1,4 +1,4 @@
-interface Size {
+export interface SizeProps {
 	size_0_25: string;
 	size_0_5: string;
 	size_0_75: string;
@@ -12,7 +12,7 @@ interface Size {
 	size_4: string;
 }
 
-const Sizes: Size = {
+const Sizes: SizeProps = {
 	size_0_25: '0.25rem',
 	size_0_5: '0.5rem',
 	size_0_75: '0.75rem',

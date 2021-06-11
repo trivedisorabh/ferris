@@ -1,11 +1,9 @@
-interface Font {
+export interface FontProps {
 	brand: string;
-	sans: string;
 }
 
-const Fonts: Font = {
+const Fonts: FontProps = {
 	brand: 'SKFChevinOT',
-	sans: 'Arial',
 };
 
 export default Fonts;

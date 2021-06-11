@@ -16,12 +16,12 @@ function getFilter(cat) {
 	return { attributes: { category: cat } };
 }
 
-/* Returns the first key in passed object */
+/* Return the first key in passed object */
 function getCategory(obj) {
 	return Object.keys(obj)[0];
 }
 
-/* Transforms the category name to PascalCase */
+/* Transform the category name to PascalCase */
 function toPascalCase(str) {
 	const words = str.match(/[a-z]+/gi);
 	if (!words) return '';
@@ -32,6 +32,26 @@ function toPascalCase(str) {
 		.join('');
 }
 
+/* Transform `tokens` keys to camelCase */
+function kebabToCamelCase(tokens) {
+	Object.keys(tokens).map((key) => {
+		if (key.includes('-')) {
+			let arr = key.split('-');
+			let newKey = arr.map((item, index) =>
+				index ? item.charAt(0).toUpperCase() + item.slice(1).toLowerCase() : item.toLowerCase()
+			);
+
+			newKey = newKey.join('');
+
+			// Update all object keys that has changed:
+			if (key !== newKey) {
+				Object.defineProperty(tokens, newKey, Object.getOwnPropertyDescriptor(tokens, key));
+				delete tokens[key];
+			}
+		}
+	});
+}
+
 /**
  * Formatters
  */
@@ -40,15 +60,24 @@ StyleDictionary.registerFormat({
 	formatter: function ({ dictionary }) {
 		// Use the first key in the filtered object as category name
 		const category = getCategory(dictionary.tokens);
+		// Make sure category name is in PascalCase
+		const categoryName = toPascalCase(category);
 		// Define the root interface
-		const rootName = toPascalCase(category);
+		const rootName = `${categoryName}Props`;
 		// Define the default module export
-		const moduleName = `${rootName}s`;
+		const moduleName = `${categoryName}s`;
 		// Minify the tokens object
 		const tokens = minifyDictionary(dictionary.tokens[category]);
+		// Transform `tokens` keys to camelCase
+		kebabToCamelCase(tokens);
+		// Make sure the `rootInterface` is exported
+		const interfaces = JsonToTS(tokens, { rootName }).map((interface, index) => {
+			if (index === 0) return `export ${interface}`;
+			return interface;
+		});
 
 		return [
-			...JsonToTS(tokens, { rootName }),
+			...interfaces,
 			`const ${moduleName}: ${rootName} = ${JSON.stringify(tokens, null, 2)};`,
 			`export default ${moduleName};`,
 		].join('\n\n');
@@ -58,8 +87,10 @@ StyleDictionary.registerFormat({
 /**
  * Transforms
  */
+
+/* Not used at the moment */
 StyleDictionary.registerTransform({
-	name: 'size/custom',
+	name: 'custom/size',
 	type: 'value',
 	transitive: true,
 	transformer: function (token) {
@@ -80,7 +111,7 @@ module.exports = {
 	platforms: {
 		default: {
 			buildPath: './src/tokens/',
-			transforms: ['attribute/cti', 'name/cti/camel', 'color/rgb'],
+			transforms: ['attribute/cti', 'name/cti/pascal', 'color/rgb'],
 			files: [
 				{
 					destination: './colors/Colors.ts',

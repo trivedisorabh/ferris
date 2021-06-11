@@ -1,13 +1,13 @@
-interface Color {
+export interface ColorProps {
 	blue: Blue;
 	black: string;
-	'black-brand': string;
 	brand: Blue;
 	white: string;
 	gray: Gray;
 	green: Blue;
 	red: Blue;
 	yellow: Blue;
+	blackBrand: string;
 }
 
 interface Gray {
@@ -28,14 +28,13 @@ interface Blue {
 	darker: string;
 }
 
-const Colors: Color = {
+const Colors: ColorProps = {
 	blue: {
 		base: 'rgb(132, 169, 233)',
 		dark: 'rgb(79, 132, 224)',
 		darker: 'rgb(51, 85, 145)',
 	},
 	black: 'rgb(0, 0, 0)',
-	'black-brand': 'rgb(39, 51, 66)',
 	brand: {
 		base: 'rgb(15, 88, 214)',
 		dark: 'rgb(12, 74, 182)',
@@ -68,6 +67,7 @@ const Colors: Color = {
 		dark: 'rgb(255, 215, 79)',
 		darker: 'rgb(255, 202, 21)',
 	},
+	blackBrand: 'rgb(39, 51, 66)',
 };
 
 export default Colors;

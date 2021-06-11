@@ -1,9 +1,9 @@
-interface FontWeight {
+export interface FontWeightProps {
 	bold: string;
 	normal: string;
 }
 
-const FontWeights: FontWeight = {
+const FontWeights: FontWeightProps = {
 	bold: '700',
 	normal: '400',
 };

@@ -1,4 +1,4 @@
-interface Spacing {
+export interface SpacingProps {
 	lg: string;
 	md: string;
 	sm: string;
@@ -10,7 +10,7 @@ interface Spacing {
 	xxxxl: string;
 }
 
-const Spacings: Spacing = {
+const Spacings: SpacingProps = {
 	lg: '1.25rem',
 	md: '1rem',
 	sm: '0.75rem',

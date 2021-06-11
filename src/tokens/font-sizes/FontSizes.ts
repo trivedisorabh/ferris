@@ -1,4 +1,4 @@
-interface FontSize {
+export interface FontSizeProps {
 	lg: string;
 	md: string;
 	sm: string;
@@ -9,7 +9,7 @@ interface FontSize {
 	xxxxl: string;
 }
 
-const FontSizes: FontSize = {
+const FontSizes: FontSizeProps = {
 	lg: '1.125rem',
 	md: '1rem',
 	sm: '0.875rem',
