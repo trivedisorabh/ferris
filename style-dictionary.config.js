@@ -3,9 +3,9 @@
 /**
  * Style-dictionary.config.js
  */
-const JsonToTS = require('json-to-ts');
-const StyleDictionary = require('style-dictionary');
 const { minifyDictionary } = StyleDictionary.formatHelpers;
+const jsonToTsEnum = require('./scripts/jsonToTsEnum');
+const StyleDictionary = require('style-dictionary');
 
 /**
  * Helpers
@@ -63,24 +63,13 @@ StyleDictionary.registerFormat({
 		// Make sure category name is in PascalCase
 		const categoryName = toPascalCase(category);
 		// Define the root interface
-		const rootName = `${categoryName}Props`;
-		// Define the default module export
-		const moduleName = `${categoryName}s`;
+		const rootName = `${categoryName}s`;
 		// Minify the tokens object
 		const tokens = minifyDictionary(dictionary.tokens[category]);
 		// Transform `tokens` keys to camelCase
 		kebabToCamelCase(tokens);
-		// Make sure the `rootInterface` is exported
-		const interfaces = JsonToTS(tokens, { rootName }).map((interface, index) => {
-			if (index === 0) return `export ${interface}`;
-			return interface;
-		});
 
-		return [
-			...interfaces,
-			`const ${moduleName}: ${rootName} = ${JSON.stringify(tokens, null, 2)};`,
-			`export default ${moduleName};`,
-		].join('\n\n');
+		return jsonToTsEnum(rootName, tokens);
 	},
 });
 
