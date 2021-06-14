@@ -1,13 +1,13 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import React, { ReactNode } from 'react';
+import React, { CSSProperties, ReactNode } from 'react';
 
 /**
  * @category Props
  */
 export interface RowProps {
-	alignX?: 'space-between' | 'space-around';
-	alignY?: 'center' | 'flex-end' | 'flex-start';
+	alignX?: CSSProperties['justifyContent'];
+	alignY?: CSSProperties['alignItems'];
 	children: ReactNode;
 	reversed?: 'row-reverse';
 }
@@ -30,9 +30,9 @@ type StRowProps = Omit<RowProps, 'children'>;
 
 const StRow = styled.div(
 	({ alignX, alignY, reversed }: StRowProps) => css`
+		align-items: ${alignY};
 		display: flex;
 		flex-flow: ${reversed};
-		align-items: ${alignY};
 		justify-content: ${alignX};
 	`
 );

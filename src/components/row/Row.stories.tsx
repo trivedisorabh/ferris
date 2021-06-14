@@ -22,17 +22,17 @@ const Template: Story<RowProps> = ({ children, alignX, alignY, reversed }: RowPr
 
 export const Default = Template.bind({});
 Default.args = {
-	children: [
-		<Button key={0} onClick={() => alert('Dummy click')}>
-			Default
-		</Button>,
-		<Spacer key={1} />,
-		<Button key={2} onClick={() => alert('Dummy click')} type="reset">
-			Reset
-		</Button>,
-		<Spacer key={3} />,
-		<Button key={4} onClick={() => alert('Dummy click')} type="submit">
-			Submit
-		</Button>,
-	],
+	children: (
+		<>
+			<Button onClick={() => alert('Dummy click')}>Default</Button>
+			<Spacer />
+			<Button onClick={() => alert('Dummy click')} type="reset">
+				Reset
+			</Button>
+			<Spacer />
+			<Button onClick={() => alert('Dummy click')} type="submit">
+				Submit
+			</Button>
+		</>
+	),
 };

@@ -1,11 +1,6 @@
-export interface FontWeightProps {
-	bold: string;
-	normal: string;
+enum FontWeights {
+	bold = '700',
+	normal = '400',
 }
-
-const FontWeights: FontWeightProps = {
-	bold: '700',
-	normal: '400',
-};
 
 export default FontWeights;

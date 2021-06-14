@@ -1,9 +1,5 @@
-export interface FontProps {
-	brand: string;
+enum Fonts {
+	brand = 'SKFChevinOT',
 }
-
-const Fonts: FontProps = {
-	brand: 'SKFChevinOT',
-};
 
 export default Fonts;
