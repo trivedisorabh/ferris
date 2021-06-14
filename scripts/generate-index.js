@@ -34,7 +34,7 @@ async function generateIndex(options) {
 		const fileName = path.basename(file, path.extname(file));
 
 		// Check if the current file is a component
-		const fileIsComponent = path.extname(file) === '.tsx';
+		const fileIsComponent = path.extname(file) === '.tsx' && fileName !== 'GlobalStyles';
 
 		// Returns the file path without `src` and appends the file name
 		const filePath = `${path.dirname(file).replace('src/', '')}/${fileName}`;

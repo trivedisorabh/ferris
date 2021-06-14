@@ -14,6 +14,11 @@ export { default as TextInput } from './atoms/text-input/TextInput';
 export type { TextInputProps } from './atoms/text-input/TextInput';
 
 /**
+ * Common
+ */
+export { default as GlobalStyles } from './common/global-styles/GlobalStyles';
+
+/**
  * Components
  */
 export { default as Button } from './components/button/Button';
