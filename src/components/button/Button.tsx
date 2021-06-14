@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import React, { ReactChild } from 'react';
+import React, { ButtonHTMLAttributes, ReactChild } from 'react';
 import { tokens } from './Button.Tokens';
 
 /**
@@ -8,17 +8,25 @@ import { tokens } from './Button.Tokens';
  */
 export interface ButtonProps {
 	children: ReactChild;
-	isDisabled?: boolean;
 	onClick: () => void;
+	isDisabled?: boolean;
 	small?: boolean;
+	type?: ButtonHTMLAttributes<''>['type'];
 	variant?: 'primary' | 'secondary' | 'link';
 }
 
 /**
  * @category Template
  */
-const Button = ({ children, isDisabled, onClick, small, variant = 'primary' }: ButtonProps) => (
-	<StButton disabled={isDisabled} small={small} onClick={onClick} variant={variant}>
+const Button = ({
+	children,
+	onClick,
+	isDisabled,
+	small,
+	type = 'button',
+	variant = 'primary',
+}: ButtonProps) => (
+	<StButton onClick={onClick} disabled={isDisabled} small={small} type={type} variant={variant}>
 		{children}
 	</StButton>
 );
@@ -28,10 +36,10 @@ export default Button;
 /**
  * @category Styles
  */
-type StProps = Partial<ButtonProps>;
+type StButtonProps = Pick<ButtonProps, 'small' | 'variant'>;
 
 const StButton = styled.button(
-	({ small, variant }: StProps) => css`
+	({ small, variant }: StButtonProps) => css`
 		border-radius: ${tokens.buttonBorderRadius};
 		cursor: pointer;
 		font-size: 1rem;

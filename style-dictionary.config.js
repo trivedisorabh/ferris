@@ -3,9 +3,9 @@
 /**
  * Style-dictionary.config.js
  */
-const { minifyDictionary } = StyleDictionary.formatHelpers;
 const jsonToTsEnum = require('./scripts/jsonToTsEnum');
 const StyleDictionary = require('style-dictionary');
+const { minifyDictionary } = StyleDictionary.formatHelpers;
 
 /**
  * Helpers
