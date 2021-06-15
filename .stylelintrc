@@ -15,6 +15,7 @@
 			"declarations"
 		],
 		"order/properties-alphabetical-order": true,
+		"declaration-colon-newline-after": null,
 		"indentation": "tab",
 		"no-eol-whitespace": [
 			true,
