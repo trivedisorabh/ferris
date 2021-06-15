@@ -22,6 +22,18 @@ Start storybook by running:
 yarn storybook
 ```
 
+## 🪙 Tokens
+
+We use a token system where tokens are imported from the [Web Applications design system](https://skf.invisionapp.com/dsm/ab-skf/4-web-applications?mode=preview). These are then converted into TypeScript Enums that we use througout the components.
+
+If something is missing or has been updated you can run
+
+```bash
+yarn tokens:update
+```
+
+to download and refresh the tokens.
+
 ## 🎢 Workflow
 
 We use the "[git-flow](docs/adr/005-git-flow.md)" branching strategy when working in the repo. Take the following steps when you want to make a contribution:
