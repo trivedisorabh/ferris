@@ -1,8 +1,8 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import React, { ReactChild } from 'react';
-import FontSizes from '~tokens/font-sizes/FontSizes';
+import React, { HTMLAttributes, ReactNode } from 'react';
 import FontWeights from '~tokens/font-weights/FontWeights';
+import Headings from '~tokens/headings/Headings';
 import LineHeights from '~tokens/line-heights/LineHeights';
 
 /**
@@ -10,15 +10,19 @@ import LineHeights from '~tokens/line-heights/LineHeights';
 4 */
 export type HeadingLevel = 'h1' | 'h2' | 'h3' | 'h4';
 
-export interface HeadingProps {
+export interface HeadingProps extends HTMLAttributes<HTMLHeadElement> {
 	as: HeadingLevel;
-	children: ReactChild;
+	children: ReactNode;
 }
 
 /**
  * @category Template
  */
-const Heading = ({ as, children }: HeadingProps) => <StHeading as={as}>{children}</StHeading>;
+const Heading = ({ as, children, ...rest }: HeadingProps) => (
+	<StHeading {...rest} as={as}>
+		{children}
+	</StHeading>
+);
 
 export default Heading;
 
@@ -33,8 +37,8 @@ const StHeading = styled.h1(
 
 		${as === 'h1' &&
 		css`
-			font-size: ${FontSizes.xxxl};
-			font-weight: ${FontWeights.normal};
+			font-size: ${Headings.h1Size};
+			font-weight: ${Headings.h1Weight};
 		`}
 
 		${(as === 'h2' || as === 'h3' || as === 'h4') &&
@@ -44,17 +48,17 @@ const StHeading = styled.h1(
 
 		${as === 'h2' &&
 		css`
-			font-size: ${FontSizes.xxl};
+			font-size: ${Headings.h2Size};
 		`}
 
 		${as === 'h3' &&
 		css`
-			font-size: ${FontSizes.xl};
+			font-size: ${Headings.h3Size};
 		`}
 
 		${as === 'h4' &&
 		css`
-			font-size: ${FontSizes.lg};
+			font-size: ${Headings.h4Size};
 		`}
 	`
 );

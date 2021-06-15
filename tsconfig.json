@@ -17,6 +17,7 @@
 		"outDir": "./dist",
 		"paths": {
 			"~atoms/*": ["./src/atoms/*"],
+			"~common/*": ["./src/common/*"],
 			"~components/*": ["./src/components/*"],
 			"~tokens/*": ["./src/tokens/*"],
 			"~types/*": ["./src/types/*"]

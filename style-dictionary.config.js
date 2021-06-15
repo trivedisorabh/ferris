@@ -137,6 +137,14 @@ module.exports = {
 					filter: getFilter('spacing'),
 					format: 'custom/typescript/module-declarations',
 				},
+				/**
+				 * Alias tokens
+				 */
+				{
+					destination: './headings/Headings.ts',
+					format: 'custom/typescript/module-declarations',
+					filter: getFilter('heading'),
+				},
 			],
 		},
 	},
