@@ -23,12 +23,22 @@ export { default as GlobalStyles } from './common/global-styles/GlobalStyles';
  */
 export { default as Button } from './components/button/Button';
 export type { ButtonProps } from './components/button/Button';
+export { default as Heading } from './components/heading/Heading';
+export type { HeadingProps } from './components/heading/Heading';
+export { default as Row } from './components/row/Row';
+export type { RowProps } from './components/row/Row';
+export { default as Spacer } from './components/spacer/Spacer';
+export type { SpacerProps } from './components/spacer/Spacer';
 export { default as TextField } from './components/text-field/TextField';
 export type { TextFieldProps } from './components/text-field/TextField';
-export { default as Title } from './components/title/Title';
-export type { TitleProps } from './components/title/Title';
 
 /**
  * Tokens
  */
 export { default as Colors } from './tokens/colors/Colors';
+export { default as FontSizes } from './tokens/font-sizes/FontSizes';
+export { default as FontWeights } from './tokens/font-weights/FontWeights';
+export { default as Fonts } from './tokens/fonts/Fonts';
+export { default as LineHeights } from './tokens/line-heights/LineHeights';
+export { default as Sizes } from './tokens/sizes/Sizes';
+export { default as Spacings } from './tokens/spacings/Spacings';
