@@ -25,6 +25,8 @@ export { default as Button } from './components/button/Button';
 export type { ButtonProps } from './components/button/Button';
 export { default as Heading } from './components/heading/Heading';
 export type { HeadingProps } from './components/heading/Heading';
+export { default as ProgressBar } from './components/progress-bar/ProgressBar';
+export type { ProgressBarProps } from './components/progress-bar/ProgressBar';
 export { default as Row } from './components/row/Row';
 export type { RowProps } from './components/row/Row';
 export { default as Spacer } from './components/spacer/Spacer';
