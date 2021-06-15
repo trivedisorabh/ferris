@@ -1,5 +1,4 @@
 import React, { ReactElement } from 'react';
-import GlobalStyles from 'src/common/global-styles/GlobalStyles';
 import TextField, { TextFieldProps } from './TextField';
 
 export default {
@@ -30,18 +29,15 @@ const TextFieldTpl: Story<TextFieldProps> = ({
 	type,
 	value,
 }: TextFieldProps) => (
-	<>
-		<GlobalStyles />
-		<TextField
-			description={description}
-			id={id}
-			isDisabled={isDisabled}
-			isRequired={isRequired}
-			label={label}
-			type={type}
-			value={value}
-		/>
-	</>
+	<TextField
+		description={description}
+		id={id}
+		isDisabled={isDisabled}
+		isRequired={isRequired}
+		label={label}
+		type={type}
+		value={value}
+	/>
 );
 
 export const Default = TextFieldTpl.bind({});

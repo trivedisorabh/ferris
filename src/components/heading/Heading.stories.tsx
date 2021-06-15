@@ -1,5 +1,4 @@
 import React, { ReactElement } from 'react';
-import GlobalStyles from '~common/global-styles/GlobalStyles';
 import Heading, { HeadingProps } from '~components/heading/Heading';
 
 export default {
@@ -14,10 +13,7 @@ interface Story<T> {
 }
 
 const Template: Story<HeadingProps> = ({ as, children }: HeadingProps) => (
-	<>
-		<GlobalStyles />
-		<Heading as={as}>{children}</Heading>
-	</>
+	<Heading as={as}>{children}</Heading>
 );
 
 export const H1 = Template.bind({});
