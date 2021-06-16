@@ -7,10 +7,10 @@ import LineHeights from '~tokens/line-heights/LineHeights';
 
 /**
  * @category Props
-4 */
+ */
 export type HeadingLevel = 'h1' | 'h2' | 'h3' | 'h4';
 
-export interface HeadingProps extends HTMLAttributes<HTMLHeadElement> {
+export interface HeadingProps extends HTMLAttributes<HTMLHeadingElement> {
 	as: HeadingLevel;
 	children: ReactNode;
 }
