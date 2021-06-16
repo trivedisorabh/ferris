@@ -1,17 +1,9 @@
 import React, { ReactElement } from 'react';
-import TextField, { TextFieldProps } from './TextField';
+import InputTextField, { InputTextFieldProps } from './InputTextField';
 
 export default {
-	title: 'Form/TextField',
-	component: 'skf-text-field',
-	argTypes: {
-		description: { control: 'text' },
-		disabled: { control: 'boolean' },
-		id: { control: 'text' },
-		label: { control: 'text' },
-		required: { control: 'boolean' },
-		value: { control: 'text' },
-	},
+	title: 'Form/InputTextField',
+	component: InputTextField,
 };
 
 interface Story<T> {
@@ -20,27 +12,27 @@ interface Story<T> {
 	argTypes?: Record<string, unknown>;
 }
 
-const TextFieldTpl: Story<TextFieldProps> = ({
+const Template: Story<InputTextFieldProps> = ({
 	description,
 	id,
-	isDisabled,
-	isRequired,
 	label,
 	type,
 	value,
-}: TextFieldProps) => (
-	<TextField
+	isDisabled,
+	isRequired,
+}: InputTextFieldProps) => (
+	<InputTextField
 		description={description}
 		id={id}
-		isDisabled={isDisabled}
-		isRequired={isRequired}
 		label={label}
 		type={type}
 		value={value}
+		isDisabled={isDisabled}
+		isRequired={isRequired}
 	/>
 );
 
-export const Default = TextFieldTpl.bind({});
+export const Default = Template.bind({});
 Default.args = {
 	id: 'test-id',
 	label: 'Label of optional field',
@@ -48,46 +40,46 @@ Default.args = {
 	value: 'value',
 };
 
-export const DefaultDisabled = TextFieldTpl.bind({});
+export const DefaultDisabled = Template.bind({});
 DefaultDisabled.args = {
 	isDisabled: true,
 	label: 'Label of optional field',
 };
 
-export const DefaultRequired = TextFieldTpl.bind({});
+export const DefaultRequired = Template.bind({});
 DefaultRequired.args = {
 	isRequired: true,
 	label: 'Label of optional field',
 };
 
-export const DefaultRequiredDisabled = TextFieldTpl.bind({});
+export const DefaultRequiredDisabled = Template.bind({});
 DefaultRequiredDisabled.args = {
 	isDisabled: true,
 	isRequired: true,
 	label: 'Label of optional field',
 };
 
-export const WithDescription = TextFieldTpl.bind({});
+export const WithDescription = Template.bind({});
 WithDescription.args = {
 	description: 'A text that tell the user what to input',
 	label: 'Label of optional field',
 };
 
-export const WithDescriptionDisabled = TextFieldTpl.bind({});
+export const WithDescriptionDisabled = Template.bind({});
 WithDescriptionDisabled.args = {
 	description: 'A text that tell the user what to input',
 	isDisabled: true,
 	label: 'Label of optional field',
 };
 
-export const WithDescriptionRequired = TextFieldTpl.bind({});
+export const WithDescriptionRequired = Template.bind({});
 WithDescriptionRequired.args = {
 	description: 'A text that tell the user what to input',
 	isRequired: true,
 	label: 'Label of optional field',
 };
 
-export const WithDescriptionRequiredDisabled = TextFieldTpl.bind({});
+export const WithDescriptionRequiredDisabled = Template.bind({});
 WithDescriptionRequiredDisabled.args = {
 	description: 'A text that tell the user what to input',
 	isDisabled: true,
