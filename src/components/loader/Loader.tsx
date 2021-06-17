@@ -15,7 +15,7 @@ export interface LoaderProps {
  * @category Template
  */
 const Loader = ({ isSmall }: LoaderProps) => (
-	<StLoader isSmall={isSmall}>
+	<StRoot isSmall={isSmall}>
 		<svg
 			version="1.1"
 			xmlns="http://www.w3.org/2000/svg"
@@ -30,7 +30,7 @@ const Loader = ({ isSmall }: LoaderProps) => (
 		>
 			{[getCircle(6, 0.1), getCircle(26, 0.2), getCircle(46, 0.3)]}
 		</svg>
-	</StLoader>
+	</StRoot>
 );
 
 export default Loader;
@@ -53,10 +53,10 @@ const getCircle = (cx: number, begin: number) => (
 /**
  * @category Styles
  */
-type StLoaderProps = LoaderProps;
+type StRootProps = LoaderProps;
 
-const StLoader = styled.div(
-	({ isSmall }: StLoaderProps) => css`
+const StRoot = styled.div(
+	({ isSmall }: StRootProps) => css`
 		height: ${isSmall ? `${Spacings.xl}` : `${Spacings.xxxl}`};
 		width: ${isSmall ? `${Spacings.xl}` : `${Spacings.xxxl}`};
 	`

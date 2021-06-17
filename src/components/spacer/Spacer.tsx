@@ -15,7 +15,7 @@ export interface SpacerProps {
  * @category Template
  */
 const Spacer = ({ orientation = 'horizontal', spacing = Spacings.md }: SpacerProps) => (
-	<StSpacer orientation={orientation} spacing={spacing} />
+	<StRoot orientation={orientation} spacing={spacing} />
 );
 
 export default Spacer;
@@ -23,10 +23,10 @@ export default Spacer;
 /**
  * @category Styles
  */
-type StSpacerProps = SpacerProps;
+type StRootProps = SpacerProps;
 
-const StSpacer = styled.div(
-	({ orientation, spacing }: StSpacerProps) => css`
+const StRoot = styled.div(
+	({ orientation, spacing }: StRootProps) => css`
 		width: ${spacing};
 
 		${orientation === 'vertical' &&
