@@ -9,9 +9,9 @@ import Colors from '~tokens/colors/Colors';
  * @category Props
  */
 export interface TextAreaFieldProps {
-	description: string;
 	id: string;
 	label: string;
+	description?: string;
 	disabled?: boolean;
 	required?: boolean;
 	value?: string;
@@ -21,9 +21,9 @@ export interface TextAreaFieldProps {
  * @category Template
  */
 const TextAreaField = ({
-	description,
 	id,
 	label,
+	description,
 	disabled,
 	required,
 	value,

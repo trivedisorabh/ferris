@@ -1,9 +1,9 @@
 import React, { ReactElement } from 'react';
-import TextareaField, { TextareaFieldProps } from './TextareaField';
+import TextAreaField, { TextAreaFieldProps } from './TextAreaField';
 
 export default {
-	title: 'Form/TextareaField',
-	component: TextareaField,
+	title: 'Form/TextAreaField',
+	component: TextAreaField,
 };
 
 interface Story<T> {
@@ -12,15 +12,15 @@ interface Story<T> {
 	argTypes?: Record<string, unknown>;
 }
 
-const Template: Story<TextareaFieldProps> = ({
+const Template: Story<TextAreaFieldProps> = ({
 	description,
 	id,
 	label,
 	disabled,
 	required,
 	value,
-}: TextareaFieldProps) => (
-	<TextareaField
+}: TextAreaFieldProps) => (
+	<TextAreaField
 		description={description}
 		disabled={disabled}
 		id={id}

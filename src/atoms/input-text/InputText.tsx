@@ -32,15 +32,8 @@ export interface InputTextProps extends InputHTMLAttributes<HTMLInputElement> {
 /**
  * @category Template
  */
-const InputText = ({ id, type, disabled, readOnly, value, required }: InputTextProps) => (
-	<StRoot
-		disabled={disabled}
-		id={id}
-		readOnly={readOnly}
-		required={required}
-		type={type}
-		value={value}
-	/>
+const InputText = ({ id, type, ...rest }: InputTextProps) => (
+	<StRoot {...rest} id={id} type={type} />
 );
 
 export default InputText;

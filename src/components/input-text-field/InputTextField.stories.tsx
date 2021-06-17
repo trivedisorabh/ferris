@@ -17,18 +17,18 @@ const Template: Story<InputTextFieldProps> = ({
 	id,
 	label,
 	type,
+	disabled,
+	required,
 	value,
-	isDisabled,
-	isRequired,
 }: InputTextFieldProps) => (
 	<InputTextField
 		description={description}
+		disabled={disabled}
 		id={id}
 		label={label}
+		required={required}
 		type={type}
 		value={value}
-		isDisabled={isDisabled}
-		isRequired={isRequired}
 	/>
 );
 
@@ -37,26 +37,25 @@ Default.args = {
 	id: 'test-id',
 	label: 'Label of optional field',
 	type: 'text',
-	value: 'value',
 };
 
 export const DefaultDisabled = Template.bind({});
 DefaultDisabled.args = {
-	isDisabled: true,
+	disabled: true,
 	label: 'Label of optional field',
 };
 
 export const DefaultRequired = Template.bind({});
 DefaultRequired.args = {
-	isRequired: true,
 	label: 'Label of optional field',
+	required: true,
 };
 
 export const DefaultRequiredDisabled = Template.bind({});
 DefaultRequiredDisabled.args = {
-	isDisabled: true,
-	isRequired: true,
+	disabled: true,
 	label: 'Label of optional field',
+	required: true,
 };
 
 export const WithDescription = Template.bind({});
@@ -68,21 +67,21 @@ WithDescription.args = {
 export const WithDescriptionDisabled = Template.bind({});
 WithDescriptionDisabled.args = {
 	description: 'A text that tell the user what to input',
-	isDisabled: true,
+	disabled: true,
 	label: 'Label of optional field',
 };
 
 export const WithDescriptionRequired = Template.bind({});
 WithDescriptionRequired.args = {
 	description: 'A text that tell the user what to input',
-	isRequired: true,
 	label: 'Label of optional field',
+	required: true,
 };
 
 export const WithDescriptionRequiredDisabled = Template.bind({});
 WithDescriptionRequiredDisabled.args = {
 	description: 'A text that tell the user what to input',
-	isDisabled: true,
-	isRequired: true,
+	disabled: true,
 	label: 'Label of optional field',
+	required: true,
 };

@@ -37,8 +37,8 @@ export { default as Row } from './components/row/Row';
 export type { RowProps } from './components/row/Row';
 export { default as Spacer } from './components/spacer/Spacer';
 export type { SpacerProps } from './components/spacer/Spacer';
-export { default as TextareaField } from './components/text-area-field/TextareaField';
-export type { TextareaFieldProps } from './components/text-area-field/TextareaField';
+export { default as TextAreaField } from './components/text-area-field/TextAreaField';
+export type { TextAreaFieldProps } from './components/text-area-field/TextAreaField';
 
 /**
  * Tokens

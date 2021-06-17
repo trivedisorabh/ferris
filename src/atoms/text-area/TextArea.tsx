@@ -13,17 +13,7 @@ export interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElemen
 /**
  * @category Template
  */
-const TextArea = ({ id, value, cols, disabled, readOnly, required, rows }: TextAreaProps) => (
-	<StRoot
-		cols={cols}
-		disabled={disabled}
-		id={id}
-		readOnly={readOnly}
-		required={required}
-		rows={rows}
-		value={value}
-	/>
-);
+const TextArea = ({ id, ...rest }: TextAreaProps) => <StRoot {...rest} id={id} />;
 
 export default TextArea;
 

@@ -16,8 +16,8 @@ export interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
 /**
  * @category Template
  */
-const Label = ({ id, children, required }: LabelProps) => (
-	<StRoot htmlFor={id}>
+const Label = ({ id, children, required, ...rest }: LabelProps) => (
+	<StRoot {...rest} htmlFor={id}>
 		{children}
 		{required && <StLabelSymbol aria-hidden="true">*</StLabelSymbol>}
 	</StRoot>

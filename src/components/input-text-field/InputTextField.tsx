@@ -9,10 +9,10 @@ import Colors from '~tokens/colors/Colors';
  * @category Props
  */
 export interface InputTextFieldProps {
-	description: string;
 	id: string;
 	label: string;
 	type: InputTextProps['type'];
+	description?: string;
 	disabled?: boolean;
 	required?: boolean;
 	value?: string;
@@ -22,10 +22,10 @@ export interface InputTextFieldProps {
  * @category Template
  */
 const InputTextField = ({
-	description,
 	id,
 	label,
 	type,
+	description,
 	disabled,
 	required,
 	value,
