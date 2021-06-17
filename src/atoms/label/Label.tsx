@@ -1,24 +1,26 @@
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { LabelHTMLAttributes } from 'react';
+import Colors from '~tokens/colors/Colors';
+import FontWeights from '~tokens/font-weights/FontWeights';
+import Spacings from '~tokens/spacings/Spacings';
 
 /**
  * @category Props
  */
-export interface LabelProps {
+export interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
 	children: string;
-	className?: string;
 	id: string;
-	isRequired?: boolean;
+	required?: boolean;
 }
 
 /**
  * @category Template
  */
-const Label = ({ className, id, children, isRequired }: LabelProps) => (
-	<StLabel className={className} htmlFor={id}>
+const Label = ({ id, children, required, ...rest }: LabelProps) => (
+	<StRoot {...rest} htmlFor={id}>
 		{children}
-		{isRequired && <StLabelSymbol aria-hidden="true">*</StLabelSymbol>}
-	</StLabel>
+		{required && <StLabelSymbol aria-hidden="true">*</StLabelSymbol>}
+	</StRoot>
 );
 
 export default Label;
@@ -26,13 +28,13 @@ export default Label;
 /**
  * @category Styles
  */
-const StLabel = styled.label`
-	color: #333;
+const StRoot = styled.label`
+	color: ${Colors.blackBrand};
 	display: flex;
-	font-weight: bold;
-	margin: 0 0 0.25rem;
+	font-weight: ${FontWeights.bold};
+	margin: 0 0 ${Spacings.xxs};
 `;
 
 const StLabelSymbol = styled.i`
-	color: red;
+	color: ${Colors.redBase};
 `;
