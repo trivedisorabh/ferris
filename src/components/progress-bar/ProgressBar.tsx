@@ -16,7 +16,7 @@ export interface ProgressBarProps {
  * @category Template
  */
 const ProgressBar = ({ value, isAnimated }: ProgressBarProps) => (
-	<StProgressBar value={value} isAnimated={isAnimated} />
+	<StRoot value={value} isAnimated={isAnimated} />
 );
 
 export default ProgressBar;
@@ -24,10 +24,10 @@ export default ProgressBar;
 /**
  * @category Styles
  */
-type StProgressBarProps = ProgressBarProps;
+type StRootProps = ProgressBarProps;
 
-const StProgressBar = styled.div(
-	({ value, isAnimated }: StProgressBarProps) => css`
+const StRoot = styled.div(
+	({ value, isAnimated }: StRootProps) => css`
 		background: ${Colors.grayBase};
 		border-radius: ${Spacings.xxs};
 		height: ${Spacings.xs};

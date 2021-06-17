@@ -19,9 +19,9 @@ export interface HeadingProps extends HTMLAttributes<HTMLHeadingElement> {
  * @category Template
  */
 const Heading = ({ as, children, ...rest }: HeadingProps) => (
-	<StHeading {...rest} as={as}>
+	<StRoot {...rest} as={as}>
 		{children}
-	</StHeading>
+	</StRoot>
 );
 
 export default Heading;
@@ -29,10 +29,10 @@ export default Heading;
 /**
  * @category Styles
  */
-type StHeadingProps = Pick<HeadingProps, 'as'>;
+type StRootProps = Pick<HeadingProps, 'as'>;
 
-const StHeading = styled.h1(
-	({ as }: StHeadingProps) => css`
+const StRoot = styled.h1(
+	({ as }: StRootProps) => css`
 		line-height: ${LineHeights.compact};
 
 		${as === 'h1' &&

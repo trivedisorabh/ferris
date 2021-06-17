@@ -16,9 +16,9 @@ export interface RowProps {
  * @category Template
  */
 const Row = ({ alignX, alignY = 'center', children, reversed }: RowProps) => (
-	<StRow alignX={alignX} alignY={alignY} reversed={reversed}>
+	<StRoot alignX={alignX} alignY={alignY} reversed={reversed}>
 		{children}
-	</StRow>
+	</StRoot>
 );
 
 export default Row;
@@ -26,10 +26,10 @@ export default Row;
 /**
  * @category Styles
  */
-type StRowProps = Omit<RowProps, 'children'>;
+type StRootProps = Omit<RowProps, 'children'>;
 
-const StRow = styled.div(
-	({ alignX, alignY, reversed }: StRowProps) => css`
+const StRoot = styled.div(
+	({ alignX, alignY, reversed }: StRootProps) => css`
 		align-items: ${alignY};
 		display: flex;
 		flex-flow: ${reversed};

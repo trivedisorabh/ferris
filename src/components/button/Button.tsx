@@ -11,7 +11,7 @@ export interface ButtonProps {
 	onClick: () => void;
 	isDisabled?: boolean;
 	small?: boolean;
-	type?: ButtonHTMLAttributes<''>['type'];
+	type?: ButtonHTMLAttributes<HTMLButtonElement>['type'];
 	variant?: 'primary' | 'secondary' | 'link';
 }
 
@@ -26,9 +26,9 @@ const Button = ({
 	type = 'button',
 	variant = 'primary',
 }: ButtonProps) => (
-	<StButton onClick={onClick} disabled={isDisabled} small={small} type={type} variant={variant}>
+	<StRoot onClick={onClick} disabled={isDisabled} small={small} type={type} variant={variant}>
 		{children}
-	</StButton>
+	</StRoot>
 );
 
 export default Button;
@@ -36,10 +36,10 @@ export default Button;
 /**
  * @category Styles
  */
-type StButtonProps = Pick<ButtonProps, 'small' | 'variant'>;
+type StRootProps = Pick<ButtonProps, 'small' | 'variant'>;
 
-const StButton = styled.button(
-	({ small, variant }: StButtonProps) => css`
+const StRoot = styled.button(
+	({ small, variant }: StRootProps) => css`
 		border-radius: ${tokens.buttonBorderRadius};
 		cursor: pointer;
 		font-size: 1rem;
