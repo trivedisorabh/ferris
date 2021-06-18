@@ -16,7 +16,7 @@ export interface ProgressBarProps {
  * @category Template
  */
 const ProgressBar = ({ value, isAnimated }: ProgressBarProps) => (
-	<StRoot value={value} isAnimated={isAnimated} />
+	<StRoot data-tpl="progress-bar" value={value} isAnimated={isAnimated} />
 );
 
 export default ProgressBar;

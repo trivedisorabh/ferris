@@ -15,7 +15,7 @@ export interface SpacerProps {
  * @category Template
  */
 const Spacer = ({ orientation = 'horizontal', spacing = Spacings.md }: SpacerProps) => (
-	<StRoot orientation={orientation} spacing={spacing} />
+	<StRoot data-tpl="spacer" orientation={orientation} spacing={spacing} />
 );
 
 export default Spacer;

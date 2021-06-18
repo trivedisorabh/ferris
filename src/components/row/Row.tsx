@@ -16,7 +16,7 @@ export interface RowProps {
  * @category Template
  */
 const Row = ({ alignX, alignY = 'center', children, reversed }: RowProps) => (
-	<StRoot alignX={alignX} alignY={alignY} reversed={reversed}>
+	<StRoot data-tpl="row" alignX={alignX} alignY={alignY} reversed={reversed}>
 		{children}
 	</StRoot>
 );

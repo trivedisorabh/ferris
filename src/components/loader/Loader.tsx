@@ -15,7 +15,7 @@ export interface LoaderProps {
  * @category Template
  */
 const Loader = ({ isSmall }: LoaderProps) => (
-	<StRoot isSmall={isSmall}>
+	<StRoot data-tpl="loader" isSmall={isSmall}>
 		<svg
 			version="1.1"
 			xmlns="http://www.w3.org/2000/svg"

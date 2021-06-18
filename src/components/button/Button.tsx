@@ -6,12 +6,10 @@ import { tokens } from './Button.Tokens';
 /**
  * @category Props
  */
-export interface ButtonProps {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	children: ReactChild;
 	onClick: () => void;
-	isDisabled?: boolean;
 	small?: boolean;
-	type?: ButtonHTMLAttributes<HTMLButtonElement>['type'];
 	variant?: 'primary' | 'secondary' | 'link';
 }
 
@@ -21,12 +19,12 @@ export interface ButtonProps {
 const Button = ({
 	children,
 	onClick,
-	isDisabled,
 	small,
 	type = 'button',
 	variant = 'primary',
+	...rest
 }: ButtonProps) => (
-	<StRoot onClick={onClick} disabled={isDisabled} small={small} type={type} variant={variant}>
+	<StRoot {...rest} onClick={onClick} small={small} type={type} variant={variant}>
 		{children}
 	</StRoot>
 );

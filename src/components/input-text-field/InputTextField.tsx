@@ -1,19 +1,21 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { HTMLAttributes } from 'react';
 import InputText, { InputTextProps } from '~atoms/input-text/InputText';
-import Label from '~atoms/label/Label';
+import Label, { LabelProps } from '~atoms/label/Label';
 import Colors from '~tokens/colors/Colors';
 
 /**
  * @category Props
  */
-export interface InputTextFieldProps {
+export interface InputTextFieldProps extends HTMLAttributes<HTMLDivElement> {
 	id: string;
 	label: string;
 	type: InputTextProps['type'];
 	description?: string;
 	disabled?: boolean;
+	inputTextProps?: Partial<InputTextProps>;
+	labelProps?: Partial<LabelProps>;
 	required?: boolean;
 	value?: string;
 }
@@ -27,15 +29,25 @@ const InputTextField = ({
 	type,
 	description,
 	disabled,
+	labelProps,
+	inputTextProps,
 	required,
 	value,
+	...rest
 }: InputTextFieldProps) => (
-	<StRoot disabled={disabled}>
-		<Label id={id} required={required}>
+	<StRoot {...rest} data-tpl="input-text-field" disabled={disabled}>
+		<Label {...labelProps} id={id} required={required}>
 			{label}
 		</Label>
 		{description && <StDescription>{description}</StDescription>}
-		<InputText id={id} disabled={disabled} required={required} type={type} value={value} />
+		<InputText
+			{...inputTextProps}
+			id={id}
+			disabled={disabled}
+			required={required}
+			type={type}
+			value={value}
+		/>
 	</StRoot>
 );
 

@@ -111,12 +111,12 @@ export interface SampleProps {
 const Sample = ({ foo, items, isSomething }: SampleProps) => {
 	// Return a component hierarchy.
 	return (
-		<StSample isLocalProp={foo} isSomething={isSomething}>
+		<StRoot data-tpl="sample" isLocalProp={foo} isSomething={isSomething}>
 			{items.map(({ bar }, index) => (
 				<StItem key={index}>{bar}</StItem>
 			))}
 			<Foo />
-		</StSample>
+		</StRoot>
 	);
 
 	// TODO: This is code that requires attention later on. It does not need to be fixed in the current PR.
@@ -126,15 +126,15 @@ const Sample = ({ foo, items, isSomething }: SampleProps) => {
 export default Sample;
 
 // Styled component related interfaces can extend/use prop(s) from the main component interface(s)
-type StSampleProps = Pick<SampleProps, 'isSomething'> & {
+type StRootProps = Pick<SampleProps, 'isSomething'> & {
 	isStyleProp?: boolean;
 };
 
 // We use Emotion to style the components.
-// The root element name is based on the main component name.
+// The root element should always be named `StRoot`.
 // All styled components/elements are prefixed with "St" for Styled.
-const StSample = styled.div(
-	({ isLocalProp, isSomething }: StSampleProps) => css`
+const StRoot = styled.div(
+	({ isLocalProp, isSomething }: StRootProps) => css`
 		color: ${isLocalProp && 'black'};
 		opacity: ${isSomething && '0.5'};
 	`

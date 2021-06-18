@@ -1,19 +1,21 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import React from 'react';
-import Label from '~atoms/label/Label';
-import TextArea from '~atoms/text-area/TextArea';
+import React, { HTMLAttributes } from 'react';
+import Label, { LabelProps } from '~atoms/label/Label';
+import TextArea, { TextAreaProps } from '~atoms/text-area/TextArea';
 import Colors from '~tokens/colors/Colors';
 
 /**
  * @category Props
  */
-export interface TextAreaFieldProps {
+export interface TextAreaFieldProps extends HTMLAttributes<HTMLDivElement> {
 	id: string;
 	label: string;
 	description?: string;
 	disabled?: boolean;
+	labelProps?: LabelProps;
 	required?: boolean;
+	textAreaProps?: Partial<TextAreaProps>;
 	value?: string;
 }
 
@@ -25,15 +27,18 @@ const TextAreaField = ({
 	label,
 	description,
 	disabled,
+	labelProps,
 	required,
+	textAreaProps,
 	value,
+	...rest
 }: TextAreaFieldProps) => (
-	<StRoot disabled={disabled}>
-		<Label id={id} required={required}>
+	<StRoot {...rest} data-tpl="text-area-field" disabled={disabled}>
+		<Label {...labelProps} id={id} required={required}>
 			{label}
 		</Label>
 		{description && <StDescription>{description}</StDescription>}
-		<TextArea id={id} disabled={disabled} required={required} value={value} />
+		<TextArea {...textAreaProps} id={id} disabled={disabled} required={required} value={value} />
 	</StRoot>
 );
 
