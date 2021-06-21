@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import React, { HTMLAttributes } from 'react';
+import React, { ForwardedRef, forwardRef, HTMLAttributes } from 'react';
 import InputText, { InputTextProps } from '~atoms/input-text/InputText';
 import Label, { LabelProps } from '~atoms/label/Label';
 import Colors from '~tokens/colors/Colors';
@@ -23,43 +23,49 @@ export interface InputTextFieldProps extends HTMLAttributes<HTMLDivElement> {
 /**
  * @category Template
  */
-const InputTextField = ({
-	id,
-	label,
-	type,
-	description,
-	disabled,
-	labelProps,
-	inputTextProps,
-	required,
-	value,
-	...rest
-}: InputTextFieldProps) => (
-	<StRoot {...rest} data-tpl="input-text-field" disabled={disabled}>
-		<Label {...labelProps} id={id} required={required}>
-			{label}
-		</Label>
-		{description && <StDescription>{description}</StDescription>}
-		<InputText
-			{...inputTextProps}
-			id={id}
-			disabled={disabled}
-			required={required}
-			type={type}
-			value={value}
-		/>
-	</StRoot>
+const InputTextField = forwardRef(
+	(
+		{
+			id,
+			label,
+			type,
+			description,
+			disabled,
+			labelProps,
+			inputTextProps,
+			required,
+			value,
+			...rest
+		}: InputTextFieldProps,
+		ref: ForwardedRef<HTMLDivElement>
+	) => (
+		<StyledInputTextField {...rest} data-tpl="input-text-field" disabled={disabled} ref={ref}>
+			<Label {...labelProps} id={id} required={required}>
+				{label}
+			</Label>
+			{description && <StDescription>{description}</StDescription>}
+			<InputText
+				{...inputTextProps}
+				id={id}
+				disabled={disabled}
+				required={required}
+				type={type}
+				value={value}
+			/>
+		</StyledInputTextField>
+	)
 );
 
+InputTextField.displayName = 'InputTextField';
 export default InputTextField;
 
 /**
  * @category Styles
  */
-type StRootProps = Pick<InputTextFieldProps, 'disabled'>;
+type StyledInputTextFieldProps = Pick<InputTextFieldProps, 'disabled'>;
 
-const StRoot = styled.div(
-	({ disabled }: StRootProps) => css`
+const StyledInputTextField = styled.div(
+	({ disabled }: StyledInputTextFieldProps) => css`
 		opacity: ${disabled && '0.5'};
 	`
 );

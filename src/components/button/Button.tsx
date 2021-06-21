@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import React, { ButtonHTMLAttributes, ReactChild } from 'react';
+import React, { ButtonHTMLAttributes, ForwardedRef, forwardRef, ReactChild } from 'react';
 import { tokens } from './Button.Tokens';
 
 /**
@@ -16,28 +16,27 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 /**
  * @category Template
  */
-const Button = ({
-	children,
-	onClick,
-	small,
-	type = 'button',
-	variant = 'primary',
-	...rest
-}: ButtonProps) => (
-	<StRoot {...rest} onClick={onClick} small={small} type={type} variant={variant}>
-		{children}
-	</StRoot>
+const Button = forwardRef(
+	(
+		{ children, onClick, small, type = 'button', variant = 'primary', ...rest }: ButtonProps,
+		ref: ForwardedRef<HTMLButtonElement>
+	) => (
+		<StyledButton {...rest} onClick={onClick} ref={ref} small={small} type={type} variant={variant}>
+			{children}
+		</StyledButton>
+	)
 );
 
+Button.displayName = 'Button';
 export default Button;
 
 /**
  * @category Styles
  */
-type StRootProps = Pick<ButtonProps, 'small' | 'variant'>;
+type StyledButtonProps = Pick<ButtonProps, 'small' | 'variant'>;
 
-const StRoot = styled.button(
-	({ small, variant }: StRootProps) => css`
+const StyledButton = styled.button(
+	({ small, variant }: StyledButtonProps) => css`
 		border-radius: ${tokens.buttonBorderRadius};
 		cursor: pointer;
 		font-size: 1rem;

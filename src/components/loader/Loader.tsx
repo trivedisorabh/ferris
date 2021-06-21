@@ -1,21 +1,21 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { ForwardedRef, forwardRef, HTMLAttributes } from 'react';
 import Colors from '~tokens/colors/Colors';
 import Spacings from '~tokens/spacings/Spacings';
 
 /**
  * @category Props
  */
-export interface LoaderProps {
-	isSmall?: boolean;
+export interface LoaderProps extends Omit<HTMLAttributes<HTMLDivElement>, 'children'> {
+	small?: boolean;
 }
 
 /**
  * @category Template
  */
-const Loader = ({ isSmall }: LoaderProps) => (
-	<StRoot data-tpl="loader" isSmall={isSmall}>
+const Loader = forwardRef(({ small, ...rest }: LoaderProps, ref: ForwardedRef<HTMLDivElement>) => (
+	<StyledLoader {...rest} data-tpl="loader" ref={ref} small={small}>
 		<svg
 			version="1.1"
 			xmlns="http://www.w3.org/2000/svg"
@@ -30,9 +30,10 @@ const Loader = ({ isSmall }: LoaderProps) => (
 		>
 			{[getCircle(6, 0.1), getCircle(26, 0.2), getCircle(46, 0.3)]}
 		</svg>
-	</StRoot>
-);
+	</StyledLoader>
+));
 
+Loader.displayName = 'Loader';
 export default Loader;
 
 /**
@@ -53,11 +54,11 @@ const getCircle = (cx: number, begin: number) => (
 /**
  * @category Styles
  */
-type StRootProps = LoaderProps;
+type StyledLoaderProps = LoaderProps;
 
-const StRoot = styled.div(
-	({ isSmall }: StRootProps) => css`
-		height: ${isSmall ? `${Spacings.xl}` : `${Spacings.xxxl}`};
-		width: ${isSmall ? `${Spacings.xl}` : `${Spacings.xxxl}`};
+const StyledLoader = styled.div(
+	({ small }: StyledLoaderProps) => css`
+		height: ${small ? `${Spacings.xl}` : `${Spacings.xxxl}`};
+		width: ${small ? `${Spacings.xl}` : `${Spacings.xxxl}`};
 	`
 );

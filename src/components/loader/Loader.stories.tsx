@@ -12,12 +12,12 @@ interface Story<T> {
 	argTypes?: Record<string, unknown>;
 }
 
-const Template: Story<LoaderProps> = ({ isSmall }: LoaderProps) => <Loader isSmall={isSmall} />;
+const Template: Story<LoaderProps> = ({ small }: LoaderProps) => <Loader small={small} />;
 
 export const Default = Template.bind({});
 Default.args = {};
 
 export const Small = Template.bind({});
 Small.args = {
-	isSmall: true,
+	small: true,
 };

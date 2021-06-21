@@ -12,8 +12,8 @@ interface Story<T> {
 	argTypes?: Record<string, unknown>;
 }
 
-const Template: Story<ProgressBarProps> = ({ value, isAnimated }: ProgressBarProps) => (
-	<ProgressBar value={value} isAnimated={isAnimated} />
+const Template: Story<ProgressBarProps> = ({ value, animated }: ProgressBarProps) => (
+	<ProgressBar value={value} animated={animated} />
 );
 
 export const Default = Template.bind({});
@@ -24,5 +24,5 @@ Default.args = {
 export const Animated = Template.bind({});
 Animated.args = {
 	value: 50,
-	isAnimated: true,
+	animated: true,
 };
