@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import React, { InputHTMLAttributes } from 'react';
+import React, { ForwardedRef, forwardRef, InputHTMLAttributes } from 'react';
 import Colors from '~tokens/colors/Colors';
 import Spacings from '~tokens/spacings/Spacings';
 import { InputType } from '~types/InputType';
@@ -32,16 +32,19 @@ export interface InputTextProps extends InputHTMLAttributes<HTMLInputElement> {
 /**
  * @category Template
  */
-const InputText = ({ id, type, ...rest }: InputTextProps) => (
-	<StRoot {...rest} id={id} type={type} />
+const InputText = forwardRef(
+	({ id, type, ...rest }: InputTextProps, ref: ForwardedRef<HTMLInputElement>) => (
+		<StyledInputText {...rest} id={id} ref={ref} type={type} />
+	)
 );
 
+InputText.displayName = 'InputText';
 export default InputText;
 
 /**
  * @category Styles
  */
-const StRoot = styled.input`
+const StyledInputText = styled.input`
 	background: #fff;
 	border: 1px solid ${Colors.grayDark};
 	padding: ${Spacings.xxs};

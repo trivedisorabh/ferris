@@ -14,7 +14,7 @@ export const buttonCommonArgTypes = {
 
 export default {
 	title: 'Form/Button/Primary',
-	component: 'skf-button',
+	component: Button,
 	argTypes: buttonCommonArgTypes,
 	includeStories: /^[A-Z]/,
 };
@@ -27,16 +27,11 @@ export interface Story<T> {
 
 export const buttonTpl: Story<ButtonProps> = ({
 	children,
-	variant,
-	isDisabled,
+	disabled,
 	small,
+	variant,
 }: ButtonProps) => (
-	<Button
-		isDisabled={isDisabled}
-		onClick={() => alert('Dummy click')}
-		small={small}
-		variant={variant}
-	>
+	<Button disabled={disabled} onClick={() => alert('Dummy click')} small={small} variant={variant}>
 		{children}
 	</Button>
 );
@@ -49,7 +44,7 @@ Regular.args = {
 export const RegularDisabled = buttonTpl.bind({});
 RegularDisabled.args = {
 	children: 'Regular Disabled',
-	isDisabled: true,
+	disabled: true,
 };
 
 export const Small = buttonTpl.bind({});
@@ -61,6 +56,6 @@ Small.args = {
 export const SmallDisabled = buttonTpl.bind({});
 SmallDisabled.args = {
 	children: 'Small Disabled',
-	isDisabled: true,
+	disabled: true,
 	small: true,
 };

@@ -1,12 +1,12 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { ForwardedRef, forwardRef, HTMLAttributes } from 'react';
 import Spacings from '~tokens/spacings/Spacings';
 
 /**
  * @category Props
  */
-export interface SpacerProps {
+export interface SpacerProps extends Omit<HTMLAttributes<HTMLDivElement>, 'children'> {
 	orientation?: 'horizontal' | 'vertical';
 	spacing?: Spacings;
 }
@@ -14,19 +14,31 @@ export interface SpacerProps {
 /**
  * @category Template
  */
-const Spacer = ({ orientation = 'horizontal', spacing = Spacings.md }: SpacerProps) => (
-	<StRoot orientation={orientation} spacing={spacing} />
+const Spacer = forwardRef(
+	(
+		{ orientation = 'horizontal', spacing = Spacings.md, ...rest }: SpacerProps,
+		ref: ForwardedRef<HTMLDivElement>
+	) => (
+		<StyledSpacer
+			{...rest}
+			data-tpl="spacer"
+			orientation={orientation}
+			ref={ref}
+			spacing={spacing}
+		/>
+	)
 );
 
+Spacer.displayName = 'Spacer';
 export default Spacer;
 
 /**
  * @category Styles
  */
-type StRootProps = SpacerProps;
+type StyledSpacerProps = SpacerProps;
 
-const StRoot = styled.div(
-	({ orientation, spacing }: StRootProps) => css`
+const StyledSpacer = styled.div(
+	({ orientation, spacing }: StyledSpacerProps) => css`
 		width: ${spacing};
 
 		${orientation === 'vertical' &&

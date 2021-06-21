@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import React, { HTMLAttributes, ReactNode } from 'react';
+import React, { ForwardedRef, forwardRef, HTMLAttributes, ReactNode } from 'react';
 import FontWeights from '~tokens/font-weights/FontWeights';
 import Headings from '~tokens/headings/Headings';
 import LineHeights from '~tokens/line-heights/LineHeights';
@@ -18,21 +18,24 @@ export interface HeadingProps extends HTMLAttributes<HTMLHeadingElement> {
 /**
  * @category Template
  */
-const Heading = ({ as, children, ...rest }: HeadingProps) => (
-	<StRoot {...rest} as={as}>
-		{children}
-	</StRoot>
+const Heading = forwardRef(
+	({ as, children, ...rest }: HeadingProps, ref: ForwardedRef<HTMLHeadingElement>) => (
+		<StyledHeading {...rest} as={as} ref={ref}>
+			{children}
+		</StyledHeading>
+	)
 );
 
+Heading.displayName = 'Heading';
 export default Heading;
 
 /**
  * @category Styles
  */
-type StRootProps = Pick<HeadingProps, 'as'>;
+type StyledHeadingProps = Pick<HeadingProps, 'as'>;
 
-const StRoot = styled.h1(
-	({ as }: StRootProps) => css`
+const StyledHeading = styled.h1(
+	({ as }: StyledHeadingProps) => css`
 		line-height: ${LineHeights.compact};
 
 		${as === 'h1' &&

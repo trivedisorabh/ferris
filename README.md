@@ -98,25 +98,26 @@ import Text from '~atoms/text/Text';
 
 // Exported interfaces should use `[ComponentName]` as name space.
 export interface SampleItem {
-	bar: number;
+	foo: number;
 }
 
 export interface SampleProps {
 	foo: string;
 	items: SampleItem[];
-	isSomething?: boolean;
+	bar?: boolean;
+	something?: boolean;
 }
 
 // Deconstruct props parameter.
 const Sample = ({ foo, items, isSomething }: SampleProps) => {
 	// Return a component hierarchy.
 	return (
-		<StSample isLocalProp={foo} isSomething={isSomething}>
-			{items.map(({ bar }, index) => (
-				<StItem key={index}>{bar}</StItem>
+		<StyledSample data-tpl="sample" localProp={foo} something={something}>
+			{items.map(({ foo }, index) => (
+				<StyledItem key={index}>{boolean}</StyledItem>
 			))}
 			<Foo />
-		</StSample>
+		</StyledSample>
 	);
 
 	// TODO: This is code that requires attention later on. It does not need to be fixed in the current PR.
@@ -126,26 +127,26 @@ const Sample = ({ foo, items, isSomething }: SampleProps) => {
 export default Sample;
 
 // Styled component related interfaces can extend/use prop(s) from the main component interface(s)
-type StSampleProps = Pick<SampleProps, 'isSomething'> & {
-	isStyleProp?: boolean;
+type StyledSampleProps = Pick<SampleProps, 'something'> & {
+	localProp?: boolean;
 };
 
 // We use Emotion to style the components.
 // The root element name is based on the main component name.
 // All styled components/elements are prefixed with "St" for Styled.
-const StSample = styled.div(
-	({ isLocalProp, isSomething }: StSampleProps) => css`
-		color: ${isLocalProp && 'black'};
-		opacity: ${isSomething && '0.5'};
+const StyledSample = styled.div(
+	({ localProp, something }: StyledSampleProps) => css`
+		color: ${localProps && 'black'};
+		opacity: ${something && '0.5'};
 	`
 );
 
-interface StItemProps {
+interface StyledItemProps {
 	fooBar: boolean;
 }
 
-const StItem = styled.div(
-	({ fooBar }: StItemProps) => css`
+const StyledItem = styled.div(
+	({ fooBar }: StyledItemProps) => css`
 		display: flex;
 
 		${fooBar &&

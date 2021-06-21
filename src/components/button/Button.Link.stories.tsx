@@ -1,8 +1,9 @@
+import Button from '~components/button/Button';
 import { buttonCommonArgTypes, buttonTpl } from './Button.Primary.stories';
 
 export default {
 	title: 'Form/Button/Link',
-	component: 'skf-button',
+	component: Button,
 	argTypes: {
 		...buttonCommonArgTypes,
 		variant: { ...buttonCommonArgTypes.variant, defaultValue: 'secondary' },
@@ -17,7 +18,7 @@ Regular.args = {
 export const RegularDisabled = buttonTpl.bind({});
 RegularDisabled.args = {
 	children: 'Regular Disabled',
-	isDisabled: true,
+	disabled: true,
 };
 
 export const Small = buttonTpl.bind({});
@@ -29,6 +30,6 @@ Small.args = {
 export const SmallDisabled = buttonTpl.bind({});
 SmallDisabled.args = {
 	children: 'Small Disabled',
-	isDisabled: true,
+	disabled: true,
 	small: true,
 };
