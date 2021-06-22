@@ -7,7 +7,8 @@ const fs = require('fs-extra');
 const jsonToTsEnum = require('./scripts/jsonToTsEnum');
 const StyleDictionary = require('style-dictionary');
 const { minifyDictionary } = StyleDictionary.formatHelpers;
-const svgr = require('@svgr/core');
+const svgr = require('@svgr/core').default;
+const path = require('path');
 
 /**
  * Helpers
@@ -63,9 +64,11 @@ StyleDictionary.registerAction({
 		console.log('Copying assets directory to ' + config.buildPath + 'icons');
 		fs.copySync('./assets/icons', config.buildPath + 'icons');
 
+		console.log('Creating react components from icons...');
 		const icons = await fs.promises.readdir(config.buildPath + 'icons');
-		icons.forEach((i) => {
-			svgr(i, { icon: true }, { componentName: 'MyComponent' }).then((jsCode) => {
+		icons.forEach(async (i) => {
+			const svg = await fs.promises.readFile(path.join(config.buildPath + 'icons', i), 'utf-8');
+			svgr(svg, { icon: true }, { componentName: 'MyComponent' }).then((jsCode) => {
 				console.log(jsCode);
 			});
 		});
