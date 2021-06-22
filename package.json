@@ -6,7 +6,7 @@
 	"private": true,
 	"scripts": {
 		"build-storybook": "build-storybook",
-		"build": "yarn generate-index && tsc",
+		"build": "yarn tokens:build && yarn generate-index && tsc",
 		"chromatic": "chromatic",
 		"format:eslint": "eslint --ext .js,.ts,.tsx . --fix --ignore-path .gitignore",
 		"format:prettier": "prettier \"**/*.{js,ts,tsx}\" --write --ignore-path .gitignore",

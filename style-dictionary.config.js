@@ -4,6 +4,7 @@
  * Style-dictionary.config.js
  */
 const fs = require('fs-extra');
+const rimraf = require('rimraf');
 const jsonToTsEnum = require('./scripts/jsonToTsEnum');
 const StyleDictionary = require('style-dictionary');
 const { minifyDictionary } = StyleDictionary.formatHelpers;
@@ -59,23 +60,40 @@ function kebabToCamelCase(tokens) {
  * Actions
  */
 StyleDictionary.registerAction({
-	name: 'copy_assets',
-	do: async function (dictionary, config) {
-		console.log('Copying assets directory to ' + config.buildPath + 'icons');
-		fs.copySync('./assets/icons', config.buildPath + 'icons');
+	name: 'copy_icons',
+	do: function (dictionary, config) {
+		const source = './assets/icons';
+		const destination = config.buildPath + 'icons';
 
-		console.log('Creating react components from icons...');
-		const icons = await fs.promises.readdir(config.buildPath + 'icons');
-		icons.forEach(async (i) => {
-			const svg = await fs.promises.readFile(path.join(config.buildPath + 'icons', i), 'utf-8');
-			svgr(svg, { icon: true }, { componentName: 'MyComponent' }).then((jsCode) => {
-				console.log(jsCode);
+		console.log('Create icon folder in src/tokens...');
+		if (fs.existsSync(destination)) rimraf.sync(destination);
+		fs.mkdirSync(destination);
+
+		console.log('Create react components from icons...');
+		fs.readdir(source, function (err, icons) {
+			icons.forEach((i) => {
+				const componentName = path.basename(i, '.svg');
+				const svgFilename = path.join(source, i);
+				const svg = fs.readFileSync(svgFilename, { encoding: 'utf-8' });
+
+				//Create tsx file containing the svg
+				const ts = svgr.sync(
+					svg,
+					{
+						icon: true,
+						typescript: true,
+						ref: true,
+						expandProps: 'start',
+					},
+					{ componentName }
+				);
+				//TODO: Replace next line with svgr outDir
+				fs.writeFile(`${destination}/${componentName}.tsx`, ts);
 			});
 		});
 	},
-	undo: function (dictionary, config) {
-		console.log('Removing assets directory from ' + config.buildPath + 'icons');
-		fs.removeSync(config.buildPath + 'icons' + []);
+	undo: function () {
+		//TODO: Write something to revert actions in 'do' function above
 	},
 });
 
@@ -126,7 +144,7 @@ module.exports = {
 	source: ['.tmp/**/*.json'],
 	platforms: {
 		default: {
-			actions: ['copy_assets'],
+			actions: ['copy_icons'],
 			buildPath: './src/tokens/',
 			transforms: ['attribute/cti', 'name/cti/pascal', 'color/rgb'],
 			files: [
