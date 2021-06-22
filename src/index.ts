@@ -48,6 +48,7 @@ export { default as FontSizes } from './tokens/font-sizes/FontSizes';
 export { default as FontWeights } from './tokens/font-weights/FontWeights';
 export { default as Fonts } from './tokens/fonts/Fonts';
 export { default as Headings } from './tokens/headings/Headings';
+export { default as Icons } from './tokens/icons/Icons';
 export { default as LineHeights } from './tokens/line-heights/LineHeights';
 export { default as Sizes } from './tokens/sizes/Sizes';
 export { default as Spacings } from './tokens/spacings/Spacings';

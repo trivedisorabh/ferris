@@ -1,0 +1,28 @@
+import * as React from 'react';
+
+function OpenInNew(props: React.SVGProps<SVGSVGElement>, svgRef?: React.Ref<SVGSVGElement>) {
+	return (
+		<svg
+			{...props}
+			width="1em"
+			height="1em"
+			viewBox="0 0 20 20"
+			xmlns="http://www.w3.org/2000/svg"
+			xmlnsXlink="http://www.w3.org/1999/xlink"
+			ref={svgRef}
+		>
+			<title>{'114DD62E-D9EA-41AF-A057-34DAC5D1268B'}</title>
+			<g id="Symbols" stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
+				<g id="Icons/Actions/openInNew" fill="#676F7C">
+					<path
+						d="M16,17 L4,17 C3.45,17 3,16.55 3,16 L3,4 C3,3.45 3.45,3 4,3 L9,3 C9.55,3 10,2.55 10,2 C10,1.45 9.55,1 9,1 L3,1 C1.89,1 1,1.9 1,3 L1,17 C1,18.1 1.9,19 3,19 L17,19 C18.1,19 19,18.1 19,17 L19,11 C19,10.45 18.55,10 18,10 C17.45,10 17,10.45 17,11 L17,16 C17,16.55 16.55,17 16,17 Z M12,2 C12,2.55 12.45,3 13,3 L15.59,3 L6.46,12.13 C6.07,12.52 6.07,13.15 6.46,13.54 C6.85,13.93 7.48,13.93 7.87,13.54 L17,4.41 L17,7 C17,7.55 17.45,8 18,8 C18.55,8 19,7.55 19,7 L19,2 C19,1.45 18.55,1 18,1 L13,1 C12.45,1 12,1.45 12,2 Z"
+						id="Shape"
+					/>
+				</g>
+			</g>
+		</svg>
+	);
+}
+
+const ForwardRef = React.forwardRef(OpenInNew);
+export default ForwardRef;

@@ -15,17 +15,17 @@ const path = require('path');
  * Helpers
  */
 
-/* Helper to simplify filtering within files */
+// Helper to simplify filtering within files
 function getFilter(cat) {
 	return { attributes: { category: cat } };
 }
 
-/* Return the first key in passed object */
+// Return the first key in passed object
 function getCategory(obj) {
 	return Object.keys(obj)[0];
 }
 
-/* Transform the category name to PascalCase */
+// Transform the category name to PascalCase
 function toPascalCase(str) {
 	const words = str.match(/[a-z]+/gi);
 	if (!words) return '';
@@ -36,7 +36,7 @@ function toPascalCase(str) {
 		.join('');
 }
 
-/* Transform `tokens` keys to camelCase */
+// Transform `tokens` keys to camelCase
 function kebabToCamelCase(tokens) {
 	Object.keys(tokens).map((key) => {
 		if (key.includes('-')) {
@@ -64,6 +64,8 @@ StyleDictionary.registerAction({
 	do: function (dictionary, config) {
 		const source = './assets/icons';
 		const destination = config.buildPath + 'icons';
+		let iconSet = '';
+		let iconsTemplate = '';
 
 		console.log('Create icon folder in src/tokens...');
 		if (fs.existsSync(destination)) rimraf.sync(destination);
@@ -76,7 +78,7 @@ StyleDictionary.registerAction({
 				const svgFilename = path.join(source, i);
 				const svg = fs.readFileSync(svgFilename, { encoding: 'utf-8' });
 
-				//Create tsx file containing the svg
+				// Create tsx file containing the svg
 				const ts = svgr.sync(
 					svg,
 					{
@@ -87,13 +89,26 @@ StyleDictionary.registerAction({
 					},
 					{ componentName }
 				);
-				//TODO: Replace next line with svgr outDir
+				// TODO: Replace next line with svgr outDir
 				fs.writeFile(`${destination}/${componentName}.tsx`, ts);
+
+				// Start adding to icon template for Icons.ts
+				iconSet += `${componentName},\n`;
+				iconsTemplate += `import ${componentName} from './${componentName}';`;
 			});
+
+			// Create icons.ts
+			iconsTemplate += `
+				const Icons = {
+					${iconSet}
+				}
+				export default Icons;
+			`;
+			fs.writeFile(`${destination}/Icons.ts`, iconsTemplate);
 		});
 	},
 	undo: function () {
-		//TODO: Write something to revert actions in 'do' function above
+		// TODO: Write something to revert actions in 'do' function above
 	},
 });
 

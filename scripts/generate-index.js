@@ -17,6 +17,7 @@ async function generateIndex(options) {
 			'**/*.test*',
 			'**/*.tokens*',
 			'**/*.Tokens*',
+			'**/icons/*.tsx',
 		],
 	});
 
@@ -38,9 +39,7 @@ async function generateIndex(options) {
 		// Check if the current file is a component
 		//TODO: Solve below boolean check in a nicer maner (eg. 'ignore files')
 		const fileIsComponent =
-			path.extname(file) === '.tsx' &&
-			directory !== 'src/common/global-styles' &&
-			directory !== 'src/tokens/icons';
+			path.extname(file) === '.tsx' && directory !== 'src/common/global-styles';
 
 		// Returns the file path without `src` and appends the file name
 		const filePath = `${directory.replace('src/', '')}/${fileName}`;

@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import React, { ForwardedRef, forwardRef, HTMLAttributes, ReactChild } from 'react';
+import React, { ForwardedRef, forwardRef, HTMLAttributes } from 'react';
 import Colors from '~tokens/colors/Colors';
 import Sizes from '~tokens/sizes/Sizes';
 
@@ -8,7 +8,7 @@ import Sizes from '~tokens/sizes/Sizes';
  * @category Props
  */
 export interface IconProps extends Omit<HTMLAttributes<HTMLSpanElement>, 'children'> {
-	icon: ReactChild;
+	icon: Icon;
 	color?: Colors;
 	size?: Sizes.size_1 | Sizes.size_1_25;
 }
