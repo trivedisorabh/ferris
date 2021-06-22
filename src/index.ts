@@ -27,6 +27,8 @@ export { default as Button } from './components/button/Button';
 export type { ButtonProps } from './components/button/Button';
 export { default as Heading } from './components/heading/Heading';
 export type { HeadingProps } from './components/heading/Heading';
+export { default as Icon } from './components/icon/Icon';
+export type { IconProps } from './components/icon/Icon';
 export { default as InputTextField } from './components/input-text-field/InputTextField';
 export type { InputTextFieldProps } from './components/input-text-field/InputTextField';
 export { default as Loader } from './components/loader/Loader';

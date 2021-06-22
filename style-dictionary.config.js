@@ -93,15 +93,24 @@ StyleDictionary.registerAction({
 				fs.writeFile(`${destination}/${componentName}.tsx`, ts);
 
 				// Start adding to icon template for Icons.ts
-				iconSet += `${componentName},\n`;
+				iconSet += `${componentName}: { glyph: ${componentName} },\n`;
 				iconsTemplate += `import ${componentName} from './${componentName}';`;
 			});
 
 			// Create icons.ts
 			iconsTemplate += `
-				const Icons = {
+				import { ForwardRefExoticComponent, SVGAttributes } from 'react';
+
+				export type IconData = {
+					glyph: ForwardRefExoticComponent<SVGAttributes<SVGSVGElement>>;
+				};
+
+				const Icons: Readonly<{
+					[key: string]: IconData;
+				}> = {
 					${iconSet}
 				}
+
 				export default Icons;
 			`;
 			fs.writeFile(`${destination}/Icons.ts`, iconsTemplate);
