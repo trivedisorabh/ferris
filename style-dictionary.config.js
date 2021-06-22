@@ -3,9 +3,11 @@
 /**
  * Style-dictionary.config.js
  */
+const fs = require('fs-extra');
 const jsonToTsEnum = require('./scripts/jsonToTsEnum');
 const StyleDictionary = require('style-dictionary');
 const { minifyDictionary } = StyleDictionary.formatHelpers;
+const svgr = require('@svgr/core');
 
 /**
  * Helpers
@@ -51,6 +53,28 @@ function kebabToCamelCase(tokens) {
 		}
 	});
 }
+
+/**
+ * Actions
+ */
+StyleDictionary.registerAction({
+	name: 'copy_assets',
+	do: async function (dictionary, config) {
+		console.log('Copying assets directory to ' + config.buildPath + 'icons');
+		fs.copySync('./assets/icons', config.buildPath + 'icons');
+
+		const icons = await fs.promises.readdir(config.buildPath + 'icons');
+		icons.forEach((i) => {
+			svgr(i, { icon: true }, { componentName: 'MyComponent' }).then((jsCode) => {
+				console.log(jsCode);
+			});
+		});
+	},
+	undo: function (dictionary, config) {
+		console.log('Removing assets directory from ' + config.buildPath + 'icons');
+		fs.removeSync(config.buildPath + 'icons' + []);
+	},
+});
 
 /**
  * Formatters
@@ -99,6 +123,7 @@ module.exports = {
 	source: ['.tmp/**/*.json'],
 	platforms: {
 		default: {
+			actions: ['copy_assets'],
 			buildPath: './src/tokens/',
 			transforms: ['attribute/cti', 'name/cti/pascal', 'color/rgb'],
 			files: [
