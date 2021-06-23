@@ -1,14 +1,14 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import React, { ForwardedRef, forwardRef, HTMLAttributes, ReactChild } from 'react';
+import React, { ForwardedRef, forwardRef, HTMLAttributes } from 'react';
 import Colors from '~tokens/colors/Colors';
 import IconSizes from '~tokens/icon-sizes/IconSizes';
-
+import { IconsData } from '~tokens/icons/Icons';
 /**
  * @category Props
  */
 export interface IconProps extends Omit<HTMLAttributes<HTMLSpanElement>, 'children'> {
-	icon: ReactChild;
+	icon: IconsData;
 	color?: Colors;
 	size?: IconSizes;
 }
@@ -22,7 +22,7 @@ const Icon = forwardRef(
 		ref: ForwardedRef<HTMLSpanElement>
 	) => (
 		<StyledIcon {...rest} aria-hidden color={color} data-tpl="Icon" ref={ref} size={size}>
-			{icon}
+			{icon.glyph}
 		</StyledIcon>
 	)
 );

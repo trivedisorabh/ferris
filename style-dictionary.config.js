@@ -101,12 +101,12 @@ StyleDictionary.registerAction({
 			iconsTemplate += `
 				import { ForwardRefExoticComponent, SVGAttributes } from 'react';
 
-				export type IconData = {
+				export type IconsData = {
 					glyph: ForwardRefExoticComponent<SVGAttributes<SVGSVGElement>>;
 				};
 
 				const Icons: Readonly<{
-					[key: string]: IconData;
+					[key: string]: IconsData;
 				}> = {
 					${iconSet}
 				}

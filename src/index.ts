@@ -14,12 +14,10 @@ export { default as Label } from './atoms/label/Label';
 export type { LabelProps } from './atoms/label/Label';
 export { default as TextArea } from './atoms/text-area/TextArea';
 export type { TextAreaProps } from './atoms/text-area/TextArea';
-
 /**
  * Common
  */
 export { default as GlobalStyles } from './common/global-styles/GlobalStyles';
-
 /**
  * Components
  */
@@ -41,7 +39,6 @@ export { default as Spacer } from './components/spacer/Spacer';
 export type { SpacerProps } from './components/spacer/Spacer';
 export { default as TextAreaField } from './components/text-area-field/TextAreaField';
 export type { TextAreaFieldProps } from './components/text-area-field/TextAreaField';
-
 /**
  * Tokens
  */
