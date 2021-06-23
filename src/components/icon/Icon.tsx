@@ -22,7 +22,7 @@ const Icon = forwardRef(
 		ref: ForwardedRef<HTMLSpanElement>
 	) => (
 		<StyledIcon {...rest} aria-hidden color={color} data-tpl="Icon" ref={ref} size={size}>
-			{icon.glyph}
+			<icon.glyph />
 		</StyledIcon>
 	)
 );
@@ -40,9 +40,8 @@ const StyledIcon = styled.span(
 		align-items: center;
 		color: ${color};
 		display: inline-flex;
-		height: ${size};
+		font-size: ${size};
 		justify-content: center;
 		user-select: none;
-		width: ${size};
 	`
 );

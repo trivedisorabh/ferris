@@ -4,12 +4,12 @@
  * Style-dictionary.config.js
  */
 const fs = require('fs-extra');
-const rimraf = require('rimraf');
 const jsonToTsEnum = require('./scripts/jsonToTsEnum');
+const path = require('path');
+const rimraf = require('rimraf');
 const StyleDictionary = require('style-dictionary');
 const { minifyDictionary } = StyleDictionary.formatHelpers;
 const svgr = require('@svgr/core').default;
-const path = require('path');
 
 /**
  * Helpers
@@ -82,10 +82,15 @@ StyleDictionary.registerAction({
 				const ts = svgr.sync(
 					svg,
 					{
-						icon: true,
-						typescript: true,
-						ref: true,
 						expandProps: 'start',
+						icon: true,
+						ref: true,
+						replaceAttrValues: {
+							none: 'currentColor',
+							'#676F7C': 'currentColor',
+						},
+						svgo: true,
+						typescript: true,
 					},
 					{ componentName }
 				);
@@ -113,6 +118,7 @@ StyleDictionary.registerAction({
 
 				export default Icons;
 			`;
+
 			fs.writeFile(`${destination}/Icons.ts`, iconsTemplate);
 		});
 	},
