@@ -215,6 +215,11 @@ module.exports = {
 					format: 'custom/typescript/module-declarations',
 					filter: getFilter('heading'),
 				},
+				{
+					destination: './icon-sizes/IconSizes.ts',
+					format: 'custom/typescript/module-declarations',
+					filter: getFilter('icon-size'),
+				},
 			],
 		},
 	},
