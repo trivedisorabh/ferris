@@ -1,8 +1,8 @@
-import { ForwardRefExoticComponent, SVGAttributes } from 'react';
 import Check from './Check';
 import CloseAllFaults from './CloseAllFaults';
 import CloseFault from './CloseFault';
 import OpenInNew from './OpenInNew';
+import { ForwardRefExoticComponent, SVGAttributes } from 'react';
 
 export type IconsData = {
 	glyph: ForwardRefExoticComponent<SVGAttributes<SVGSVGElement>>;

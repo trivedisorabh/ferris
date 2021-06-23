@@ -78,18 +78,24 @@ StyleDictionary.registerAction({
 				const svgFilename = path.join(source, i);
 				const svg = fs.readFileSync(svgFilename, { encoding: 'utf-8' });
 
+				const washedSvg = svgr.sync(svg, {
+					svgo: true,
+					plugins: ['@svgr/plugin-svgo'],
+					svgoConfig: {
+						multipass: false,
+						plugins: {
+							removeViewBox: false,
+						},
+					},
+				});
+
 				// Create tsx file containing the svg
 				const ts = svgr.sync(
-					svg,
+					washedSvg,
 					{
 						expandProps: 'start',
 						icon: true,
 						ref: true,
-						replaceAttrValues: {
-							none: 'currentColor',
-							'#676F7C': 'currentColor',
-						},
-						svgo: true,
 						typescript: true,
 					},
 					{ componentName }
