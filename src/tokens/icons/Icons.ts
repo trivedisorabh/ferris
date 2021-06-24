@@ -1,15 +1,15 @@
-import Check from './Check';
-import CloseAllFaults from './CloseAllFaults';
-import CloseFault from './CloseFault';
-import OpenInNew from './OpenInNew';
+import Check from './components/Check';
+import CloseAllFaults from './components/CloseAllFaults';
+import CloseFault from './components/CloseFault';
+import OpenInNew from './components/OpenInNew';
 import { ForwardRefExoticComponent, SVGAttributes } from 'react';
 
-export type IconsData = {
+export type IconData = {
 	glyph: ForwardRefExoticComponent<SVGAttributes<SVGSVGElement>>;
 };
 
 const Icons: Readonly<{
-	[key: string]: IconsData;
+	[key: string]: IconData;
 }> = {
 	Check: { glyph: Check },
 	CloseAllFaults: { glyph: CloseAllFaults },

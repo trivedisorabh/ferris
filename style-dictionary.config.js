@@ -70,6 +70,7 @@ StyleDictionary.registerAction({
 		console.log('Create icon folder in src/tokens...');
 		if (fs.existsSync(destination)) rimraf.sync(destination);
 		fs.mkdirSync(destination);
+		fs.mkdirSync(destination + '/components');
 
 		console.log('Create react components from icons...');
 		fs.readdir(source, function (err, icons) {
@@ -84,7 +85,26 @@ StyleDictionary.registerAction({
 					svgoConfig: {
 						multipass: false,
 						plugins: {
-							removeViewBox: false,
+							addAttributesToSVGElement: {
+								attributes: [
+									{
+										fill: 'currentColor',
+									},
+									{
+										focusable: false,
+									},
+									{
+										height: '100%',
+									},
+									{
+										width: '100%',
+									},
+								],
+							},
+							removeAttrs: {
+								attrs: '(fill|fill-rule|stroke)',
+							},
+							removeDimensions: true,
 						},
 					},
 				});
@@ -94,30 +114,30 @@ StyleDictionary.registerAction({
 					washedSvg,
 					{
 						expandProps: 'start',
-						icon: true,
 						ref: true,
 						typescript: true,
 					},
 					{ componentName }
 				);
+
 				// TODO: Replace next line with svgr outDir
-				fs.writeFile(`${destination}/${componentName}.tsx`, ts);
+				fs.writeFile(`${destination}/components/${componentName}.tsx`, ts);
 
 				// Start adding to icon template for Icons.ts
 				iconSet += `${componentName}: { glyph: ${componentName} },\n`;
-				iconsTemplate += `import ${componentName} from './${componentName}';`;
+				iconsTemplate += `import ${componentName} from './components/${componentName}';`;
 			});
 
 			// Create icons.ts
 			iconsTemplate += `
 				import { ForwardRefExoticComponent, SVGAttributes } from 'react';
 
-				export type IconsData = {
+				export type IconData = {
 					glyph: ForwardRefExoticComponent<SVGAttributes<SVGSVGElement>>;
 				};
 
 				const Icons: Readonly<{
-					[key: string]: IconsData;
+					[key: string]: IconData;
 				}> = {
 					${iconSet}
 				}

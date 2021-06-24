@@ -17,7 +17,7 @@ async function generateIndex(options) {
 			'**/*.test*',
 			'**/*.tokens*',
 			'**/*.Tokens*',
-			'**/icons/*.tsx',
+			'**/icons/components/*',
 		],
 	});
 

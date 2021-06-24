@@ -3,12 +3,13 @@ import styled from '@emotion/styled';
 import React, { ForwardedRef, forwardRef, HTMLAttributes } from 'react';
 import Colors from '~tokens/colors/Colors';
 import IconSizes from '~tokens/icon-sizes/IconSizes';
-import { IconsData } from '~tokens/icons/Icons';
+import { IconData } from '~tokens/icons/Icons';
+
 /**
  * @category Props
  */
 export interface IconProps extends Omit<HTMLAttributes<HTMLSpanElement>, 'children'> {
-	icon: IconsData;
+	icon: IconData;
 	color?: Colors;
 	size?: IconSizes;
 }
@@ -40,8 +41,9 @@ const StyledIcon = styled.span(
 		align-items: center;
 		color: ${color};
 		display: inline-flex;
-		font-size: ${size};
+		height: ${size};
 		justify-content: center;
 		user-select: none;
+		width: ${size};
 	`
 );
