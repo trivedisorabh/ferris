@@ -13,7 +13,7 @@ export const buttonCommonArgTypes = {
 };
 
 export default {
-	title: 'Form/Button/Primary',
+	title: 'General/Button/Primary',
 	component: Button,
 	argTypes: buttonCommonArgTypes,
 	includeStories: /^[A-Z]/,
