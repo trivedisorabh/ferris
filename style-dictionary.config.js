@@ -3,25 +3,29 @@
 /**
  * Style-dictionary.config.js
  */
+const fs = require('fs-extra');
 const jsonToTsEnum = require('./scripts/jsonToTsEnum');
+const path = require('path');
+const rimraf = require('rimraf');
 const StyleDictionary = require('style-dictionary');
 const { minifyDictionary } = StyleDictionary.formatHelpers;
+const svgr = require('@svgr/core').default;
 
 /**
  * Helpers
  */
 
-/* Helper to simplify filtering within files */
+// Helper to simplify filtering within files
 function getFilter(cat) {
 	return { attributes: { category: cat } };
 }
 
-/* Return the first key in passed object */
+// Return the first key in passed object
 function getCategory(obj) {
 	return Object.keys(obj)[0];
 }
 
-/* Transform the category name to PascalCase */
+// Transform the category name to PascalCase
 function toPascalCase(str) {
 	const words = str.match(/[a-z]+/gi);
 	if (!words) return '';
@@ -32,7 +36,7 @@ function toPascalCase(str) {
 		.join('');
 }
 
-/* Transform `tokens` keys to camelCase */
+// Transform `tokens` keys to camelCase
 function kebabToCamelCase(tokens) {
 	Object.keys(tokens).map((key) => {
 		if (key.includes('-')) {
@@ -51,6 +55,103 @@ function kebabToCamelCase(tokens) {
 		}
 	});
 }
+
+/**
+ * Actions
+ */
+StyleDictionary.registerAction({
+	name: 'copy_icons',
+	do: function (dictionary, config) {
+		const source = './assets/icons';
+		const destination = config.buildPath + 'icons';
+		let iconSet = '';
+		let iconsTemplate = '';
+
+		console.log('Create icon folder in src/tokens...');
+		if (fs.existsSync(destination)) rimraf.sync(destination);
+		fs.mkdirSync(destination);
+		fs.mkdirSync(destination + '/components');
+
+		console.log('Create react components from icons...');
+		fs.readdir(source, function (err, icons) {
+			icons.forEach((i) => {
+				const componentName = path.basename(i, '.svg');
+				const svgFilename = path.join(source, i);
+				const svg = fs.readFileSync(svgFilename, { encoding: 'utf-8' });
+
+				const washedSvg = svgr.sync(svg, {
+					svgo: true,
+					plugins: ['@svgr/plugin-svgo'],
+					svgoConfig: {
+						multipass: false,
+						plugins: {
+							addAttributesToSVGElement: {
+								attributes: [
+									{
+										fill: 'currentColor',
+									},
+									{
+										focusable: false,
+									},
+									{
+										height: '100%',
+									},
+									{
+										width: '100%',
+									},
+								],
+							},
+							removeAttrs: {
+								attrs: '(fill|fill-rule|stroke)',
+							},
+							removeDimensions: true,
+						},
+					},
+				});
+
+				// Create tsx file containing the svg
+				const ts = svgr.sync(
+					washedSvg,
+					{
+						expandProps: 'start',
+						ref: true,
+						typescript: true,
+					},
+					{ componentName }
+				);
+
+				// TODO: Replace next line with svgr outDir
+				fs.writeFile(`${destination}/components/${componentName}.tsx`, ts);
+
+				// Start adding to icon template for Icons.ts
+				iconSet += `${componentName}: { glyph: ${componentName} },\n`;
+				iconsTemplate += `import ${componentName} from './components/${componentName}';`;
+			});
+
+			// Create icons.ts
+			iconsTemplate += `
+				import { ForwardRefExoticComponent, SVGAttributes } from 'react';
+
+				export type IconData = {
+					glyph: ForwardRefExoticComponent<SVGAttributes<SVGSVGElement>>;
+				};
+
+				const Icons: Readonly<{
+					[key: string]: IconData;
+				}> = {
+					${iconSet}
+				}
+
+				export default Icons;
+			`;
+
+			fs.writeFile(`${destination}/Icons.ts`, iconsTemplate);
+		});
+	},
+	undo: function () {
+		// TODO: Write something to revert actions in 'do' function above
+	},
+});
 
 /**
  * Formatters
@@ -99,6 +200,7 @@ module.exports = {
 	source: ['.tmp/**/*.json'],
 	platforms: {
 		default: {
+			actions: ['copy_icons'],
 			buildPath: './src/tokens/',
 			transforms: ['attribute/cti', 'name/cti/pascal', 'color/rgb'],
 			files: [
@@ -144,6 +246,11 @@ module.exports = {
 					destination: './headings/Headings.ts',
 					format: 'custom/typescript/module-declarations',
 					filter: getFilter('heading'),
+				},
+				{
+					destination: './icon-sizes/IconSizes.ts',
+					format: 'custom/typescript/module-declarations',
+					filter: getFilter('icon-size'),
 				},
 			],
 		},
