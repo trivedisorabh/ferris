@@ -9,15 +9,16 @@ import Spacings from '~tokens/spacings/Spacings';
 export interface TextAreaProps
 	extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'children'> {
 	id: string;
+	value: string;
 }
 
 /**
  * @category Template
  */
 const TextArea = forwardRef(
-	({ id, ...rest }: TextAreaProps, ref: ForwardedRef<HTMLTextAreaElement>) => (
+	({ id, value, ...rest }: TextAreaProps, ref: ForwardedRef<HTMLTextAreaElement>) => (
 		<StyledTextArea {...rest} id={id} ref={ref}>
-			{rest.value}
+			{value}
 		</StyledTextArea>
 	)
 );

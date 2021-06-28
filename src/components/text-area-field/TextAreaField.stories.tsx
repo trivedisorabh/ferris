@@ -13,12 +13,12 @@ interface Story<T> {
 }
 
 const Template: Story<TextAreaFieldProps> = ({
-	description,
 	id,
 	label,
+	value,
+	description,
 	disabled,
 	required,
-	value,
 }: TextAreaFieldProps) => (
 	<TextAreaField
 		description={description}

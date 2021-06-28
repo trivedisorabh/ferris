@@ -12,8 +12,8 @@ interface Story<T> {
 	argTypes?: Record<string, unknown>;
 }
 
-const Template: Story<InputTextProps> = ({ id, type, ...rest }: InputTextProps) => (
-	<InputText {...rest} id={id} type={type} />
+const Template: Story<InputTextProps> = ({ id, type, value, ...rest }: InputTextProps) => (
+	<InputText {...rest} id={id} type={type} value={value} />
 );
 
 export const Default = Template.bind({});
@@ -21,5 +21,4 @@ Default.args = {
 	id: 'input-text-01',
 	placeholder: 'Input text here',
 	type: 'text',
-	value: '',
 };
