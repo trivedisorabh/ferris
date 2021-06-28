@@ -22,6 +22,18 @@ Start storybook by running:
 yarn storybook
 ```
 
+## 🪙 Tokens
+
+We use a token system where tokens are imported from the [Web Applications design system](https://skf.invisionapp.com/dsm/ab-skf/4-web-applications?mode=preview). These are then converted into TypeScript Enums that we use througout the components.
+
+If something is missing or has been updated you can run
+
+```bash
+yarn tokens:update
+```
+
+to download and refresh the tokens.
+
 ## 🎢 Workflow
 
 We use the "[git-flow](docs/adr/005-git-flow.md)" branching strategy when working in the repo. Take the following steps when you want to make a contribution:
@@ -29,6 +41,7 @@ We use the "[git-flow](docs/adr/005-git-flow.md)" branching strategy when workin
 1. Assign a GitHub issue to yourself
 2. Create a feature branch (feature/issue#\_ticket_name)
    - Push code **early** and **often**.
+   - Commit messages are linted and must follow a predefined set of rules. See [here].(#Commitlint).
    - Feature branches are allowed to be broken.
 3. Create Pull Request when done
    - Make sure your that your code meets the pre-PR checklist.
@@ -38,6 +51,20 @@ We use the "[git-flow](docs/adr/005-git-flow.md)" branching strategy when workin
    - Link related issue (if any).
    - Let the team know about the new PR and .get it reviewed together with one or more participants.
    - Merge the PR when all checks have passed.
+
+### 🆑 Commitlint
+
+All commit messages must follow the following pattern: ` <Type>(Optional scope): <Description>`.
+
+Available types are:
+
+- Feature
+- Fix
+- Docs
+- Style
+- Refactor
+- Test
+- Revert
 
 ### 📝 Pre-PR checklist
 
@@ -71,25 +98,26 @@ import Text from '~atoms/text/Text';
 
 // Exported interfaces should use `[ComponentName]` as name space.
 export interface SampleItem {
-	bar: number;
+	foo: number;
 }
 
 export interface SampleProps {
 	foo: string;
 	items: SampleItem[];
-	isSomething?: boolean;
+	bar?: boolean;
+	something?: boolean;
 }
 
 // Deconstruct props parameter.
 const Sample = ({ foo, items, isSomething }: SampleProps) => {
 	// Return a component hierarchy.
 	return (
-		<StSample isLocalProp={foo} isSomething={isSomething}>
-			{items.map(({ bar }, index) => (
-				<StItem key={index}>{bar}</StItem>
+		<StyledSample data-tpl="sample" localProp={foo} something={something}>
+			{items.map(({ foo }, index) => (
+				<StyledItem key={index}>{boolean}</StyledItem>
 			))}
 			<Foo />
-		</StSample>
+		</StyledSample>
 	);
 
 	// TODO: This is code that requires attention later on. It does not need to be fixed in the current PR.
@@ -99,26 +127,26 @@ const Sample = ({ foo, items, isSomething }: SampleProps) => {
 export default Sample;
 
 // Styled component related interfaces can extend/use prop(s) from the main component interface(s)
-type StSampleProps = Pick<SampleProps, 'isSomething'> & {
-	isStyleProp?: boolean;
+type StyledSampleProps = Pick<SampleProps, 'something'> & {
+	localProp?: boolean;
 };
 
 // We use Emotion to style the components.
 // The root element name is based on the main component name.
 // All styled components/elements are prefixed with "St" for Styled.
-const StSample = styled.div(
-	({ isLocalProp, isSomething }: StSampleProps) => css`
-		color: ${isLocalProp && 'black'};
-		opacity: ${isSomething && '0.5'};
+const StyledSample = styled.div(
+	({ localProp, something }: StyledSampleProps) => css`
+		color: ${localProps && 'black'};
+		opacity: ${something && '0.5'};
 	`
 );
 
-interface StItemProps {
+interface StyledItemProps {
 	fooBar: boolean;
 }
 
-const StItem = styled.div(
-	({ fooBar }: StItemProps) => css`
+const StyledItem = styled.div(
+	({ fooBar }: StyledItemProps) => css`
 		display: flex;
 
 		${fooBar &&

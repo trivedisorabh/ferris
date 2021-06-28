@@ -1,25 +1,31 @@
-interface Color {
-	brand: Brand;
-	core: Core;
+enum Colors {
+	black = 'rgb(0, 0, 0)',
+	white = 'rgb(255, 255, 255)',
+	blackBrand = 'rgb(39, 51, 66)',
+	blueBase = 'rgb(132, 169, 233)',
+	blueDark = 'rgb(79, 132, 224)',
+	blueDarker = 'rgb(51, 85, 145)',
+	brandBase = 'rgb(15, 88, 214)',
+	brandDark = 'rgb(12, 74, 182)',
+	brandDarker = 'rgb(9, 57, 139)',
+	grayBase = 'rgb(213, 216, 220)',
+	grayBasedark = 'rgb(199, 202, 208)',
+	grayBaselight = 'rgb(226, 228, 231)',
+	grayDark = 'rgb(170, 175, 184)',
+	grayDarker = 'rgb(128, 136, 149)',
+	grayDarkest = 'rgb(103, 111, 124)',
+	grayLight = 'rgb(235, 236, 238)',
+	grayLighter = 'rgb(246, 246, 246)',
+	grayLightest = 'rgb(248, 248, 248)',
+	greenBase = 'rgb(4, 137, 66)',
+	greenDark = 'rgb(3, 116, 56)',
+	greenDarker = 'rgb(2, 89, 42)',
+	redBase = 'rgb(204, 0, 0)',
+	redDark = 'rgb(173, 0, 0)',
+	redDarker = 'rgb(132, 0, 0)',
+	yellowBase = 'rgb(255, 228, 138)',
+	yellowDark = 'rgb(255, 215, 79)',
+	yellowDarker = 'rgb(255, 202, 21)',
 }
 
-interface Core {
-	'600': string;
-	green: string;
-}
-
-interface Brand {
-	primary: string;
-}
-
-const Color: Color = {
-	brand: {
-		primary: '#4f98a4',
-	},
-	core: {
-		'600': '#cccccc',
-		green: '#4f98a4',
-	},
-};
-
-export default Color;
+export default Colors;

@@ -52,7 +52,7 @@ describe('Button', () => {
 		});
 
 		test('Disabled', () => {
-			expect(getButtonStyles({ isDisabled: true }).backgroundColor).toBe(
+			expect(getButtonStyles({ disabled: true }).backgroundColor).toBe(
 				tokens.buttonDisabledBgColor.styles
 			);
 		});

@@ -1,7 +1,6 @@
 {
 	"extends": [
-		"stylelint-config-standard",
-		"stylelint-config-idiomatic-order"
+		"stylelint-config-standard"
 	],
 	"plugins": [
 		"stylelint-no-unsupported-browser-features",
@@ -15,6 +14,8 @@
 			"custom-properties",
 			"declarations"
 		],
+		"order/properties-alphabetical-order": true,
+		"declaration-colon-newline-after": null,
 		"indentation": "tab",
 		"no-eol-whitespace": [
 			true,
