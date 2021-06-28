@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react';
 import Spacer, { SpacerProps } from './Spacer';
 
 export default {
-	title: 'Layout/Spacer',
+	title: 'Components/Spacer',
 	component: Spacer,
 };
 

@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react';
 import Loader, { LoaderProps } from '~components/loader/Loader';
 
 export default {
-	title: 'Progress/Loader',
+	title: 'Components/Loader',
 	component: Loader,
 };
 

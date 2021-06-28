@@ -4,7 +4,7 @@ import Spacer from '~components/spacer/Spacer';
 import Row, { RowProps } from './Row';
 
 export default {
-	title: 'Layout/Row',
+	title: 'Components/Row',
 	component: Row,
 };
 

@@ -2,7 +2,7 @@ import Button from '~components/button/Button';
 import { buttonCommonArgTypes, buttonTpl } from './Button.Primary.stories';
 
 export default {
-	title: 'General/Button/Secondary',
+	title: 'Components/Buttons/Button/Secondary',
 	component: Button,
 	argTypes: {
 		...buttonCommonArgTypes,

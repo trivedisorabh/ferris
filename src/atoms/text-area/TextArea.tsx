@@ -6,7 +6,8 @@ import Spacings from '~tokens/spacings/Spacings';
 /**
  * @category Props
  */
-export interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
+export interface TextAreaProps
+	extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'children'> {
 	id: string;
 }
 
@@ -15,7 +16,9 @@ export interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElemen
  */
 const TextArea = forwardRef(
 	({ id, ...rest }: TextAreaProps, ref: ForwardedRef<HTMLTextAreaElement>) => (
-		<StyledTextArea {...rest} id={id} ref={ref} />
+		<StyledTextArea {...rest} id={id} ref={ref}>
+			{rest.value}
+		</StyledTextArea>
 	)
 );
 
