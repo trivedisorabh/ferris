@@ -6,16 +6,20 @@ import Spacings from '~tokens/spacings/Spacings';
 /**
  * @category Props
  */
-export interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
+export interface TextAreaProps
+	extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'children'> {
 	id: string;
+	value: string;
 }
 
 /**
  * @category Template
  */
 const TextArea = forwardRef(
-	({ id, ...rest }: TextAreaProps, ref: ForwardedRef<HTMLTextAreaElement>) => (
-		<StyledTextArea {...rest} id={id} ref={ref} />
+	({ id, value, ...rest }: TextAreaProps, ref: ForwardedRef<HTMLTextAreaElement>) => (
+		<StyledTextArea {...rest} id={id} ref={ref}>
+			{value}
+		</StyledTextArea>
 	)
 );
 

@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react';
 import InputTextField, { InputTextFieldProps } from './InputTextField';
 
 export default {
-	title: 'Form/InputTextField',
+	title: 'Components/InputTextField',
 	component: InputTextField,
 };
 
@@ -20,8 +20,10 @@ const Template: Story<InputTextFieldProps> = ({
 	disabled,
 	required,
 	value,
+	...rest
 }: InputTextFieldProps) => (
 	<InputTextField
+		{...rest}
 		description={description}
 		disabled={disabled}
 		id={id}

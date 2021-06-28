@@ -3,7 +3,7 @@ import Icons from '~tokens/icons/Icons';
 import Icon, { IconProps } from './Icon';
 
 export default {
-	title: 'General/Icon',
+	title: 'Components/Icon',
 	component: Icon,
 };
 

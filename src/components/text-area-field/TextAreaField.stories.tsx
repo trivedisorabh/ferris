@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react';
 import TextAreaField, { TextAreaFieldProps } from './TextAreaField';
 
 export default {
-	title: 'Form/TextAreaField',
+	title: 'Components/TextAreaField',
 	component: TextAreaField,
 };
 
@@ -13,12 +13,12 @@ interface Story<T> {
 }
 
 const Template: Story<TextAreaFieldProps> = ({
-	description,
 	id,
 	label,
+	value,
+	description,
 	disabled,
 	required,
-	value,
 }: TextAreaFieldProps) => (
 	<TextAreaField
 		description={description}

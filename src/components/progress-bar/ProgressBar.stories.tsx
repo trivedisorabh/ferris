@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react';
 import ProgressBar, { ProgressBarProps } from '~components/progress-bar/ProgressBar';
 
 export default {
-	title: 'Progress/ProgressBar',
+	title: 'Components/ProgressBar',
 	component: ProgressBar,
 };
 

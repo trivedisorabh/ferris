@@ -12,12 +12,12 @@ export interface InputTextFieldProps extends HTMLAttributes<HTMLDivElement> {
 	id: string;
 	label: string;
 	type: InputTextProps['type'];
+	value: string;
 	description?: string;
 	disabled?: boolean;
 	inputTextProps?: Partial<InputTextProps>;
 	labelProps?: Partial<LabelProps>;
 	required?: boolean;
-	value?: string;
 }
 
 /**
@@ -29,12 +29,12 @@ const InputTextField = forwardRef(
 			id,
 			label,
 			type,
+			value,
 			description,
 			disabled,
 			labelProps,
 			inputTextProps,
 			required,
-			value,
 			...rest
 		}: InputTextFieldProps,
 		ref: ForwardedRef<HTMLDivElement>
@@ -43,7 +43,7 @@ const InputTextField = forwardRef(
 			<Label {...labelProps} id={id} required={required}>
 				{label}
 			</Label>
-			{description && <StDescription>{description}</StDescription>}
+			{description && <StyledDescription>{description}</StyledDescription>}
 			<InputText
 				{...inputTextProps}
 				id={id}
@@ -70,6 +70,6 @@ const StyledInputTextField = styled.div(
 	`
 );
 
-const StDescription = styled.div`
+const StyledDescription = styled.div`
 	color: ${Colors.grayDarkest};
 `;

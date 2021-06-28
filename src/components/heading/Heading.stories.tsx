@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react';
 import Heading, { HeadingProps } from '~components/heading/Heading';
 
 export default {
-	title: 'Typography/Heading',
+	title: 'Components/Heading',
 	component: Heading,
 };
 
