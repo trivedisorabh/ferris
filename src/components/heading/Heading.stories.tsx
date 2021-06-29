@@ -12,8 +12,10 @@ interface Story<T> {
 	argTypes?: Record<string, unknown>;
 }
 
-const Template: Story<HeadingProps> = ({ as, children }: HeadingProps) => (
-	<Heading as={as}>{children}</Heading>
+const Template: Story<HeadingProps> = ({ as, children, ...rest }: HeadingProps) => (
+	<Heading {...rest} as={as}>
+		{children}
+	</Heading>
 );
 
 export const H1 = Template.bind({});

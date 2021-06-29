@@ -1,4 +1,6 @@
 import React, { ReactElement } from 'react';
+import Colors from '~tokens/colors/Colors';
+import IconSizes from '~tokens/icon-sizes/IconSizes';
 import Icons from '~tokens/icons/Icons';
 import Icon, { IconProps } from './Icon';
 
@@ -19,3 +21,13 @@ const Template: Story<IconProps> = ({ icon = Icons.Check, color, size }: IconPro
 
 export const Default = Template.bind({});
 Default.args = {};
+
+export const Colored = Template.bind({});
+Colored.args = {
+	color: Colors.redBase,
+};
+
+export const Large = Template.bind({});
+Large.args = {
+	size: IconSizes.lg,
+};
