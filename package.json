@@ -1,6 +1,6 @@
 {
 	"name": "@skf/ferris",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "The Ferris UI component library",
 	"license": "UNLICENSED",
 	"main": "dist/index.js",
