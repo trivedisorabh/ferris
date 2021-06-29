@@ -20,10 +20,8 @@ const Template: Story<InputTextFieldProps> = ({
 	disabled,
 	required,
 	value,
-	...rest
 }: InputTextFieldProps) => (
 	<InputTextField
-		{...rest}
 		description={description}
 		disabled={disabled}
 		id={id}

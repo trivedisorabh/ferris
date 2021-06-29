@@ -12,7 +12,7 @@ export interface InputTextFieldProps extends HTMLAttributes<HTMLDivElement> {
 	id: string;
 	label: string;
 	type: InputTextProps['type'];
-	value: string;
+	value?: string;
 	description?: string;
 	disabled?: boolean;
 	inputTextProps?: Partial<InputTextProps>;

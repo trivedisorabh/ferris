@@ -6,11 +6,11 @@ describe('Row', () => {
 	test('The row has children', () => {
 		const { container } = render(
 			<Row>
-				<div></div>
-				<div></div>
+				<div className="child"></div>
+				<div className="child"></div>
 			</Row>
 		);
 
-		expect(container.querySelector('div')).toBeTruthy();
+		expect(container.querySelectorAll('.child').length).toBe(2);
 	});
 });
