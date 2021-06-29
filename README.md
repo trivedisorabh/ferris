@@ -157,6 +157,10 @@ const StyledItem = styled.div(
 );
 ```
 
+## 🛴 Sample app
+
+There is a separate repository where we make use of the ferris ui components in more of a real world setting. It can be found here: https://github.com/SKF/react-sample-app/
+
 ## 🚧 Tests
 
 We continuously run tests to ensure that the components look and behave the way they're supposed to.
