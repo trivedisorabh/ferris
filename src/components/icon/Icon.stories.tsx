@@ -7,6 +7,21 @@ import Icon, { IconProps } from './Icon';
 export default {
 	title: 'Components/Icon',
 	component: Icon,
+	argTypes: {
+		color: {
+			defaultValue: Colors.blackBrand,
+			control: { type: 'select', options: Colors },
+		},
+		icon: {
+			defaultValue: Object.keys(Icons)[0],
+			control: { type: 'select', options: Object.keys(Icons) },
+			mapping: Icons,
+		},
+		size: {
+			defaultValue: IconSizes.md,
+			control: { type: 'radio', options: IconSizes },
+		},
+	},
 };
 
 interface Story<T> {
@@ -15,7 +30,7 @@ interface Story<T> {
 	argTypes?: Record<string, unknown>;
 }
 
-const Template: Story<IconProps> = ({ icon = Icons.Check, color, size }: IconProps) => (
+const Template: Story<IconProps> = ({ icon, color, size }: IconProps) => (
 	<Icon icon={icon} color={color} size={size} />
 );
 
@@ -24,7 +39,7 @@ Default.args = {};
 
 export const Colored = Template.bind({});
 Colored.args = {
-	color: Colors.redBase,
+	color: Colors.blueDarker,
 };
 
 export const Large = Template.bind({});
