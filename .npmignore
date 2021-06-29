@@ -1,0 +1,16 @@
+# Ignore every file in the repo
+/*
+
+# Then unignore the dist folder
+!/dist
+
+# Then re-ignore unwanted files
+*.test.js
+*.test.js.map
+*.test.d.ts
+
+*.stories.js
+*.stories.js.map
+*.stories.d.ts
+
+tsconfig.tsbuildinfo

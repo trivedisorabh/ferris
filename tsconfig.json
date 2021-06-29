@@ -24,7 +24,11 @@
 		},
 		"sourceMap": true,
 		"strict": true,
-		"target": "es2018"
+		"target": "es2018",
+		"plugins": [
+			{ "transform": "typescript-transform-paths" },
+			{ "transform": "typescript-transform-paths", "afterDeclarations": true }
+		]
 	},
 	"include": ["./src/**/*"],
 	"exclude": ["node_modules"]

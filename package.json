@@ -1,12 +1,21 @@
 {
 	"name": "@skf/ferris",
-	"version": "0.0.5",
-	"description": "UI component library",
+	"version": "0.1.0",
+	"description": "The Ferris UI component library",
 	"license": "UNLICENSED",
-	"private": true,
+	"main": "dist/index.js",
+	"module": "dist/index.js",
+	"homepage": "https://github.com/SKF/ferris",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/SKF/ferris.git"
+	},
+	"publishConfig": {
+		"registry": "https://npm.pkg.github.com"
+	},
 	"scripts": {
 		"build-storybook": "build-storybook",
-		"build": "yarn tokens:build && yarn generate-index && tsc",
+		"build": "yarn tokens:build && yarn generate-index && ttsc",
 		"chromatic": "chromatic",
 		"format:eslint": "eslint --ext .js,.ts,.tsx . --fix --ignore-path .gitignore",
 		"format:prettier": "prettier \"**/*.{js,ts,tsx}\" --write --ignore-path .gitignore",
@@ -65,7 +74,9 @@
 		"stylelint-order": "^4.1.0",
 		"ts-jest": "^27.0.1",
 		"tsconfig-paths-webpack-plugin": "^3.5.1",
-		"typescript": "4.2.4"
+		"ttypescript": "^1.5.12",
+		"typescript": "4.2.4",
+		"typescript-transform-paths": "^3.0.1"
 	},
 	"lint-staged": {
 		"*.{js,ts,tsx}": [
