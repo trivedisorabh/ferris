@@ -9,7 +9,7 @@ import Spacings from '~tokens/spacings/Spacings';
 export interface TextAreaProps
 	extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'children'> {
 	id: string;
-	value: string;
+	value?: string;
 }
 
 /**
