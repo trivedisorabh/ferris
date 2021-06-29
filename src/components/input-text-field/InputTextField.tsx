@@ -11,13 +11,13 @@ import Colors from '~tokens/colors/Colors';
 export interface InputTextFieldProps extends HTMLAttributes<HTMLDivElement> {
 	id: string;
 	label: string;
-	type: InputTextProps['type'];
-	value: string;
+	value?: string;
 	description?: string;
 	disabled?: boolean;
 	inputTextProps?: Partial<InputTextProps>;
 	labelProps?: Partial<LabelProps>;
 	required?: boolean;
+	type?: InputTextProps['type'];
 }
 
 /**
@@ -28,7 +28,7 @@ const InputTextField = forwardRef(
 		{
 			id,
 			label,
-			type,
+			type = 'text',
 			value,
 			description,
 			disabled,
