@@ -26,14 +26,14 @@ type InputTextTypes = Extract<
 
 export interface InputTextProps extends InputHTMLAttributes<HTMLInputElement> {
 	id: string;
-	type: InputTextTypes;
+	type?: InputTextTypes;
 }
 
 /**
  * @category Template
  */
 const InputText = forwardRef(
-	({ id, type, ...rest }: InputTextProps, ref: ForwardedRef<HTMLInputElement>) => (
+	({ id, type = 'text', ...rest }: InputTextProps, ref: ForwardedRef<HTMLInputElement>) => (
 		<StyledInputText {...rest} id={id} ref={ref} type={type} />
 	)
 );
