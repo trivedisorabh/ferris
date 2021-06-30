@@ -1,11 +1,62 @@
-import React, { ReactElement } from 'react';
+import React, { CSSProperties, ReactElement } from 'react';
 import Button from '~components/button/Button';
 import Spacer from '~components/spacer/Spacer';
 import Row, { RowProps } from './Row';
 
+const alignX: CSSProperties['justifyContent'][] = [
+	'-moz-initial',
+	'center',
+	'end',
+	'flex-end',
+	'flex-start',
+	'inherit',
+	'initial',
+	'left',
+	'normal',
+	'revert',
+	'right',
+	'space-around',
+	'space-between',
+	'space-evenly',
+	'start',
+	'stretch',
+	'unset',
+];
+
+const alignY: CSSProperties['alignItems'][] = [
+	'baseline',
+	'center',
+	'end',
+	'flex-end',
+	'flex-start',
+	'inherit',
+	'initial',
+	'normal',
+	'revert',
+	'self-end',
+	'self-start',
+	'start',
+	'stretch',
+	'unset',
+];
+
 export default {
 	title: 'Components/Row',
 	component: Row,
+	argTypes: {
+		alignX: {
+			description:
+				'Supports all official values: https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content',
+			defaultValue: 'normal',
+			control: { type: 'select', options: alignX },
+		},
+		alignY: {
+			description:
+				'Supports all official values: https://developer.mozilla.org/en-US/docs/Web/CSS/align-items',
+			defaultValue: 'normal',
+			control: { type: 'select', options: alignY },
+		},
+	},
 };
 
 interface Story<T> {
