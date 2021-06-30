@@ -65,6 +65,7 @@ Available types are:
 - Fix
 - Refactor
 - Revert
+- Scripts
 - Style
 - Test
 
