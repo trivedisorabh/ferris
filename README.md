@@ -58,13 +58,15 @@ All commit messages must follow the following pattern: ` <Type>(Optional scope):
 
 Available types are:
 
+- Build
+- Config
+- Docs
 - Feature
 - Fix
-- Docs
-- Style
 - Refactor
-- Test
 - Revert
+- Style
+- Test
 
 ### 📝 Pre-PR checklist
 
