@@ -65,6 +65,8 @@ Available types are:
 - Refactor
 - Test
 - Revert
+- Build
+- Config
 
 ### 📝 Pre-PR checklist
 
