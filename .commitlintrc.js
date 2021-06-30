@@ -3,7 +3,11 @@ module.exports = {
 	rules: {
 		'scope-case': [2, 'always', 'sentence-case'],
 		'subject-case': [2, 'always', 'sentence-case'],
-		'type-enum': [2, 'always', ['Feature', 'Fix', 'Docs', 'Style', 'Refactor', 'Test', 'Revert']],
+		'type-enum': [
+			2,
+			'always',
+			['Build', 'Config', 'Docs', 'Feature', 'Fix', 'Refactor', 'Revert', 'Style', 'Test'],
+		],
 		'type-case': [2, 'always', 'sentence-case'],
 	},
 };
