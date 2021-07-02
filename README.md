@@ -2,6 +2,52 @@
 
 The Ferris UI Library is a collection of components that is meant to facilitate the creation of web applications across the global SKF organization. It is based on the [Web Applications design system](https://skf.invisionapp.com/dsm/ab-skf/4-web-applications?mode=preview). Using Ferris will give apps a SKF look and feel, and will let users focus on building business logic and features, instead of worrying about the basics.
 
+# 🏃 Getting started
+
+## 💻 Pre-requisities
+
+Your project needs to be based on react.
+
+## 👶 Installation
+
+### NPM
+
+```bash
+npm install @skf/ferris
+```
+
+### Yarn
+
+```bash
+yarn add @skf/ferris
+```
+
+### Add to package.json
+
+```json
+"@skf/ferris": "0.1.1"
+```
+
+## 👱‍♂️ Adding your first component
+
+Start by importing the correct component from ferris like so:
+
+```tsx
+import { Sample } from '@skf/ferris';
+```
+
+Then use the component like so:
+
+```tsx
+function App() {
+	return (
+		<div className="App">
+			<Sample foo="bar"></Sample>
+		</div>
+	);
+}
+```
+
 # 👩‍💻 Developing and contributing
 
 ## 🚚 Install dependencies
@@ -106,7 +152,7 @@ export interface SampleItem {
 
 export interface SampleProps {
 	foo: string;
-	items: SampleItem[];
+	items?: SampleItem[];
 	bar?: boolean;
 	something?: boolean;
 }
