@@ -6,7 +6,7 @@ The Ferris UI Library is a collection of components that is meant to facilitate 
 
 ## 💻 Pre-requisities
 
-Your project needs to be based on react.
+Your project needs to be based on [react](https://reactjs.org/).
 
 ## 👶 Installation
 
@@ -25,7 +25,7 @@ yarn add @skf/ferris
 ### Add to package.json
 
 ```json
-"@skf/ferris": "0.1.1"
+"@skf/ferris": "^0.1.1"
 ```
 
 ## 👱‍♂️ Adding your first component
