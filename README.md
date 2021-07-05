@@ -1,6 +1,16 @@
 # 🎡 SKF Ferris UI Library
 
-The Ferris UI Library is a collection of components that is meant to facilitate the creation of web applications across the global SKF organization. It is based on the [Web Applications design system](https://skf.invisionapp.com/dsm/ab-skf/4-web-applications?mode=preview). Using Ferris will give apps a SKF look and feel, and will let users focus on building business logic and features, instead of worrying about the basics.
+The Ferris UI Library is a collection of components that is meant to facilitate the creation of web applications across the global SKF organization. Using Ferris will give apps a SKF look and feel, and will let users focus on building business logic and features, instead of worrying about the basics.
+
+# 🔤 Components
+
+## 📕 Storybook
+
+We use Storybook to document and showcase our components in the best way possible. This is used mainly as a technical documentation for how to use the components. The main branch of our Storybook can be found [here](https://main--607402252862f9002158f57b.chromatic.com/).
+
+## 🎨 DSM
+
+SKF makes use of the InVision Design System Manager (also known as DSM) to host design related docs. Ferris is based on the [Web Applications](https://skf.invisionapp.com/dsm/ab-skf/4-web-applications?mode=preview) DSM. Storybook docs can also be found in there on a per-component basis.
 
 # 🏃 Getting started
 
