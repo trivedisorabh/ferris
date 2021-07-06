@@ -20,6 +20,17 @@ Your project needs to be based on [react](https://reactjs.org/).
 
 ## 👶 Installation
 
+### .npmrc
+
+Since we aren't hosted in the public npm repo you need to start by adding an .npmrc file to your home folder (~/ on Linux+Mac or C:/Users/\<username\> on Windows) containing the following:
+
+```
+@skf:registry=https://npm.pkg.github.com/
+//npm.pkg.github.com/:_authToken=<github-authtoken>
+```
+
+Notice the '\<github-authtoken\>' part at the end. This should be replaced with a valid GitHub access token which is explained in detail how to request here: https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token
+
 ### NPM
 
 ```bash
@@ -43,7 +54,7 @@ yarn add @skf/ferris
 Start by importing the correct component from ferris like so:
 
 ```tsx
-import { Sample } from '@skf/ferris';
+import { Button } from '@skf/ferris';
 ```
 
 Then use the component like so:
@@ -52,7 +63,7 @@ Then use the component like so:
 function App() {
 	return (
 		<div className="App">
-			<Sample foo="bar"></Sample>
+			<Button onClick="() => { alert('Button clicked!')">My Button</Button>
 		</div>
 	);
 }
