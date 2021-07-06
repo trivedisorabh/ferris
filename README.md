@@ -1,6 +1,73 @@
 # 🎡 SKF Ferris UI Library
 
-The Ferris UI Library is a collection of components that is meant to facilitate the creation of web applications across the global SKF organization. It is based on the [Web Applications design system](https://skf.invisionapp.com/dsm/ab-skf/4-web-applications?mode=preview). Using Ferris will give apps a SKF look and feel, and will let users focus on building business logic and features, instead of worrying about the basics.
+The Ferris UI Library is a collection of components that is meant to facilitate the creation of web applications across the global SKF organization. Using Ferris will give apps a SKF look and feel, and will let users focus on building business logic and features, instead of worrying about the basics.
+
+# 🔤 Components
+
+## 📕 Storybook
+
+We use Storybook to document and showcase our components in the best way possible. This is used mainly as a technical documentation for how to use the components. The main branch of our Storybook can be found [here](https://main--607402252862f9002158f57b.chromatic.com/).
+
+## 🎨 DSM
+
+SKF makes use of the InVision Design System Manager (also known as DSM) to host design related docs. Ferris is based on the [Web Applications](https://skf.invisionapp.com/dsm/ab-skf/4-web-applications?mode=preview) DSM. Storybook docs can also be found in there on a per-component basis.
+
+# 🏃 Getting started
+
+## 💻 Pre-requisities
+
+Your project needs to be based on [react](https://reactjs.org/).
+
+## 👶 Installation
+
+### .npmrc
+
+Since we aren't hosted in the public npm repo you need to start by adding an .npmrc file to your home folder (~/ on Linux+Mac or C:/Users/\<username\> on Windows) containing the following:
+
+```
+@skf:registry=https://npm.pkg.github.com/
+//npm.pkg.github.com/:_authToken=<github-authtoken>
+```
+
+Notice the '\<github-authtoken\>' part at the end. This should be replaced with a valid GitHub access token which is explained in detail how to request here: https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token
+
+### NPM
+
+```bash
+npm install @skf/ferris
+```
+
+### Yarn
+
+```bash
+yarn add @skf/ferris
+```
+
+### Add to package.json
+
+```json
+"@skf/ferris": "^0.1.1"
+```
+
+## 👱‍♂️ Adding your first component
+
+Start by importing the correct component from ferris like so:
+
+```tsx
+import { Button } from '@skf/ferris';
+```
+
+Then use the component like so:
+
+```tsx
+function App() {
+	return (
+		<div className="App">
+			<Button onClick="() => { alert('Button clicked!')">My Button</Button>
+		</div>
+	);
+}
+```
 
 # 👩‍💻 Developing and contributing
 
@@ -106,7 +173,7 @@ export interface SampleItem {
 
 export interface SampleProps {
 	foo: string;
-	items: SampleItem[];
+	items?: SampleItem[];
 	bar?: boolean;
 	something?: boolean;
 }
