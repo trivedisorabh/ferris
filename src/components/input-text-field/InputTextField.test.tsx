@@ -1,5 +1,6 @@
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { axe } from 'jest-axe';
 import React from 'react';
 import InputTextField from '~components/input-text-field/InputTextField';
 
@@ -21,5 +22,11 @@ describe('InputTextField', () => {
 		);
 		const inputElement = getByLabelText('inputTextField') as HTMLInputElement;
 		expect(inputElement.type).toBe('text');
+	});
+
+	test('It passes automatic accesibility tests', async () => {
+		const { container } = render(<InputTextField label="inputTextField" id="myInputTextField" />);
+
+		expect(await axe(container)).toHaveNoViolations();
 	});
 });

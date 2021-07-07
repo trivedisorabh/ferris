@@ -1,4 +1,5 @@
 import { fireEvent, render } from '@testing-library/react';
+import { axe } from 'jest-axe';
 import React from 'react';
 import Button from './Button';
 
@@ -11,5 +12,11 @@ describe('Button', () => {
 		fireEvent.click(buttonElement);
 
 		expect(isClicked).toBe(true);
+	});
+
+	test('It passes automatic accesibility tests', async () => {
+		const { container } = render(<Button onClick={() => ({})}>I am button</Button>);
+
+		expect(await axe(container)).toHaveNoViolations();
 	});
 });

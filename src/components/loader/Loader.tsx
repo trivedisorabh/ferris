@@ -40,7 +40,7 @@ export default Loader;
  * @category Helpers
  */
 const getCircle = (cx: number, begin: number) => (
-	<circle fill={Colors.blueDark} stroke="none" cx={cx} cy="26" r="6">
+	<circle fill={Colors.blueDark} stroke="none" cx={cx} cy="26" r="6" key={cx}>
 		<animate
 			attributeName="opacity"
 			dur="1s"

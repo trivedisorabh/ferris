@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react';
+import { axe } from 'jest-axe';
 import React from 'react';
 import Heading, { HeadingLevel } from './Heading';
 
@@ -16,5 +17,11 @@ describe('Heading', () => {
 		const { container } = render(<Heading as="h1">I am heading</Heading>);
 
 		expect(container.querySelector('h1')?.innerHTML).toBe('I am heading');
+	});
+
+	test('It passes automatic accesibility tests', async () => {
+		const { container } = render(<Heading as="h1">I am heading</Heading>);
+
+		expect(await axe(container)).toHaveNoViolations();
 	});
 });
