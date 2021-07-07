@@ -8,4 +8,5 @@ module.exports = {
 		'~components/(.*)': ['<rootDir>/src/components/$1'],
 		'~atoms/(.*)': ['<rootDir>/src/atoms/$1'],
 	},
+	setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
 };
