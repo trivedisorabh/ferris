@@ -1,4 +1,5 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
+import { Story } from '~common/interfaces';
 import Colors from '~tokens/colors/Colors';
 import IconSizes from '~tokens/icon-sizes/IconSizes';
 import Icons from '~tokens/icons/Icons';
@@ -23,12 +24,6 @@ export default {
 		},
 	},
 };
-
-interface Story<T> {
-	(args: T): ReactElement;
-	args?: Partial<T>;
-	argTypes?: Record<string, unknown>;
-}
 
 const Template: Story<IconProps> = ({ icon, color, size }: IconProps) => (
 	<Icon icon={icon} color={color} size={size} />

@@ -1,16 +1,11 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
+import { Story } from '~common/interfaces';
 import Heading, { HeadingProps } from '~components/heading/Heading';
 
 export default {
 	title: 'Components/Heading',
 	component: Heading,
 };
-
-interface Story<T> {
-	(args: T): ReactElement;
-	args?: Partial<T>;
-	argTypes?: Record<string, unknown>;
-}
 
 const Template: Story<HeadingProps> = ({ as, children, ...rest }: HeadingProps) => (
 	<Heading {...rest} as={as}>

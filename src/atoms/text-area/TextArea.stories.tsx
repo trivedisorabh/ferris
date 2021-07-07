@@ -1,16 +1,11 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import TextArea, { TextAreaProps } from '~atoms/text-area/TextArea';
+import { Story } from '~common/interfaces';
 
 export default {
 	title: 'Atoms/TextArea',
 	component: TextArea,
 };
-
-interface Story<T> {
-	(args: T): ReactElement;
-	args?: Partial<T>;
-	argTypes?: Record<string, unknown>;
-}
 
 const Template: Story<TextAreaProps> = ({ id, value, ...rest }: TextAreaProps) => (
 	<TextArea {...rest} id={id} value={value} />

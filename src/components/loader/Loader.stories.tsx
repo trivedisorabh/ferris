@@ -1,16 +1,11 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
+import { Story } from '~common/interfaces';
 import Loader, { LoaderProps } from '~components/loader/Loader';
 
 export default {
 	title: 'Components/Loader',
 	component: Loader,
 };
-
-interface Story<T> {
-	(args: T): ReactElement;
-	args?: Partial<T>;
-	argTypes?: Record<string, unknown>;
-}
 
 const Template: Story<LoaderProps> = ({ small }: LoaderProps) => <Loader small={small} />;
 

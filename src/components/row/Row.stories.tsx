@@ -1,4 +1,5 @@
-import React, { CSSProperties, ReactElement } from 'react';
+import React, { CSSProperties } from 'react';
+import { Story } from '~common/interfaces';
 import Button from '~components/button/Button';
 import Spacer from '~components/spacer/Spacer';
 import Row, { RowProps } from './Row';
@@ -58,12 +59,6 @@ export default {
 		},
 	},
 };
-
-interface Story<T> {
-	(args: T): ReactElement;
-	args?: Partial<T>;
-	argTypes?: Record<string, unknown>;
-}
 
 const Template: Story<RowProps> = ({ children, alignX, alignY, reversed }: RowProps) => (
 	<Row alignX={alignX} alignY={alignY} reversed={reversed}>

@@ -1,16 +1,11 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
+import { Story } from '~common/interfaces';
 import ProgressBar, { ProgressBarProps } from '~components/progress-bar/ProgressBar';
 
 export default {
 	title: 'Components/ProgressBar',
 	component: ProgressBar,
 };
-
-interface Story<T> {
-	(args: T): ReactElement;
-	args?: Partial<T>;
-	argTypes?: Record<string, unknown>;
-}
 
 const Template: Story<ProgressBarProps> = ({ value, animated }: ProgressBarProps) => (
 	<ProgressBar value={value} animated={animated} />

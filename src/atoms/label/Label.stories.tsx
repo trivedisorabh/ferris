@@ -1,16 +1,11 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import Label, { LabelProps } from '~atoms/label/Label';
+import { Story } from '~common/interfaces';
 
 export default {
 	title: 'Atoms/Label',
 	component: Label,
 };
-
-interface Story<T> {
-	(args: T): ReactElement;
-	args?: Partial<T>;
-	argTypes?: Record<string, unknown>;
-}
 
 const Template: Story<LabelProps> = ({ children, id, required, ...rest }: LabelProps) => (
 	<Label {...rest} id={id} required={required}>

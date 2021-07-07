@@ -1,16 +1,11 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
+import { Story } from '~common/interfaces';
 import InputTextField, { InputTextFieldProps } from './InputTextField';
 
 export default {
 	title: 'Components/InputTextField',
 	component: InputTextField,
 };
-
-interface Story<T> {
-	(args: T): ReactElement;
-	args?: Partial<T>;
-	argTypes?: Record<string, unknown>;
-}
 
 const Template: Story<InputTextFieldProps> = ({
 	description,

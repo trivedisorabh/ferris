@@ -1,4 +1,5 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
+import { Story } from '~common/interfaces';
 import Button, { ButtonProps } from './Button';
 
 export const buttonCommonArgTypes = {
@@ -18,12 +19,6 @@ export default {
 	argTypes: buttonCommonArgTypes,
 	includeStories: /^[A-Z]/,
 };
-
-export interface Story<T> {
-	(args: T): ReactElement;
-	args?: Partial<T>;
-	argTypes?: Record<string, unknown>;
-}
 
 export const buttonTpl: Story<ButtonProps> = ({
 	children,

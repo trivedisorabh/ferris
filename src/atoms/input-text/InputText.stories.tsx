@@ -1,16 +1,11 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import InputText, { InputTextProps } from '~atoms/input-text/InputText';
+import { Story } from '~common/interfaces';
 
 export default {
 	title: 'Atoms/InputText',
 	component: InputText,
 };
-
-interface Story<T> {
-	(args: T): ReactElement;
-	args?: Partial<T>;
-	argTypes?: Record<string, unknown>;
-}
 
 const Template: Story<InputTextProps> = ({ id, type, value, ...rest }: InputTextProps) => (
 	<InputText {...rest} id={id} type={type} value={value} />
