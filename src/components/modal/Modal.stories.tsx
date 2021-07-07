@@ -13,8 +13,10 @@ const Template: Story<ModalProps> = ({ open }: ModalProps) => {
 
 	return (
 		<>
-			<Button onClick={() => setIsOpen(!isOpen)}>Toggle Modal</Button>
-			<Modal open={isOpen} />
+			<Button onClick={() => setIsOpen(true)}>Open Modal</Button>
+			<Modal open={isOpen} onClose={() => setIsOpen(false)}>
+				This is teh content of the modal
+			</Modal>
 		</>
 	);
 };
