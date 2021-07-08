@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
-import React, { ForwardedRef, forwardRef, HTMLAttributes } from 'react';
+import React, { HTMLAttributes } from 'react';
+import ReactDOM from 'react-dom';
 import Colors from '~tokens/colors/Colors';
 import Spacings from '~tokens/spacings/Spacings';
 
@@ -8,20 +9,25 @@ export interface ModalProps extends HTMLAttributes<HTMLDivElement> {
 	onClose?: () => void;
 }
 
-const Modal = forwardRef(
-	({ open, onClose, children }: ModalProps, ref: ForwardedRef<HTMLDivElement>) => {
-		if (!open) return null;
+const Modal = ({ open, onClose, children }: ModalProps) => {
+	if (!open) return null;
 
-		return (
-			<ModalBackground ref={ref}>
-				<ModalWindow>
-					{onClose && <button onClick={onClose}>close</button>}
-					{children}
-				</ModalWindow>
-			</ModalBackground>
-		);
+	const bodyElement = document.querySelector('body');
+	if (!bodyElement) {
+		console.error('The modal component requires a body tag in the document.');
+		return null;
 	}
-);
+
+	return ReactDOM.createPortal(
+		<ModalBackground>
+			<ModalWindow>
+				{onClose && <button onClick={onClose}>close</button>}
+				{children}
+			</ModalWindow>
+		</ModalBackground>,
+		bodyElement
+	);
+};
 
 const ModalBackground = styled.div`
 	background-color: ${Colors.black};
