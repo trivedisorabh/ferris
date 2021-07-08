@@ -2,28 +2,7 @@
 
 Status of the components that will represented in DSM.
 
-## For the Beta
-
-| Name in DSM      | Name in Ferris         | Variants                       | Coded | Approved | Unit tests | Stories | WCAG rating | Uses tokens | Comment                                  |
-| ---------------- | ---------------------- | ------------------------------ | :---: | :------: | :--------: | :-----: | :---------: | :---------: | ---------------------------------------- |
-| Button           | `<Button>`             | Primary, Secondary, (Tertiary) |  ✅   |    ❌    |     ✅     |   ✅    |     ❌      |     ❌      |                                          |
-| Checkbox         | `<InputCheckboxField>` |                                |  ❌   |    ❌    |     ❌     |   ❌    |     ❌      |     ❌      |                                          |
-| Heading          | `<Heading>`            | h1, h2, h3, h4, (h5+)          |  ✅   |    ❌    |     ✅     |   ✅    |     ❌      |     ✅      |                                          |
-| Icon             | `<Icon>`               |                                |  ✅   |    ❌    |     ✅     |   ✅    |     ❌      |     ✅      |                                          |
-| Input, number    | `<InputNumberField>`   |                                |  ❌   |    ❌    |     ❌     |   ❌    |     ❌      |     ❌      |                                          |
-| Input, search    | `<InputSearchField>`   |                                |  ❌   |    ❌    |     ❌     |   ❌    |     ❌      |     ❌      |                                          |
-| Input, text      | `<InputTextField>`     |                                |  ✅   |    ❌    |     ✅     |   ✅    |     ❌      |     ✅      |                                          |
-| Input, text area | `<TextAreaField>`      |                                |  ✅   |    ❌    |     ✅     |   ✅    |     ❌      |     ✅      |                                          |
-| Link             | `<Link>`               |                                |  ❌   |    ❌    |     ❌     |   ❌    |     ❌      |     ❌      |                                          |
-| Loader           | `<Loader>`             | Dots, (Spinner)                |  ✅   |    ❌    |     ✅     |   ✅    |     ❌      |     ✅      |                                          |
-| Modal            | `<Modal>`              |                                |  ❌   |    ❌    |     ❌     |   ❌    |     ❌      |     ❌      |                                          |
-| Progress bar     | `<ProgressBar>`        |                                |  ✅   |    ❌    |     ✅     |   ✅    |     ❌      |     ✅      |                                          |
-| Radio            | `<InputRadioField>`    |                                |  ❌   |    ❌    |     ❌     |   ❌    |     ❌      |     ❌      |                                          |
-| Row              | `<Row>`                |                                |  ✅   |    ❌    |     ✅     |   ✅    |     N/A     |     N/A     |                                          |
-| Select           | `<SelectField>`        |                                |  ❌   |    ❌    |     ❌     |   ❌    |     ❌      |     ❌      | Complex, probably requires 3rd party lib |
-| Spacer           | `<Spacer>`             | (Divider)                      |  ✅   |    ❌    |    N/A     |   ✅    |     N/A     |     ✅      |                                          |
-
-## For the future
+## Components for the future
 
 | Name in DSM     | Name in Ferris         | Variants                           | Coded | Approved | Unit tests | Stories | Accessible | Uses tokens | Comment                                                  |
 | --------------- | ---------------------- | ---------------------------------- | :---: | :------: | :--------: | :-----: | :--------: | ----------- | -------------------------------------------------------- |
