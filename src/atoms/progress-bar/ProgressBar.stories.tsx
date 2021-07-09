@@ -1,8 +1,8 @@
 import React, { ReactElement } from 'react';
-import ProgressBar, { ProgressBarProps } from '~components/progress-bar/ProgressBar';
+import ProgressBar, { ProgressBarProps } from '~atoms/progress-bar/ProgressBar';
 
 export default {
-	title: 'Components/ProgressBar',
+	title: 'Atoms/ProgressBar',
 	component: ProgressBar,
 };
 

@@ -1,12 +1,11 @@
 import { render } from '@testing-library/react';
 import { axe } from 'jest-axe';
 import React from 'react';
-import Spacer from '~components/spacer/Spacer';
-import Spacings from '~tokens/spacings/Spacings';
+import Loader from '~atoms/loader/Loader';
 
 describe('Loader', () => {
 	test('It passes automatic accesibility tests', async () => {
-		const { container } = render(<Spacer spacing={Spacings.md} />);
+		const { container } = render(<Loader />);
 
 		expect(await axe(container)).toHaveNoViolations();
 	});

@@ -8,37 +8,40 @@
 /**
  * Atoms
  */
+export { default as Button } from './atoms/button/Button';
+export type { ButtonProps } from './atoms/button/Button';
+export { default as Heading } from './atoms/heading/Heading';
+export type { HeadingProps } from './atoms/heading/Heading';
+export { default as Icon } from './atoms/icon/Icon';
+export type { IconProps } from './atoms/icon/Icon';
 export { default as InputText } from './atoms/input-text/InputText';
 export type { InputTextProps } from './atoms/input-text/InputText';
 export { default as Label } from './atoms/label/Label';
 export type { LabelProps } from './atoms/label/Label';
+export { default as Loader } from './atoms/loader/Loader';
+export type { LoaderProps } from './atoms/loader/Loader';
+export { default as ProgressBar } from './atoms/progress-bar/ProgressBar';
+export type { ProgressBarProps } from './atoms/progress-bar/ProgressBar';
+export { default as Row } from './atoms/row/Row';
+export type { RowProps } from './atoms/row/Row';
+export { default as Spacer } from './atoms/spacer/Spacer';
+export type { SpacerProps } from './atoms/spacer/Spacer';
 export { default as TextArea } from './atoms/text-area/TextArea';
 export type { TextAreaProps } from './atoms/text-area/TextArea';
+
 /**
  * Common
  */
 export { default as GlobalStyles } from './common/global-styles/GlobalStyles';
+
 /**
- * Components
+ * Molecules
  */
-export { default as Button } from './components/button/Button';
-export type { ButtonProps } from './components/button/Button';
-export { default as Heading } from './components/heading/Heading';
-export type { HeadingProps } from './components/heading/Heading';
-export { default as Icon } from './components/icon/Icon';
-export type { IconProps } from './components/icon/Icon';
-export { default as InputTextField } from './components/input-text-field/InputTextField';
-export type { InputTextFieldProps } from './components/input-text-field/InputTextField';
-export { default as Loader } from './components/loader/Loader';
-export type { LoaderProps } from './components/loader/Loader';
-export { default as ProgressBar } from './components/progress-bar/ProgressBar';
-export type { ProgressBarProps } from './components/progress-bar/ProgressBar';
-export { default as Row } from './components/row/Row';
-export type { RowProps } from './components/row/Row';
-export { default as Spacer } from './components/spacer/Spacer';
-export type { SpacerProps } from './components/spacer/Spacer';
-export { default as TextAreaField } from './components/text-area-field/TextAreaField';
-export type { TextAreaFieldProps } from './components/text-area-field/TextAreaField';
+export { default as InputTextField } from './molecules/input-text-field/InputTextField';
+export type { InputTextFieldProps } from './molecules/input-text-field/InputTextField';
+export { default as TextAreaField } from './molecules/text-area-field/TextAreaField';
+export type { TextAreaFieldProps } from './molecules/text-area-field/TextAreaField';
+
 /**
  * Tokens
  */

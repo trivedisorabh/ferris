@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import { axe } from 'jest-axe';
 import React from 'react';
-import Row from '~components/row/Row';
+import Row from '~atoms/row/Row';
 
 describe('Row', () => {
 	test('The row has children', () => {

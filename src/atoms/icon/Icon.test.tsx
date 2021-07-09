@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import { axe } from 'jest-axe';
 import React from 'react';
-import Icon from '~components/icon/Icon';
+import Icon from '~atoms/icon/Icon';
 import Icons from '~tokens/icons/Icons';
 
 describe('Icon', () => {

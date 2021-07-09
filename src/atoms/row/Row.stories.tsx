@@ -1,6 +1,6 @@
 import React, { CSSProperties, ReactElement } from 'react';
-import Button from '~components/button/Button';
-import Spacer from '~components/spacer/Spacer';
+import Button from '~atoms/button/Button';
+import Spacer from '~atoms/spacer/Spacer';
 import Row, { RowProps } from './Row';
 
 const alignX: CSSProperties['justifyContent'][] = [
@@ -41,7 +41,7 @@ const alignY: CSSProperties['alignItems'][] = [
 ];
 
 export default {
-	title: 'Components/Row',
+	title: 'Atoms/Row',
 	component: Row,
 	argTypes: {
 		alignX: {

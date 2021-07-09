@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import { axe } from 'jest-axe';
 import React from 'react';
-import ProgressBar from '~components/progress-bar/ProgressBar';
+import ProgressBar from '~atoms/progress-bar/ProgressBar';
 
 describe('ProgressBar', () => {
 	test('The progress bar has a value', () => {
