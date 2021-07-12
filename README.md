@@ -161,8 +161,8 @@ This component demonstrates our development guidelines and style conventions.
 ```tsx
 // Prefer category based imports. Avoid relative imports '../../../SampleComponent'
 import Colors from '~tokens/colors/Colors';
-import Foo from '~components/Foo';
-import Text from '~atoms/text/Text';
+import Foo from '~molecules/Foo';
+import Button from '~atoms/button/Button';
 
 // Use empty line breaks generously to group statements that shares a common objective in the scope.
 
@@ -275,6 +275,10 @@ To automatically fix many linting errors and format the code, run:
 ```bash
 yarn format
 ```
+
+## ⚛️ Atomic Design
+
+We implement the [atomic design](https://bradfrost.com/blog/post/atomic-web-design/) pattern as proposed by Brad Frost in his blog bradfrost.com. Please read up on how to work with this pattern and respect it when maintaining/developing components in this library.
 
 ## 🏛 ADR
 
