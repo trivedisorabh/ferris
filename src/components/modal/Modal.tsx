@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, { HTMLAttributes, useEffect } from 'react';
 import ReactDOM from 'react-dom';
+import { visuallyHidden } from '~common/styles';
 import Heading from '~components/heading/Heading';
 import Icon from '~components/icon/Icon';
 import Colors from '~tokens/colors/Colors';
@@ -52,7 +53,8 @@ const Modal = ({ open, onClose, showCloseButton, headerText, children }: ModalPr
 						{headerText && <Heading as="h1">{headerText}</Heading>}
 						{showCloseButton && (
 							<ModalCloseButton onClick={closeModal}>
-								<Icon icon={Icons.Close} />
+								<Icon icon={Icons.Close} color={Colors.white} />
+								<ModalCloseButtonName>Close</ModalCloseButtonName>
 							</ModalCloseButton>
 						)}
 					</ModalHeaderRow>
@@ -94,11 +96,12 @@ type ModalHeaderRowProps = Pick<ModalProps, 'headerText'>;
 
 const ModalHeaderRow = styled.div(
 	({ headerText }: ModalHeaderRowProps) => css`
+		align-items: flex-start;
 		background-color: ${headerText ? Colors.brandBase : 'transparent'};
 		color: ${headerText ? Colors.white : Colors.blackBrand};
 		display: flex;
 		justify-content: ${headerText ? 'space-between' : 'end'};
-		padding: ${Spacings.lg};
+		padding: ${Spacings.md};
 	`
 );
 
@@ -106,6 +109,10 @@ const ModalCloseButton = styled.button`
 	background: none;
 	border: none;
 	padding: 0;
+`;
+
+const ModalCloseButtonName = styled.span`
+	${visuallyHidden}
 `;
 
 const ModalContentWrapper = styled.div`
