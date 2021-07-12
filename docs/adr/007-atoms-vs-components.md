@@ -4,7 +4,7 @@
 
 ## Status
 
-`🚫 Rejected`
+`↗️ Superseded`
 
 ## Context
 

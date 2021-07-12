@@ -19,3 +19,4 @@ We will also try to stay as true to the original thoughts and ideas of Brad Fros
 ## Consequences
 
 This will make it easier to keep everything tidy and to always know where to put a component and its children/parents.
+It will also make communication between developers and designers a lot easier since we are talking the same concepts.
