@@ -1,8 +1,8 @@
 import React, { ReactElement } from 'react';
-import Heading, { HeadingProps } from '~components/heading/Heading';
+import Heading, { HeadingProps } from '~atoms/heading/Heading';
 
 export default {
-	title: 'Components/Heading',
+	title: 'Atoms/Heading',
 	component: Heading,
 };
 

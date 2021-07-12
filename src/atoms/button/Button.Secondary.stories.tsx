@@ -1,8 +1,8 @@
-import Button from '~components/button/Button';
+import Button from '~atoms/button/Button';
 import { buttonCommonArgTypes, buttonTpl } from './Button.Primary.stories';
 
 export default {
-	title: 'Components/Buttons/Button/Link',
+	title: 'Atoms/Button/Secondary',
 	component: Button,
 	argTypes: {
 		...buttonCommonArgTypes,

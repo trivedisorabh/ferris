@@ -1,9 +1,9 @@
 import React, { ReactElement } from 'react';
-import TextAreaField, { TextAreaFieldProps } from './TextAreaField';
+import InputTextField, { InputTextFieldProps } from './InputTextField';
 
 export default {
-	title: 'Components/TextAreaField',
-	component: TextAreaField,
+	title: 'Molecules/InputTextField',
+	component: InputTextField,
 };
 
 interface Story<T> {
@@ -12,20 +12,22 @@ interface Story<T> {
 	argTypes?: Record<string, unknown>;
 }
 
-const Template: Story<TextAreaFieldProps> = ({
+const Template: Story<InputTextFieldProps> = ({
+	description,
 	id,
 	label,
-	value,
-	description,
+	type,
 	disabled,
 	required,
-}: TextAreaFieldProps) => (
-	<TextAreaField
+	value,
+}: InputTextFieldProps) => (
+	<InputTextField
 		description={description}
 		disabled={disabled}
 		id={id}
 		label={label}
 		required={required}
+		type={type}
 		value={value}
 	/>
 );
@@ -34,6 +36,7 @@ export const Default = Template.bind({});
 Default.args = {
 	id: 'test-id',
 	label: 'Label of optional field',
+	type: 'text',
 };
 
 export const DefaultDisabled = Template.bind({});

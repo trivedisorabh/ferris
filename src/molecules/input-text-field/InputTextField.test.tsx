@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { axe } from 'jest-axe';
 import React from 'react';
-import InputTextField from '~components/input-text-field/InputTextField';
+import InputTextField from '~molecules/input-text-field/InputTextField';
 
 describe('InputTextField', () => {
 	test('The input reacts to user input', () => {

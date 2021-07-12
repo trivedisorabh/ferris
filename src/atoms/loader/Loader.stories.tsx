@@ -1,8 +1,8 @@
 import React, { ReactElement } from 'react';
-import Loader, { LoaderProps } from '~components/loader/Loader';
+import Loader, { LoaderProps } from '~atoms/loader/Loader';
 
 export default {
-	title: 'Components/Loader',
+	title: 'Atoms/Loader',
 	component: Loader,
 };
 

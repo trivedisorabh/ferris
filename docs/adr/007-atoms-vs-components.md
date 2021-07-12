@@ -4,7 +4,7 @@
 
 ## Status
 
-`❓ Proposed`
+`↗️ Superseded by [ADR 010 Atomic Design](/docs/adr/010-atomic-design → docs/adr/010-atomic-design.md)`
 
 ## Context
 

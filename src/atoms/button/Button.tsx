@@ -1,7 +1,6 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, { ButtonHTMLAttributes, ForwardedRef, forwardRef, ReactChild } from 'react';
-import { tokens } from './Button.Tokens';
 
 /**
  * @category Props
@@ -37,18 +36,18 @@ type StyledButtonProps = Pick<ButtonProps, 'small' | 'variant'>;
 
 const StyledButton = styled.button(
 	({ small, variant }: StyledButtonProps) => css`
-		border-radius: ${tokens.buttonBorderRadius};
+		border-radius: 2px;
 		cursor: pointer;
 		font-size: 1rem;
 		font-weight: bold;
 		height: 40px;
-		min-width: ${tokens.buttonMinWidth};
-		padding: 0 ${tokens.buttonHorizontalPadding};
-		transition-duration: ${tokens.transitionDuration};
+		min-width: 130px;
+		padding: 0 16px;
+		transition-duration: 300ms;
 		transition-property: background-color, color;
 
 		&:focus-visible {
-			outline-color: ${tokens.buttonPrimaryBgColor};
+			outline-color: rgb(15, 88, 214);
 			outline-offset: 2px;
 			outline-style: solid;
 			outline-width: 2px;
@@ -56,7 +55,7 @@ const StyledButton = styled.button(
 
 		@supports not selector(:focus-visible) {
 			&:focus {
-				outline-color: ${tokens.buttonPrimaryBgColor};
+				outline-color: rgb(15, 88, 214);
 				outline-offset: 2px;
 				outline-style: solid;
 				outline-width: 2px;
@@ -66,9 +65,9 @@ const StyledButton = styled.button(
 		&:disabled,
 		&:disabled:hover,
 		&:disabled:active {
-			background-color: ${tokens.buttonDisabledBgColor};
+			background-color: rgb(235, 236, 238);
 			border: none;
-			color: ${tokens.buttonDisabledTextColor};
+			color: rgb(170, 175, 184);
 			cursor: not-allowed;
 		}
 
@@ -76,36 +75,36 @@ const StyledButton = styled.button(
 		css`
 			font-size: 0.875rem;
 			height: 30px;
-			min-width: ${tokens.buttonSmallMinWidth};
+			min-width: 80px;
 		`}
 
 		${variant === 'primary' &&
 		css`
-			background-color: ${tokens.buttonPrimaryBgColor};
+			background-color: rgb(15, 88, 214);
 			border: none;
-			color: ${tokens.buttonPrimaryTextColor};
+			color: #fff;
 
 			&:hover {
-				background-color: ${tokens.buttonPrimaryHoverBgColor};
+				background-color: rgb(12, 74, 182);
 			}
 
 			&:active {
-				background-color: ${tokens.buttonPrimaryActiveBgColor};
+				background-color: rgba(9, 57, 139);
 			}
 		`}
 
 		${variant === 'secondary' &&
 		css`
-			background-color: ${tokens.buttonSecondaryBgColor};
-			border: 1px solid ${tokens.buttonSecondaryBorderColor};
-			color: ${tokens.buttonSecondaryTextColor};
+			background-color: rgb(255, 255, 255);
+			border: 1px solid rgb(15, 88, 214);
+			color: rgb(15, 88, 214);
 
 			&:hover {
-				background-color: ${tokens.buttonSecondaryHoverBgColor};
+				background-color: rgb(235, 236, 238);
 			}
 
 			&:active {
-				background-color: ${tokens.buttonSecondaryActiveBgColor};
+				background-color: rgb(226, 228, 231);
 			}
 		`}
 
@@ -113,7 +112,7 @@ const StyledButton = styled.button(
 		css`
 			background: none;
 			border: none;
-			color: ${tokens.buttonLinkTextColor};
+			color: rgb(15, 88, 214);
 			min-width: initial;
 			padding: 0;
 

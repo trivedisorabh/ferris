@@ -5,7 +5,7 @@ import Icons from '~tokens/icons/Icons';
 import Icon, { IconProps } from './Icon';
 
 export default {
-	title: 'Components/Icon',
+	title: 'Atoms/Icon',
 	component: Icon,
 	argTypes: {
 		color: {
@@ -39,7 +39,7 @@ Default.args = {};
 
 export const Colored = Template.bind({});
 Colored.args = {
-	color: Colors.blueDarker,
+	color: Colors.redBase,
 };
 
 export const Large = Template.bind({});
