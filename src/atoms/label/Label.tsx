@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import React, { ForwardedRef, forwardRef, LabelHTMLAttributes } from 'react';
 import Colors from '~tokens/colors/Colors';
+import FontSizes from '~tokens/font-sizes/FontSizes';
 import FontWeights from '~tokens/font-weights/FontWeights';
 import Spacings from '~tokens/spacings/Spacings';
 
@@ -8,7 +9,7 @@ import Spacings from '~tokens/spacings/Spacings';
  * @category Props
  */
 export interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
-	children: string;
+	children: React.ReactNode;
 	id: string;
 	required?: boolean;
 }
@@ -36,6 +37,24 @@ const StyledLabel = styled.label`
 	display: flex;
 	font-weight: ${FontWeights.bold};
 	margin: 0 0 ${Spacings.xxs};
+
+	&.checkbox-label {
+		cursor: pointer;
+		display: block;
+		font-size: ${FontSizes.lg};
+		font-weight: ${FontWeights.normal} !important;
+		margin-bottom: ${Spacings.sm};
+		padding-left: ${Spacings.xxl};
+		position: relative;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+	}
+	&.checkbox-label:hover input ~ .checkmark {
+		background-color: ${Colors.brandBase};
+		border: none;
+	}
 `;
 
 const StyledSymbol = styled.i`
