@@ -7,9 +7,12 @@
 		"stylelint-order"
 	],
 	"rules": {
-		"plugin/no-unsupported-browser-features": [true, {
-			"severity": "warning"
-		}],
+		"plugin/no-unsupported-browser-features": [
+			true,
+			{
+				"severity": "warning"
+			}
+		],
 		"order/order": [
 			"custom-properties",
 			"declarations"
@@ -27,7 +30,8 @@
 		],
 		"no-descending-specificity": null,
 		"no-duplicate-selectors": null,
-		"no-missing-end-of-source-newline": null
+		"no-missing-end-of-source-newline": null,
+		"value-keyword-case": null
 	},
 	"syntax": "css-in-js"
 }
