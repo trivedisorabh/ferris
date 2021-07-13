@@ -1,4 +1,3 @@
-import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, { HTMLAttributes, useEffect } from 'react';
 import ReactDOM from 'react-dom';
@@ -6,6 +5,8 @@ import Heading from '~atoms/heading/Heading';
 import Icon from '~atoms/icon/Icon';
 import { visuallyHidden } from '~common/styles';
 import Colors from '~tokens/colors/Colors';
+import FontSizes from '~tokens/font-sizes/FontSizes';
+import IconSizes from '~tokens/icon-sizes/IconSizes';
 import Icons from '~tokens/icons/Icons';
 import Spacings from '~tokens/spacings/Spacings';
 
@@ -49,11 +50,16 @@ const Modal = ({ open, onClose, showCloseButton, headerText, children }: ModalPr
 
 			<ModalWindow>
 				{(headerText || showCloseButton) && (
-					<ModalHeaderRow headerText={headerText}>
-						{headerText && <Heading as="h1">{headerText}</Heading>}
+					<ModalHeaderRow>
+						{headerText && (
+							<Heading as="h1" headingStyle={{ fontSize: FontSizes.xl }}>
+								{headerText}
+							</Heading>
+						)}
 						{showCloseButton && (
 							<ModalCloseButton onClick={closeModal}>
-								<Icon icon={Icons.Close} color={Colors.white} />
+								<Icon icon={Icons.Close} color={Colors.white} size={IconSizes.lg} />
+								{/* This button name might need localization support in the future */}
 								<ModalCloseButtonName>Close</ModalCloseButtonName>
 							</ModalCloseButton>
 						)}
@@ -92,22 +98,20 @@ const ModalWindow = styled.div`
 	transform: translate(-50%, -50%);
 `;
 
-type ModalHeaderRowProps = Pick<ModalProps, 'headerText'>;
-
-const ModalHeaderRow = styled.div(
-	({ headerText }: ModalHeaderRowProps) => css`
-		align-items: flex-start;
-		background-color: ${headerText ? Colors.brandBase : 'transparent'};
-		color: ${headerText ? Colors.white : Colors.blackBrand};
-		display: flex;
-		justify-content: ${headerText ? 'space-between' : 'end'};
-		padding: ${Spacings.md};
-	`
-);
+const ModalHeaderRow = styled.div`
+	align-items: center;
+	background-color: ${Colors.brandBase};
+	color: ${Colors.white};
+	display: flex;
+	height: 48px;
+	padding: ${Spacings.sm} ${Spacings.md};
+`;
 
 const ModalCloseButton = styled.button`
 	background: none;
 	border: none;
+	line-height: 0;
+	margin-left: auto;
 	padding: 0;
 `;
 

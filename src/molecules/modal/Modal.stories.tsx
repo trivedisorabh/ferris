@@ -7,24 +7,37 @@ import Modal, { ModalProps } from '~molecules/modal/Modal';
 import Spacings from '~tokens/spacings/Spacings';
 
 export default {
-	title: 'Components/Modal',
+	title: 'Molecules/Modal',
 	component: Modal,
 };
 
-const Template: Story<ModalProps> = ({ open, children = 'Content' }: ModalProps) => {
+const Template: Story<ModalProps> = ({
+	open,
+	children = 'Content',
+	showCloseButton,
+	headerText,
+}: ModalProps) => {
 	const [isOpen, setIsOpen] = useState(open);
 
 	return (
 		<>
 			<Button onClick={() => setIsOpen(true)}>Open Modal</Button>
-			<Modal open={isOpen} onClose={() => setIsOpen(false)}>
+			<Modal
+				open={isOpen}
+				showCloseButton={showCloseButton}
+				headerText={headerText}
+				onClose={() => setIsOpen(false)}
+			>
 				{children}
 			</Modal>
 		</>
 	);
 };
 
-const TemplateCustomContent: Story<ModalProps> = ({ showCloseButton, headerText }: ModalProps) => {
+const TemplateCustomCloseButton: Story<ModalProps> = ({
+	showCloseButton,
+	headerText,
+}: ModalProps) => {
 	const [isOpen, setIsOpen] = useState(true);
 
 	return (
@@ -52,11 +65,24 @@ const TemplateCustomContent: Story<ModalProps> = ({ showCloseButton, headerText 
 export const Open = Template.bind({});
 Open.args = { open: true };
 
-export const CustomContent = TemplateCustomContent.bind({});
-CustomContent.args = { showCloseButton: false };
+export const CustomCloseButton = TemplateCustomCloseButton.bind({});
+CustomCloseButton.args = { showCloseButton: false };
 
-export const CustomContentAndHeader = TemplateCustomContent.bind({});
-CustomContentAndHeader.args = { showCloseButton: true, headerText: 'Listen!' };
+export const HeaderTextOnly = Template.bind({});
+HeaderTextOnly.args = { open: true, showCloseButton: false, headerText: 'Listen!' };
+
+export const CloseButtonOnly = Template.bind({});
+CloseButtonOnly.args = { open: true, showCloseButton: true };
+
+export const HeaderTextAndCloseButton = Template.bind({});
+HeaderTextAndCloseButton.args = { open: true, showCloseButton: true, headerText: 'Hello there' };
+
+export const LongContent = Template.bind({});
+LongContent.args = {
+	open: true,
+	children:
+		'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit porro ipsum eaque inventore non unde. Odit ex architecto molestias ratione possimus quod vero, ab assumenda aut iste numquam quaerat vitae? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit porro ipsum eaque inventore non unde. Odit ex architecto molestias ratione possimus quod vero, ab assumenda aut iste numquam quaerat vitae? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit porro ipsum eaque inventore non unde. Odit ex architecto molestias ratione possimus quod vero, ab assumenda aut iste numquam quaerat vitae? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit porro ipsum eaque inventore non unde. Odit ex architecto molestias ratione possimus quod vero, ab assumenda aut iste numquam quaerat vitae? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit porro ipsum eaque inventore non unde. Odit ex architecto molestias ratione possimus quod vero, ab assumenda aut iste numquam quaerat vitae? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit porro ipsum eaque inventore non unde. Odit ex architecto molestias ratione possimus quod vero, ab assumenda aut iste numquam quaerat vitae? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit porro ipsum eaque inventore non unde. Odit ex architecto molestias ratione possimus quod vero, ab assumenda aut iste numquam quaerat vitae? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit porro ipsum eaque inventore non unde. Odit ex architecto molestias ratione possimus quod vero, ab assumenda aut iste numquam quaerat vitae? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit porro ipsum eaque inventore non unde. Odit ex architecto molestias ratione possimus quod vero, ab assumenda aut iste numquam quaerat vitae? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit porro ipsum eaque inventore non unde. Odit ex architecto molestias ratione possimus quod vero, ab assumenda aut iste numquam quaerat vitae? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit porro ipsum eaque inventore non unde. Odit ex architecto molestias ratione possimus quod vero, ab assumenda aut iste numquam quaerat vitae? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit porro ipsum eaque inventore non unde. Odit ex architecto molestias ratione possimus quod vero, ab assumenda aut iste numquam quaerat vitae? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit porro ipsum eaque inventore non unde. Odit ex architecto molestias ratione possimus quod vero, ab assumenda aut iste numquam quaerat vitae? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit porro ipsum eaque inventore non unde. Odit ex architecto molestias ratione possimus quod vero, ab assumenda aut iste numquam quaerat vitae? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit porro ipsum eaque inventore non unde. Odit ex architecto molestias ratione possimus quod vero, ab assumenda aut iste numquam quaerat vitae? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit porro ipsum eaque inventore non unde. Odit ex architecto molestias ratione possimus quod vero, ab assumenda aut iste numquam quaerat vitae? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit porro ipsum eaque inventore non unde. Odit ex architecto molestias ratione possimus quod vero, ab assumenda aut iste numquam quaerat vitae? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit porro ipsum eaque inventore non unde. Odit ex architecto molestias ratione possimus quod vero, ab assumenda aut iste numquam quaerat vitae? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit porro ipsum eaque inventore non unde. Odit ex architecto molestias ratione possimus quod vero, ab assumenda aut iste numquam quaerat vitae? ',
+};
 
 export const Closed = Template.bind({});
 Closed.args = {};
