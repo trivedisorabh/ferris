@@ -131,6 +131,7 @@ const ModalHeaderRow = styled.div`
 const ModalCloseButton = styled.button`
 	background: none;
 	border: none;
+	cursor: pointer;
 	line-height: 0;
 	margin-left: auto;
 	padding: 0;
