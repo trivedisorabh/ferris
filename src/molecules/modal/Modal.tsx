@@ -106,9 +106,7 @@ const ModalBackground = styled.div`
 
 	background-color: rgba(0, 0, 0, 0.4);
 	bottom: 0;
-	display: grid;
 	left: 0;
-	place-items: center;
 	position: fixed;
 	right: 0;
 	top: 0;
