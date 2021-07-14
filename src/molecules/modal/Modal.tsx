@@ -75,12 +75,28 @@ const Modal = ({ open, onClose, showCloseButton, headerText, children }: ModalPr
 	);
 };
 
+const fadeIn = css`
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+		}
+
+		to {
+			opacity: 1;
+		}
+	}
+
+	animation: fadeIn 200ms;
+	animation-fill-mode: backwards;
+`;
+
 const ModalBackground = styled.div`
-	background-color: ${Colors.black};
+	${fadeIn}
+
+	background-color: rgba(0, 0, 0, 0.4);
 	bottom: 0;
 	display: grid;
 	left: 0;
-	opacity: 0.4;
 	place-items: center;
 	position: fixed;
 	right: 0;
@@ -90,6 +106,8 @@ const ModalBackground = styled.div`
 /*  Absolute position centering is used to center the window without having
 		access to modify its parent. */
 const ModalWindow = styled.div`
+	${fadeIn}
+
 	background-color: ${Colors.white};
 	left: 50%;
 	max-height: 50vh;
