@@ -1,4 +1,6 @@
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
+import { Options as FocusTrapOptions } from 'focus-trap';
 import FocusTrap from 'focus-trap-react';
 import React, { HTMLAttributes, useEffect } from 'react';
 import ReactDOM from 'react-dom';
@@ -16,9 +18,17 @@ export interface ModalProps extends HTMLAttributes<HTMLDivElement> {
 	onClose?: () => void;
 	showCloseButton?: boolean;
 	headerText?: string;
+	focusTrapOptions?: FocusTrapOptions;
 }
 
-const Modal = ({ open, onClose, showCloseButton, headerText, children }: ModalProps) => {
+const Modal = ({
+	open,
+	onClose,
+	showCloseButton,
+	headerText,
+	focusTrapOptions,
+	children,
+}: ModalProps) => {
 	if (!open) return null;
 
 	const bodyElement = document.querySelector('body');
@@ -49,7 +59,7 @@ const Modal = ({ open, onClose, showCloseButton, headerText, children }: ModalPr
 		<>
 			<ModalBackground></ModalBackground>
 
-			<FocusTrap>
+			<FocusTrap focusTrapOptions={focusTrapOptions}>
 				<ModalWindow>
 					{(headerText || showCloseButton) && (
 						<ModalHeaderRow>

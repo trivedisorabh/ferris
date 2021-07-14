@@ -28,7 +28,8 @@ const Template: Story<ModalProps> = ({
 				headerText={headerText}
 				onClose={() => setIsOpen(false)}
 			>
-				{children}
+				<p>{children}</p>
+				<Button onClick={() => setIsOpen(false)}>Close</Button>
 			</Modal>
 		</>
 	);
@@ -61,9 +62,6 @@ const TemplateCustomCloseButton: Story<ModalProps> = ({
 		</>
 	);
 };
-
-export const Open = Template.bind({});
-Open.args = { open: true };
 
 export const CustomCloseButton = TemplateCustomCloseButton.bind({});
 CustomCloseButton.args = { showCloseButton: false };
