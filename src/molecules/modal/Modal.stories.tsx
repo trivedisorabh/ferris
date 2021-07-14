@@ -9,6 +9,26 @@ import Spacings from '~tokens/spacings/Spacings';
 export default {
 	title: 'Molecules/Modal',
 	component: Modal,
+	argTypes: {
+		open: {
+			control: false,
+			description:
+				'Controls wether the modal component is open or not. (In Storybook this is controlled via the button in the story.)',
+		},
+		showCloseButton: { description: 'If true, a close button will be places in the modal header.' },
+		headerText: {
+			description: 'If present, the text will display in the modal header.',
+		},
+		onClose: {
+			control: false,
+			description: 'Fires when the built in close button is clicked, or the key Escape is pressed.',
+		},
+		focusTrapOptions: {
+			control: false,
+			description:
+				'Options object that will be passed along to [focus-trap](https://github.com/focus-trap/focus-trap#createoptions), which wraps the modal.',
+		},
+	},
 };
 
 const Template: Story<ModalProps> = ({
@@ -63,9 +83,6 @@ const TemplateCustomCloseButton: Story<ModalProps> = ({
 	);
 };
 
-export const CustomCloseButton = TemplateCustomCloseButton.bind({});
-CustomCloseButton.args = { showCloseButton: false };
-
 export const HeaderTextOnly = Template.bind({});
 HeaderTextOnly.args = { open: true, showCloseButton: false, headerText: 'Listen!' };
 
@@ -74,6 +91,9 @@ CloseButtonOnly.args = { open: true, showCloseButton: true };
 
 export const HeaderTextAndCloseButton = TemplateCustomCloseButton.bind({});
 HeaderTextAndCloseButton.args = { open: true, showCloseButton: true, headerText: 'Hello there' };
+
+export const CustomCloseButton = TemplateCustomCloseButton.bind({});
+CustomCloseButton.args = { showCloseButton: false };
 
 export const LongContent = Template.bind({});
 LongContent.args = {

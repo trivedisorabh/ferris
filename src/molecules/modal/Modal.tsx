@@ -19,13 +19,14 @@ export interface ModalProps extends HTMLAttributes<HTMLDivElement> {
 	showCloseButton?: boolean;
 	headerText?: string;
 	focusTrapOptions?: FocusTrapOptions;
+	children: React.ReactNode;
 }
 
 const Modal = ({
-	open,
+	open = false,
 	onClose,
-	showCloseButton,
-	headerText,
+	showCloseButton = false,
+	headerText = '',
 	focusTrapOptions,
 	children,
 }: ModalProps) => {
