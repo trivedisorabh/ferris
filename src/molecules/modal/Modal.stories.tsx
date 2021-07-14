@@ -72,6 +72,7 @@ const TemplateCustomCloseButton: Story<ModalProps> = ({
 					setIsOpen(false);
 				}}
 			>
+				<p>This content, including the buttons below, is completely determined by the user.</p>
 				<p>Here is a a question for you: Do you want to close this modal?</p>
 				<Row alignX="end">
 					<Button onClick={() => setIsOpen(false)}>Yes</Button>
