@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react';
 import InputTextField, { InputTextFieldProps } from './InputTextField';
 
 export default {
-	title: 'Molecules/InputTextField',
+	title: 'Molecules/Input field',
 	component: InputTextField,
 };
 

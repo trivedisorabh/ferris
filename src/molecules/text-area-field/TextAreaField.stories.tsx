@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react';
 import TextAreaField, { TextAreaFieldProps } from './TextAreaField';
 
 export default {
-	title: 'Molecules/TextAreaField',
+	title: 'Molecules/Textarea field',
 	component: TextAreaField,
 };
 

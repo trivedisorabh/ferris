@@ -51,10 +51,6 @@ const StyledLabel = styled.label`
 		-ms-user-select: none;
 		user-select: none;
 	}
-	&.checkbox-label:hover input ~ .checkmark {
-		background-color: ${Colors.brandBase};
-		border: none;
-	}
 `;
 
 const StyledSymbol = styled.i`

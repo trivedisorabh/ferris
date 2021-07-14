@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import React, { ForwardedRef, forwardRef, InputHTMLAttributes } from 'react';
+import React, { ChangeEventHandler, ForwardedRef, forwardRef, InputHTMLAttributes } from 'react';
 import Colors from '~tokens/colors/Colors';
 
 /**
@@ -7,14 +7,28 @@ import Colors from '~tokens/colors/Colors';
  */
 export interface InputCheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
 	id: string;
+	onChange: ChangeEventHandler;
+	checked?: boolean;
+	disabled?: boolean;
 }
 
 /**
  * @category Template
  */
 const InputCheckbox = forwardRef(
-	({ id, ...rest }: InputCheckboxProps, ref: ForwardedRef<HTMLInputElement>) => (
-		<StyledInputCheckbox {...rest} id={id} ref={ref} type="checkbox" />
+	(
+		{ id, checked, disabled, onChange, ...rest }: InputCheckboxProps,
+		ref: ForwardedRef<HTMLInputElement>
+	) => (
+		<StyledInputCheckbox
+			{...rest}
+			disabled={disabled}
+			checked={checked}
+			id={id}
+			onChange={onChange}
+			ref={ref}
+			type="checkbox"
+		/>
 	)
 );
 
@@ -30,6 +44,11 @@ const StyledInputCheckbox = styled.input`
 	opacity: 0;
 	position: absolute;
 	width: 0;
+
+	&:disabled ~ .checkmark {
+		background-color: ${Colors.grayDark} !important;
+		border: none;
+	}
 
 	&:checked ~ .checkmark {
 		background-color: ${Colors.brandBase};
