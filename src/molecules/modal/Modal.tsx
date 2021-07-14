@@ -146,6 +146,13 @@ const ModalCloseButton = styled.button`
 	line-height: 0;
 	margin-left: auto;
 	padding: 0;
+
+	&:focus-visible {
+		outline-color: ${Colors.white};
+		outline-offset: 2px;
+		outline-style: solid;
+		outline-width: 2px;
+	}
 `;
 
 const ModalCloseButtonName = styled.span`
