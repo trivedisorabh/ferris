@@ -74,7 +74,7 @@ HeaderTextOnly.args = { open: true, showCloseButton: false, headerText: 'Listen!
 export const CloseButtonOnly = Template.bind({});
 CloseButtonOnly.args = { open: true, showCloseButton: true };
 
-export const HeaderTextAndCloseButton = Template.bind({});
+export const HeaderTextAndCloseButton = TemplateCustomCloseButton.bind({});
 HeaderTextAndCloseButton.args = { open: true, showCloseButton: true, headerText: 'Hello there' };
 
 export const LongContent = Template.bind({});

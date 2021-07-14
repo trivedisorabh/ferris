@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import FocusTrap from 'focus-trap-react';
 import React, { HTMLAttributes, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import Heading from '~atoms/heading/Heading';
@@ -48,25 +49,27 @@ const Modal = ({ open, onClose, showCloseButton, headerText, children }: ModalPr
 		<>
 			<ModalBackground></ModalBackground>
 
-			<ModalWindow>
-				{(headerText || showCloseButton) && (
-					<ModalHeaderRow>
-						{headerText && (
-							<Heading as="h1" headingStyle={{ fontSize: FontSizes.xl }}>
-								{headerText}
-							</Heading>
-						)}
-						{showCloseButton && (
-							<ModalCloseButton onClick={closeModal}>
-								<Icon icon={Icons.Close} color={Colors.white} size={IconSizes.lg} />
-								{/* This button name might need localization support in the future */}
-								<ModalCloseButtonName>Close</ModalCloseButtonName>
-							</ModalCloseButton>
-						)}
-					</ModalHeaderRow>
-				)}
-				<ModalContentWrapper>{children}</ModalContentWrapper>
-			</ModalWindow>
+			<FocusTrap>
+				<ModalWindow>
+					{(headerText || showCloseButton) && (
+						<ModalHeaderRow>
+							{headerText && (
+								<Heading as="h1" headingStyle={{ fontSize: FontSizes.xl }}>
+									{headerText}
+								</Heading>
+							)}
+							{showCloseButton && (
+								<ModalCloseButton onClick={closeModal}>
+									<Icon icon={Icons.Close} color={Colors.white} size={IconSizes.lg} />
+									{/* This button name might need localization support in the future */}
+									<ModalCloseButtonName>Close</ModalCloseButtonName>
+								</ModalCloseButton>
+							)}
+						</ModalHeaderRow>
+					)}
+					<ModalContentWrapper>{children}</ModalContentWrapper>
+				</ModalWindow>
+			</FocusTrap>
 		</>,
 		bodyElement
 	);
