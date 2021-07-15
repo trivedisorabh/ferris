@@ -4,7 +4,7 @@ import { Options as FocusTrapOptions } from 'focus-trap';
 import FocusTrap from 'focus-trap-react';
 import React, { HTMLAttributes, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import Heading from '~atoms/heading/Heading';
+import Heading, { HeadingLevel } from '~atoms/heading/Heading';
 import Icon from '~atoms/icon/Icon';
 import { visuallyHidden } from '~common/styles';
 import Colors from '~tokens/colors/Colors';
@@ -65,7 +65,7 @@ const Modal = ({
 					{(headerText || showCloseButton) && (
 						<ModalHeaderRow>
 							{headerText && (
-								<Heading as="h1" headingStyle={{ fontSize: FontSizes.xl }}>
+								<Heading as={HeadingLevel.h1} style={{ fontSize: FontSizes.xl }}>
 									{headerText}
 								</Heading>
 							)}

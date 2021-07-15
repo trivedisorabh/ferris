@@ -1,47 +1,55 @@
 import React from 'react';
-import Heading, { HeadingProps } from '~atoms/heading/Heading';
+import Heading, { HeadingLevel, HeadingProps } from '~atoms/heading/Heading';
 import { Story } from '~common/interfaces';
-import FontSizes from '~tokens/font-sizes/FontSizes';
-import FontWeights from '~tokens/font-weights/FontWeights';
 
 export default {
 	title: 'Atoms/Heading',
 	component: Heading,
 };
 
-const Template: Story<HeadingProps> = ({ as, children, headingStyle, ...rest }: HeadingProps) => (
-	<Heading {...rest} as={as} headingStyle={headingStyle}>
+const Template: Story<HeadingProps> = ({ as, children, styledAs, ...rest }: HeadingProps) => (
+	<Heading {...rest} as={as} styledAs={styledAs}>
 		{children}
 	</Heading>
 );
 
 export const DefaultH1 = Template.bind({});
 DefaultH1.args = {
-	as: 'h1',
+	as: HeadingLevel.h1,
 	children: 'SKF Heading Element Level 1',
 };
 
 export const DefaultH2 = Template.bind({});
 DefaultH2.args = {
-	as: 'h2',
+	as: HeadingLevel.h2,
 	children: 'SKF Heading Element Level 2',
 };
 
 export const DefaultH3 = Template.bind({});
 DefaultH3.args = {
-	as: 'h3',
+	as: HeadingLevel.h3,
 	children: 'SKF Heading Element Level 3',
 };
 
 export const DefaultH4 = Template.bind({});
 DefaultH4.args = {
-	as: 'h4',
+	as: HeadingLevel.h4,
 	children: 'SKF Heading Element Level 4',
 };
 
-export const CustomStyling = Template.bind({});
-CustomStyling.args = {
-	as: 'h1',
-	children: 'SKF Heading With custom styling',
-	headingStyle: { fontSize: FontSizes.xxxxl, fontWeight: FontWeights.bold },
-};
+export const CustomStyling = () => (
+	<>
+		<Heading as={HeadingLevel.h1} styledAs={HeadingLevel.h2}>
+			An H1 styled as an H2
+		</Heading>
+		<Heading as={HeadingLevel.h2} styledAs={HeadingLevel.h3}>
+			An H2 styled as an H3
+		</Heading>
+		<Heading as={HeadingLevel.h3} styledAs={HeadingLevel.h4}>
+			An H3 styled as an H4
+		</Heading>
+		<Heading as={HeadingLevel.h4} styledAs={HeadingLevel.h1}>
+			An H4 styled as an H1
+		</Heading>
+	</>
+);
