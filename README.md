@@ -96,10 +96,14 @@ We use a token system where tokens are imported from the [Web Applications desig
 If something is missing or has been updated you can run
 
 ```bash
-yarn tokens:update
+yarn dsm:update
 ```
 
 to download and refresh the tokens.
+
+## ⚛️ Atomic Design
+
+We implement the [atomic design](https://bradfrost.com/blog/post/atomic-web-design/) pattern as proposed by Brad Frost in his blog bradfrost.com. Please read up on how to work with this pattern and respect it when maintaining/developing components in this library.
 
 ## 🎢 Workflow
 
@@ -275,10 +279,6 @@ To automatically fix many linting errors and format the code, run:
 ```bash
 yarn format
 ```
-
-## ⚛️ Atomic Design
-
-We implement the [atomic design](https://bradfrost.com/blog/post/atomic-web-design/) pattern as proposed by Brad Frost in his blog bradfrost.com. Please read up on how to work with this pattern and respect it when maintaining/developing components in this library.
 
 ## 🏛 ADR
 
