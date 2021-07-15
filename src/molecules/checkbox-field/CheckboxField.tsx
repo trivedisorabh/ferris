@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import React, { ChangeEventHandler, ForwardedRef, forwardRef, HTMLAttributes } from 'react';
-import InputCheckbox, { InputCheckboxProps } from '~atoms/input-checkbox/InputCheckbox';
+import Checkbox, { CheckboxProps } from '~atoms/checkbox/Checkbox';
 import Label, { LabelProps } from '~atoms/label/Label';
 import Colors from '~tokens/colors/Colors';
 import Sizes from '~tokens/sizes/Sizes';
@@ -8,13 +8,13 @@ import Sizes from '~tokens/sizes/Sizes';
 /**
  * @category Props
  */
-export interface InputCheckboxFieldProps extends HTMLAttributes<HTMLInputElement> {
+export interface CheckboxFieldProps extends HTMLAttributes<HTMLInputElement> {
 	id: string;
 	change: ChangeEventHandler;
 	checked?: boolean;
 	children?: React.ReactNode;
 	disabled?: boolean;
-	inputCheckboxProps?: Partial<InputCheckboxProps>;
+	CheckboxProps?: Partial<CheckboxProps>;
 	label?: string;
 	labelProps?: Partial<LabelProps>;
 	small?: boolean;
@@ -23,18 +23,9 @@ export interface InputCheckboxFieldProps extends HTMLAttributes<HTMLInputElement
 /**
  * @category Template
  */
-const InputCheckboxField = forwardRef(
+const CheckboxField = forwardRef(
 	(
-		{
-			id,
-			change,
-			checked,
-			disabled,
-			inputCheckboxProps,
-			label,
-			labelProps,
-			small,
-		}: InputCheckboxFieldProps,
+		{ id, change, checked, disabled, CheckboxProps, label, labelProps, small }: CheckboxFieldProps,
 		ref: ForwardedRef<HTMLInputElement>
 	) => (
 		<Label
@@ -44,19 +35,20 @@ const InputCheckboxField = forwardRef(
 			data-tpl="input-checkbox-field"
 		>
 			{label}
-			<InputCheckbox
-				{...inputCheckboxProps}
+			<Checkbox
+				{...CheckboxProps}
 				id={id}
 				disabled={disabled}
 				checked={checked}
 				onChange={change}
+				className="checkbox"
 			/>
-			<StyledSpan id={id} ref={ref} className={`checkmark ${small ? 'small' : ''}`}></StyledSpan>
+			<StyledSpan ref={ref} className={`checkmark ${small ? 'small' : ''}`}></StyledSpan>
 		</Label>
 	)
 );
-InputCheckboxField.displayName = 'InputCheckboxField';
-export default InputCheckboxField;
+CheckboxField.displayName = 'CheckboxField';
+export default CheckboxField;
 
 /**
  * @category Styles

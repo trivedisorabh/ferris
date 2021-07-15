@@ -5,7 +5,7 @@ import Colors from '~tokens/colors/Colors';
 /**
  * @category Props
  */
-export interface InputCheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
+export interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
 	id: string;
 	onChange: ChangeEventHandler;
 	checked?: boolean;
@@ -15,12 +15,12 @@ export interface InputCheckboxProps extends InputHTMLAttributes<HTMLInputElement
 /**
  * @category Template
  */
-const InputCheckbox = forwardRef(
+const Checkbox = forwardRef(
 	(
-		{ id, checked, disabled, onChange, ...rest }: InputCheckboxProps,
+		{ id, checked, disabled, onChange, ...rest }: CheckboxProps,
 		ref: ForwardedRef<HTMLInputElement>
 	) => (
-		<StyledInputCheckbox
+		<StyledCheckbox
 			{...rest}
 			disabled={disabled}
 			checked={checked}
@@ -32,13 +32,13 @@ const InputCheckbox = forwardRef(
 	)
 );
 
-InputCheckbox.displayName = 'InputCheckbox';
-export default InputCheckbox;
+Checkbox.displayName = 'Checkbox';
+export default Checkbox;
 
 /**
  * @category Styles
  */
-const StyledInputCheckbox = styled.input`
+const StyledCheckbox = styled.input`
 	cursor: pointer;
 	height: 0;
 	opacity: 0;

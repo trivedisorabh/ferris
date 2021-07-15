@@ -1,9 +1,9 @@
 import React, { ReactElement } from 'react';
-import InputCheckboxField, { InputCheckboxFieldProps } from './InputCheckboxField';
+import CheckboxField, { CheckboxFieldProps } from './CheckboxField';
 
 export default {
 	title: 'Molecules/Checkbox',
-	component: InputCheckboxField,
+	component: CheckboxField,
 };
 
 interface Story<T> {
@@ -12,15 +12,15 @@ interface Story<T> {
 	argTypes?: Record<string, unknown>;
 }
 
-const Template: Story<InputCheckboxFieldProps> = ({
+const Template: Story<CheckboxFieldProps> = ({
 	change,
 	checked = true,
 	disabled = false,
 	id,
 	label = '',
 	small = false,
-}: InputCheckboxFieldProps) => (
-	<InputCheckboxField
+}: CheckboxFieldProps) => (
+	<CheckboxField
 		change={change}
 		checked={checked}
 		disabled={disabled}
@@ -33,9 +33,8 @@ const Template: Story<InputCheckboxFieldProps> = ({
 export const Default = Template.bind({});
 Default.args = {
 	id: 'default-checkbox',
-	change: (e) => {
-		const check = e?.currentTarget as HTMLInputElement;
-		alert(check.checked ? 'Checkbox is checked.' : 'Checkbox is NOT checked');
+	change: () => {
+		// Do stuff
 	},
 };
 
