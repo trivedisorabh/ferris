@@ -7,7 +7,7 @@ describe('ProgressBar', () => {
 	test('The progress bar has a value', () => {
 		const { getByTitle } = render(<ProgressBar title="progress" value={10} />);
 		const element = getByTitle('progress');
-		expect(element.getAttribute('value')).toEqual('10');
+		expect(element).toHaveValue('10');
 	});
 
 	test('It passes automatic accesibility tests', async () => {
