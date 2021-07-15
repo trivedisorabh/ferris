@@ -39,6 +39,8 @@ export { default as GlobalStyles } from './common/global-styles/GlobalStyles';
 /**
  * Molecules
  */
+export { default as InputCheckboxField } from './molecules/input-checkbox-field/InputCheckboxField';
+export type { InputCheckboxFieldProps } from './molecules/input-checkbox-field/InputCheckboxField';
 export { default as InputTextField } from './molecules/input-text-field/InputTextField';
 export type { InputTextFieldProps } from './molecules/input-text-field/InputTextField';
 export { default as TextAreaField } from './molecules/text-area-field/TextAreaField';

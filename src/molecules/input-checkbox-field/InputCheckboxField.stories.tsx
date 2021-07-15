@@ -14,19 +14,28 @@ interface Story<T> {
 
 const Template: Story<InputCheckboxFieldProps> = ({
 	change,
-	checked = false,
+	checked = true,
 	disabled = false,
 	id,
 	label = '',
+	small = false,
 }: InputCheckboxFieldProps) => (
-	<InputCheckboxField change={change} checked={checked} disabled={disabled} id={id} label={label} />
+	<InputCheckboxField
+		change={change}
+		checked={checked}
+		disabled={disabled}
+		id={id}
+		label={label}
+		small={small}
+	/>
 );
 
 export const Default = Template.bind({});
 Default.args = {
 	id: 'default-checkbox',
-	change: () => {
-		// Do stuff
+	change: (e) => {
+		const check = e?.currentTarget as HTMLInputElement;
+		alert(check.checked ? 'Checkbox is checked.' : 'Checkbox is NOT checked');
 	},
 };
 
@@ -39,20 +48,20 @@ Label.args = {
 	label: 'Label',
 };
 
-export const Checked = Template.bind({});
-Checked.args = {
-	id: 'checked-checkbox',
-	change: () => {
-		// Do stuff
-	},
-	checked: true,
-};
-
 export const Disabled = Template.bind({});
 Disabled.args = {
-	id: 'checked-checkbox',
+	id: 'disabled-checkbox',
 	change: () => {
 		// Do stuff
 	},
 	disabled: true,
+};
+
+export const Small = Template.bind({});
+Small.args = {
+	id: 'small-checkbox',
+	change: () => {
+		// Do stuff
+	},
+	small: true,
 };

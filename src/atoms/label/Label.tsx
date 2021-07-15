@@ -43,6 +43,7 @@ const StyledLabel = styled.label`
 		display: block;
 		font-size: ${FontSizes.lg};
 		font-weight: ${FontWeights.normal} !important;
+		line-height: 1.4;
 		margin-bottom: ${Spacings.sm};
 		padding-left: ${Spacings.xxl};
 		position: relative;
@@ -50,6 +51,11 @@ const StyledLabel = styled.label`
 		-moz-user-select: none;
 		-ms-user-select: none;
 		user-select: none;
+	}
+
+	&.small {
+		font-size: ${FontSizes.sm};
+		line-height: 1.3;
 	}
 `;
 

@@ -17,6 +17,7 @@ export interface InputCheckboxFieldProps extends HTMLAttributes<HTMLInputElement
 	inputCheckboxProps?: Partial<InputCheckboxProps>;
 	label?: string;
 	labelProps?: Partial<LabelProps>;
+	small?: boolean;
 }
 
 /**
@@ -32,10 +33,16 @@ const InputCheckboxField = forwardRef(
 			inputCheckboxProps,
 			label,
 			labelProps,
+			small,
 		}: InputCheckboxFieldProps,
 		ref: ForwardedRef<HTMLInputElement>
 	) => (
-		<Label {...labelProps} id={id} data-tpl="input-checkbox-field" className="checkbox-label">
+		<Label
+			{...labelProps}
+			id={id}
+			className={`checkbox-label ${small ? 'small' : ''}`}
+			data-tpl="input-checkbox-field"
+		>
 			{label}
 			<InputCheckbox
 				{...inputCheckboxProps}
@@ -44,11 +51,10 @@ const InputCheckboxField = forwardRef(
 				checked={checked}
 				onChange={change}
 			/>
-			<StyledSpan id={id} ref={ref} className="checkmark"></StyledSpan>
+			<StyledSpan id={id} ref={ref} className={`checkmark ${small ? 'small' : ''}`}></StyledSpan>
 		</Label>
 	)
 );
-
 InputCheckboxField.displayName = 'InputCheckboxField';
 export default InputCheckboxField;
 
@@ -78,5 +84,16 @@ const StyledSpan = styled.span`
 		-webkit-transform: rotate(45deg);
 		transform: rotate(45deg);
 		width: 6px;
+	}
+
+	&.small {
+		height: ${Sizes.size_1_125};
+		width: ${Sizes.size_1_125};
+
+		&::after {
+			height: 12px;
+			left: 6px;
+			top: 2px;
+		}
 	}
 `;
