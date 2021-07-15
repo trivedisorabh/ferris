@@ -15,10 +15,20 @@ describe('Modal', () => {
 		expect(await axe(container)).toHaveNoViolations();
 	});
 
-	test('The close button fires the right callback', () => {
-		let closeButtonWasClicked = false;
+	test('The content is rendered', () => {
+		const { getByText } = render(
+			<Modal open={true} showCloseButton={true} headerText="I am modal dialog">
+				Such content, wow!
+			</Modal>
+		);
+
+		expect(getByText('Such content, wow!')).toBeInTheDocument();
+	});
+
+	test('The close button fires the close callback', () => {
+		const closeCallback = jest.fn();
 		render(
-			<Modal open={true} showCloseButton={true} onClose={() => (closeButtonWasClicked = true)}>
+			<Modal open={true} showCloseButton={true} onClose={closeCallback}>
 				<button>Focusable button</button>
 			</Modal>
 		);
@@ -26,7 +36,20 @@ describe('Modal', () => {
 		const closeButton = screen.getByRole('button', { name: 'Close' });
 		userEvent.click(closeButton);
 
-		expect(closeButtonWasClicked).toBe(true);
+		expect(closeCallback).toHaveBeenCalledTimes(1);
+	});
+
+	test('Pressing Escape fires the close callback', () => {
+		const closeCallback = jest.fn();
+		render(
+			<Modal open={true} showCloseButton={true} onClose={closeCallback}>
+				<button>Focusable button</button>
+			</Modal>
+		);
+
+		userEvent.keyboard('{Escape}');
+
+		expect(closeCallback).toHaveBeenCalledTimes(1);
 	});
 
 	test('The modal traps focus', () => {
