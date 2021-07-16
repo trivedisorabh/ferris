@@ -46,7 +46,9 @@ const Template: Story<ModalProps> = ({
 
 	return (
 		<>
-			<Button onClick={() => setIsOpen(true)}>Open Modal</Button>
+			<Button onClick={() => setIsOpen(true)} style={{ marginBottom: '600px' }}>
+				Open Modal
+			</Button>
 			<Modal
 				open={isOpen}
 				showCloseButton={showCloseButton}
@@ -68,7 +70,9 @@ const TemplateCustomCloseButton: Story<ModalProps> = ({
 
 	return (
 		<>
-			<Button onClick={() => setIsOpen(true)}>Open Modal</Button>
+			<Button onClick={() => setIsOpen(true)} style={{ marginBottom: '600px' }}>
+				Open Modal
+			</Button>
 			<Modal
 				open={isOpen}
 				showCloseButton={showCloseButton}
