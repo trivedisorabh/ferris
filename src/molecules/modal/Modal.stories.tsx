@@ -11,7 +11,7 @@ export default {
 	component: Modal,
 	parameters: {
 		chromatic: {
-			delay: 300, // Allows for fade in to complete before screenshot
+			pauseAnimationAtEnd: true, // Allows for fade in to happen screenshot
 		},
 	},
 	argTypes: {
