@@ -9,6 +9,11 @@ import Spacings from '~tokens/spacings/Spacings';
 export default {
 	title: 'Molecules/Modal',
 	component: Modal,
+	parameters: {
+		chromatic: {
+			delay: 300, // Allows for fade in to complete before screenshot
+		},
+	},
 	argTypes: {
 		open: {
 			control: false,
