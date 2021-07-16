@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react';
 import CheckboxField, { CheckboxFieldProps } from './CheckboxField';
 
 export default {
-	title: 'Molecules/Checkbox',
+	title: 'Molecules/CheckboxField',
 	component: CheckboxField,
 };
 
@@ -13,54 +13,19 @@ interface Story<T> {
 }
 
 const Template: Story<CheckboxFieldProps> = ({
-	change,
 	checked = true,
-	disabled = false,
 	id,
-	label = '',
-	small = false,
-}: CheckboxFieldProps) => (
-	<CheckboxField
-		change={change}
-		checked={checked}
-		disabled={disabled}
-		id={id}
-		label={label}
-		small={small}
-	/>
-);
+	label = 'Label',
+	small,
+}: CheckboxFieldProps) => <CheckboxField checked={checked} id={id} label={label} small={small} />;
 
 export const Default = Template.bind({});
 Default.args = {
-	id: 'default-checkbox',
-	change: () => {
-		// Do stuff
-	},
-};
-
-export const Label = Template.bind({});
-Label.args = {
-	id: 'default-checkbox',
-	change: () => {
-		// Do stuff
-	},
-	label: 'Label',
-};
-
-export const Disabled = Template.bind({});
-Disabled.args = {
-	id: 'disabled-checkbox',
-	change: () => {
-		// Do stuff
-	},
-	disabled: true,
+	id: 'default-checkbox-field',
 };
 
 export const Small = Template.bind({});
 Small.args = {
-	id: 'small-checkbox',
-	change: () => {
-		// Do stuff
-	},
+	id: 'small-checkbox-field',
 	small: true,
 };
