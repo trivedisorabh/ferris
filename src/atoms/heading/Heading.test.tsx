@@ -7,20 +7,20 @@ describe('Heading', () => {
 	const headings: Array<HeadingLevel> = ['h1', 'h2', 'h3', 'h4'];
 
 	test('The heading renders the correct html element', () => {
-		headings.forEach((level) => {
-			const { container } = render(<Heading as={level}>I am heading</Heading>);
-			expect(container.querySelector(level)).toBeTruthy();
+		headings.forEach((level, index) => {
+			const { getByRole } = render(<Heading as={level}>I am heading</Heading>);
+			expect(getByRole('heading', { level: index + 1 })).toBeInTheDocument();
 		});
 	});
 
 	test('The heading contains children', () => {
-		const { container } = render(<Heading as="h1">I am heading</Heading>);
+		const { findByText } = render(<Heading as={'h1'}>I am heading</Heading>);
 
-		expect(container.querySelector('h1')?.innerHTML).toBe('I am heading');
+		expect(findByText('I am heading')).toBeTruthy;
 	});
 
 	test('It passes automatic accesibility tests', async () => {
-		const { container } = render(<Heading as="h1">I am heading</Heading>);
+		const { container } = render(<Heading as={'h1'}>I am heading</Heading>);
 
 		expect(await axe(container)).toHaveNoViolations();
 	});

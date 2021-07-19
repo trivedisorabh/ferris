@@ -11,12 +11,12 @@ async function generateIndex(options) {
 	const files = await globPromise(path.join(options.outputDir, '**/*.{ts,tsx}'), {
 		ignore: [
 			'**/index.ts',
+			'**/interfaces.ts',
+			'**/styles.ts',
 			'**/types/*',
 			'**/*.stories*',
 			'**/*.Stories*',
 			'**/*.test*',
-			'**/*.tokens*',
-			'**/*.Tokens*',
 			'**/icons/components/*',
 		],
 	});

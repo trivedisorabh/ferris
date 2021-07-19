@@ -39,6 +39,8 @@ export { default as GlobalStyles } from './common/global-styles/GlobalStyles';
  */
 export { default as InputTextField } from './molecules/input-text-field/InputTextField';
 export type { InputTextFieldProps } from './molecules/input-text-field/InputTextField';
+export { default as Modal } from './molecules/modal/Modal';
+export type { ModalProps } from './molecules/modal/Modal';
 export { default as TextAreaField } from './molecules/text-area-field/TextAreaField';
 export type { TextAreaFieldProps } from './molecules/text-area-field/TextAreaField';
 

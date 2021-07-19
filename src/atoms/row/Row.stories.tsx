@@ -1,6 +1,7 @@
-import React, { CSSProperties, ReactElement } from 'react';
+import React, { CSSProperties } from 'react';
 import Button from '~atoms/button/Button';
 import Spacer from '~atoms/spacer/Spacer';
+import { Story } from '~common/interfaces';
 import Row, { RowProps } from './Row';
 
 const alignX: CSSProperties['justifyContent'][] = [
@@ -58,12 +59,6 @@ export default {
 		},
 	},
 };
-
-interface Story<T> {
-	(args: T): ReactElement;
-	args?: Partial<T>;
-	argTypes?: Record<string, unknown>;
-}
 
 const Template: Story<RowProps> = ({ children, alignX, alignY, reversed }: RowProps) => (
 	<Row alignX={alignX} alignY={alignY} reversed={reversed}>
