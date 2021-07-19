@@ -58,6 +58,10 @@ const StyledCheckbox = styled.input(({ small }: StyledCheckboxProps) => {
 		position: absolute;
 		width: ${widthAndHeight};
 
+		&:disabled {
+			cursor: not-allowed;
+		}
+
 		&:disabled ~ div {
 			background-color: ${Colors.grayDark} !important;
 			border: none;
