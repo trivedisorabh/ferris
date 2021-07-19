@@ -12,9 +12,11 @@ export default {
 	includeStories: /^[A-Z]/,
 };
 
-export const template: Story<CheckboxProps> = ({ defaultChecked, disabled }: CheckboxProps) => (
-	<Checkbox disabled={disabled} defaultChecked={defaultChecked} />
-);
+export const template: Story<CheckboxProps> = ({
+	defaultChecked,
+	disabled,
+	small,
+}: CheckboxProps) => <Checkbox disabled={disabled} defaultChecked={defaultChecked} small={small} />;
 
 export const Checked = template.bind({});
 Checked.args = { defaultChecked: true };

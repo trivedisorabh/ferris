@@ -1,3 +1,4 @@
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, { ForwardedRef, forwardRef, InputHTMLAttributes } from 'react';
 import Colors from '~tokens/colors/Colors';
@@ -28,9 +29,10 @@ const Checkbox = forwardRef(
 					id={id}
 					onChange={onChange}
 					ref={ref}
+					small={small}
 					{...rest}
 				/>
-				<StyledSpan ref={ref} className={`checkmark ${small ? 'small' : ''}`}></StyledSpan>
+				<StyledCheckmark ref={ref} small={small}></StyledCheckmark>
 			</>
 		);
 	}
@@ -42,61 +44,61 @@ export default Checkbox;
 /**
  * @category Styles
  */
-const StyledCheckbox = styled.input`
-	cursor: pointer;
-	height: ${Sizes.size_1_5};
-	margin: 0;
-	opacity: 0;
-	position: absolute;
-	width: ${Sizes.size_1_5};
 
-	&:disabled ~ .checkmark {
-		background-color: ${Colors.grayDark} !important;
-		border: none;
-	}
+type StyledCheckboxProps = Pick<CheckboxProps, 'small'>;
 
-	&:checked ~ .checkmark {
-		background-color: ${Colors.brandBase};
-		border: none;
-	}
+const StyledCheckbox = styled.input(({ small }: StyledCheckboxProps) => {
+	const widthAndHeight = small ? Sizes.size_1_125 : Sizes.size_1_5;
 
-	&:checked ~ .checkmark::after {
-		display: block;
-	}
-`;
-
-const StyledSpan = styled.div`
-	background-color: ${Colors.white};
-	border: solid 1px ${Colors.grayDark};
-	border-radius: 2px;
-	height: ${Sizes.size_1_5};
-	pointer-events: none;
-	position: relative;
-	width: ${Sizes.size_1_5};
-
-	&::after {
-		border: solid ${Colors.white};
-		border-width: 0 3px 3px 0;
-		content: '';
-		display: none;
-		height: 14px;
-		left: 9px;
+	return css`
+		cursor: pointer;
+		height: ${widthAndHeight};
+		margin: 0;
+		opacity: 0;
 		position: absolute;
-		top: 4px;
-		-ms-transform: rotate(45deg);
-		-webkit-transform: rotate(45deg);
-		transform: rotate(45deg);
-		width: 6px;
-	}
+		width: ${widthAndHeight};
 
-	&.small {
-		height: ${Sizes.size_1_125};
-		width: ${Sizes.size_1_125};
+		&:disabled ~ div {
+			background-color: ${Colors.grayDark} !important;
+			border: none;
+		}
+
+		&:checked ~ div {
+			background-color: ${Colors.brandBase};
+			border: none;
+		}
+
+		&:checked ~ div::after {
+			display: block;
+		}
+	`;
+});
+
+const StyledCheckmark = styled.div(({ small }: StyledCheckboxProps) => {
+	const widthAndHeight = small ? Sizes.size_1_125 : Sizes.size_1_5;
+
+	return css`
+		background-color: ${Colors.white};
+		border: solid 1px ${Colors.grayDark};
+		border-radius: 2px;
+		height: ${widthAndHeight};
+		pointer-events: none;
+		position: relative;
+		width: ${widthAndHeight};
 
 		&::after {
-			height: 12px;
-			left: 6px;
-			top: 2px;
+			border: solid ${Colors.white};
+			border-width: 0 3px 3px 0;
+			content: '';
+			display: none;
+			height: ${small ? '12px' : '14px'};
+			left: ${small ? '6px' : '9px'};
+			position: absolute;
+			top: ${small ? '2px' : '4px'};
+			-ms-transform: rotate(45deg);
+			-webkit-transform: rotate(45deg);
+			transform: rotate(45deg);
+			width: 6px;
 		}
-	}
-`;
+	`;
+});

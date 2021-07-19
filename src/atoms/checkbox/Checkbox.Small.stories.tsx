@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { checkboxCommonArgTypes, template } from '~atoms/checkbox/Checkbox.stories';
 import Checkbox from './Checkbox';
 
@@ -23,10 +22,3 @@ CheckedDisabled.args = { defaultChecked: true, disabled: true };
 
 export const UncheckedDisabled = template.bind({});
 UncheckedDisabled.args = { disabled: true };
-
-export const Controlled = () => {
-	const [checked, setChecked] = useState(true);
-	return (
-		<Checkbox id={'controlled-checkbox'} checked={checked} onChange={() => setChecked(!checked)} />
-	);
-};
