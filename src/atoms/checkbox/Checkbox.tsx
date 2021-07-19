@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import React, { ChangeEvent, ForwardedRef, forwardRef, InputHTMLAttributes, useState } from 'react';
+import React, { ForwardedRef, forwardRef, InputHTMLAttributes } from 'react';
 import Colors from '~tokens/colors/Colors';
 import Sizes from '~tokens/sizes/Sizes';
 
@@ -7,9 +7,6 @@ import Sizes from '~tokens/sizes/Sizes';
  * @category Props
  */
 export interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
-	id: string;
-	checked?: boolean;
-	disabled?: boolean;
 	small?: boolean;
 }
 
@@ -18,26 +15,20 @@ export interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
  */
 const Checkbox = forwardRef(
 	(
-		{ id, checked = false, disabled, small, ...rest }: CheckboxProps,
+		{ id, defaultChecked, checked, disabled, onChange, small, ...rest }: CheckboxProps,
 		ref: ForwardedRef<HTMLInputElement>
 	) => {
-		const [value, setValue] = useState<boolean>(checked);
-
-		const onChangeHandler = (e: ChangeEvent) => {
-			const target = e.target as HTMLInputElement;
-			setValue(target.checked);
-		};
-
 		return (
 			<>
 				<StyledCheckbox
-					{...rest}
-					disabled={disabled}
-					defaultChecked={value}
-					id={id}
-					onChange={onChangeHandler}
-					ref={ref}
 					type="checkbox"
+					checked={checked}
+					defaultChecked={defaultChecked}
+					disabled={disabled}
+					id={id}
+					onChange={onChange}
+					ref={ref}
+					{...rest}
 				/>
 				<StyledSpan ref={ref} className={`checkmark ${small ? 'small' : ''}`}></StyledSpan>
 			</>

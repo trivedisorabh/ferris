@@ -1,39 +1,31 @@
-import React, { ReactElement } from 'react';
+import React, { useState } from 'react';
+import { Story } from '~common/interfaces';
 import Checkbox, { CheckboxProps } from './Checkbox';
 
 export default {
-	title: 'Atoms/Checkbox',
+	title: 'Atoms/Checkbox/Regular',
 	component: Checkbox,
 };
 
-interface Story<T> {
-	(args: T): ReactElement;
-	args?: Partial<T>;
-	argTypes?: Record<string, unknown>;
-}
-
-const Template: Story<CheckboxProps> = ({
-	defaultChecked = true,
-	disabled = false,
-	id,
-	small,
-}: CheckboxProps) => (
-	<Checkbox id={id} disabled={disabled} defaultChecked={defaultChecked} small={small} />
+const Template: Story<CheckboxProps> = ({ defaultChecked, disabled }: CheckboxProps) => (
+	<Checkbox disabled={disabled} defaultChecked={defaultChecked} />
 );
 
-export const Default = Template.bind({});
-Default.args = {
-	id: 'default-checkbox',
-};
+export const Checked = Template.bind({});
+Checked.args = { defaultChecked: true };
 
-export const Disabled = Template.bind({});
-Disabled.args = {
-	id: 'default-checkbox',
-	disabled: true,
-};
+export const Unchecked = Template.bind({});
+Unchecked.args = {};
 
-export const Small = Template.bind({});
-Small.args = {
-	id: 'default-checkbox',
-	small: true,
+export const CheckedDisabled = Template.bind({});
+CheckedDisabled.args = { defaultChecked: true, disabled: true };
+
+export const UncheckedDisabled = Template.bind({});
+UncheckedDisabled.args = { disabled: true };
+
+export const Controlled = () => {
+	const [checked, setChecked] = useState(true);
+	return (
+		<Checkbox id={'controlled-checkbox'} checked={checked} onChange={() => setChecked(!checked)} />
+	);
 };
