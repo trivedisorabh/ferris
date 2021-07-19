@@ -1,20 +1,16 @@
 import React, { useState } from 'react';
-import { Story } from '~common/interfaces';
-import Checkbox, { CheckboxProps } from './Checkbox';
+import { checkboxCommonArgTypes, template } from '~atoms/checkbox/Checkbox.stories';
+import Checkbox from './Checkbox';
 
-export const checkboxCommonArgTypes = {
-	small: { defaultValue: false },
-};
 export default {
-	title: 'Atoms/Checkbox/Regular',
+	title: 'Atoms/Checkbox/Small',
 	component: Checkbox,
-	argTypes: checkboxCommonArgTypes,
 	includeStories: /^[A-Z]/,
+	argTypes: {
+		...checkboxCommonArgTypes,
+		small: { ...checkboxCommonArgTypes.small, defaultValue: true },
+	},
 };
-
-export const template: Story<CheckboxProps> = ({ defaultChecked, disabled }: CheckboxProps) => (
-	<Checkbox disabled={disabled} defaultChecked={defaultChecked} />
-);
 
 export const Checked = template.bind({});
 Checked.args = { defaultChecked: true };
