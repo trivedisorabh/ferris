@@ -38,6 +38,7 @@
 		"@emotion/react": "^11.4.0",
 		"@emotion/styled": "^11.3.0",
 		"@types/jest-axe": "^3.5.1",
+		"focus-trap-react": "^8.7.0",
 		"react": "^17.0.2",
 		"react-dom": "^17.0.2"
 	},
@@ -52,6 +53,7 @@
 		"@svgr/core": "^5.5.0",
 		"@svgr/plugin-svgo": "^5.5.0",
 		"@testing-library/dom": "^8.0.0",
+		"@testing-library/jest-dom": "^5.14.1",
 		"@testing-library/react": "^11.2.7",
 		"@testing-library/user-event": "^13.1.9",
 		"@types/jest": "^26.0.23",
@@ -62,6 +64,7 @@
 		"chromatic": "^5.7.1",
 		"eslint": "^7.26.0",
 		"eslint-config-prettier": "^8.3.0",
+		"eslint-plugin-jest-dom": "^3.9.0",
 		"eslint-plugin-jsx-a11y": "^6.4.1",
 		"eslint-plugin-react": "^7.23.2",
 		"husky": "^6.0.0",

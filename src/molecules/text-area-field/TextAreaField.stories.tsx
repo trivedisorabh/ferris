@@ -1,16 +1,11 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
+import { Story } from '~common/interfaces';
 import TextAreaField, { TextAreaFieldProps } from './TextAreaField';
 
 export default {
 	title: 'Molecules/Textarea field',
 	component: TextAreaField,
 };
-
-interface Story<T> {
-	(args: T): ReactElement;
-	args?: Partial<T>;
-	argTypes?: Record<string, unknown>;
-}
 
 const Template: Story<TextAreaFieldProps> = ({
 	id,

@@ -1,17 +1,12 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import Button from '~atoms/button/Button';
+import { Story } from '~common/interfaces';
 import Spacer, { SpacerProps } from './Spacer';
 
 export default {
 	title: 'Atoms/Spacer',
 	component: Spacer,
 };
-
-interface Story<T> {
-	(args: T): ReactElement;
-	args?: Partial<T>;
-	argTypes?: Record<string, unknown>;
-}
 
 const Template: Story<SpacerProps> = ({ orientation, spacing }: SpacerProps) => (
 	<>

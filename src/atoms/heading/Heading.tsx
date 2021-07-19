@@ -1,7 +1,6 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, { ForwardedRef, forwardRef, HTMLAttributes, ReactNode } from 'react';
-import FontWeights from '~tokens/font-weights/FontWeights';
 import Headings from '~tokens/headings/Headings';
 import LineHeights from '~tokens/line-heights/LineHeights';
 
@@ -12,6 +11,7 @@ export type HeadingLevel = 'h1' | 'h2' | 'h3' | 'h4';
 
 export interface HeadingProps extends HTMLAttributes<HTMLHeadingElement> {
 	as: HeadingLevel;
+	styledAs?: HeadingLevel;
 	children: ReactNode;
 }
 
@@ -19,8 +19,8 @@ export interface HeadingProps extends HTMLAttributes<HTMLHeadingElement> {
  * @category Template
  */
 const Heading = forwardRef(
-	({ as, children, ...rest }: HeadingProps, ref: ForwardedRef<HTMLHeadingElement>) => (
-		<StyledHeading {...rest} as={as} ref={ref}>
+	({ as, children, styledAs, ...rest }: HeadingProps, ref: ForwardedRef<HTMLHeadingElement>) => (
+		<StyledHeading {...rest} as={as} ref={ref} styledAs={styledAs}>
 			{children}
 		</StyledHeading>
 	)
@@ -32,36 +32,36 @@ export default Heading;
 /**
  * @category Styles
  */
-type StyledHeadingProps = Pick<HeadingProps, 'as'>;
+type StyledHeadingProps = Pick<HeadingProps, 'as' | 'styledAs'>;
 
-const StyledHeading = styled.h1(
-	({ as }: StyledHeadingProps) => css`
+const StyledHeading = styled.h1((props: StyledHeadingProps) => {
+	const stylingLevel = props.styledAs || props.as;
+
+	return css`
 		line-height: ${LineHeights.compact};
 
-		${as === 'h1' &&
+		${stylingLevel === 'h1' &&
 		css`
 			font-size: ${Headings.h1Size};
 			font-weight: ${Headings.h1Weight};
 		`}
 
-		${(as === 'h2' || as === 'h3' || as === 'h4') &&
-		css`
-			font-weight: ${FontWeights.bold};
-		`}
-
-		${as === 'h2' &&
+		${stylingLevel === 'h2' &&
 		css`
 			font-size: ${Headings.h2Size};
+			font-weight: ${Headings.h2Weight};
 		`}
 
-		${as === 'h3' &&
+		${stylingLevel === 'h3' &&
 		css`
 			font-size: ${Headings.h3Size};
+			font-weight: ${Headings.h3Weight};
 		`}
 
-		${as === 'h4' &&
+		${stylingLevel === 'h4' &&
 		css`
 			font-size: ${Headings.h4Size};
+			font-weight: ${Headings.h4Weight};
 		`}
-	`
-);
+	`;
+});
