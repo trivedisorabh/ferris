@@ -4,6 +4,7 @@ import Checkbox, { CheckboxProps } from './Checkbox';
 
 export const checkboxCommonArgTypes = {
 	small: { defaultValue: false },
+	onChange: { action: 'Changed' },
 };
 export default {
 	title: 'Atoms/Checkbox/Regular',
@@ -16,7 +17,10 @@ export const template: Story<CheckboxProps> = ({
 	defaultChecked,
 	disabled,
 	small,
-}: CheckboxProps) => <Checkbox disabled={disabled} defaultChecked={defaultChecked} small={small} />;
+	onChange,
+}: CheckboxProps) => (
+	<Checkbox disabled={disabled} defaultChecked={defaultChecked} small={small} onChange={onChange} />
+);
 
 export const Checked = template.bind({});
 Checked.args = { defaultChecked: true };
