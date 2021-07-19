@@ -44,10 +44,11 @@ export default Checkbox;
  */
 const StyledCheckbox = styled.input`
 	cursor: pointer;
-	height: 0;
+	height: ${Sizes.size_1_5};
+	margin: 0;
 	opacity: 0;
 	position: absolute;
-	width: 0;
+	width: ${Sizes.size_1_5};
 
 	&:disabled ~ .checkmark {
 		background-color: ${Colors.grayDark} !important;
@@ -64,14 +65,13 @@ const StyledCheckbox = styled.input`
 	}
 `;
 
-const StyledSpan = styled.span`
+const StyledSpan = styled.div`
 	background-color: ${Colors.white};
 	border: solid 1px ${Colors.grayDark};
 	border-radius: 2px;
 	height: ${Sizes.size_1_5};
-	left: 0;
-	position: absolute;
-	top: 0;
+	pointer-events: none;
+	position: relative;
 	width: ${Sizes.size_1_5};
 
 	&::after {
