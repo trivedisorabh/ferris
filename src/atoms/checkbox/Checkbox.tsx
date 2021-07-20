@@ -73,7 +73,7 @@ const StyledCheckbox = styled.input(({ small }: StyledCheckboxProps) => {
 		}
 
 		&:checked ~ div::after {
-			display: block;
+			opacity: 1;
 		}
 	`;
 });
@@ -88,20 +88,22 @@ const StyledCheckmark = styled.div(({ small }: StyledCheckboxProps) => {
 		height: ${widthAndHeight};
 		pointer-events: none;
 		position: relative;
+		transition: background-color 200ms;
 		width: ${widthAndHeight};
 
 		&::after {
 			border: solid ${Colors.white};
 			border-width: 0 3px 3px 0;
 			content: '';
-			display: none;
 			height: ${small ? '12px' : '14px'};
 			left: ${small ? '6px' : '9px'};
+			opacity: 0;
 			position: absolute;
 			top: ${small ? '2px' : '4px'};
 			-ms-transform: rotate(45deg);
 			-webkit-transform: rotate(45deg);
 			transform: rotate(45deg);
+			transition: opacity 200ms;
 			width: 6px;
 		}
 	`;
