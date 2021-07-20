@@ -1,4 +1,4 @@
-import { checkboxCommonArgTypes, template } from '~atoms/checkbox/Checkbox.stories';
+import CheckboxStory, { template } from '~atoms/checkbox/Checkbox.stories';
 import Checkbox from './Checkbox';
 
 export default {
@@ -6,8 +6,8 @@ export default {
 	component: Checkbox,
 	includeStories: /^[A-Z]/,
 	argTypes: {
-		...checkboxCommonArgTypes,
-		small: { ...checkboxCommonArgTypes.small, defaultValue: true },
+		...CheckboxStory.argTypes,
+		small: { ...CheckboxStory.argTypes.small, defaultValue: true },
 	},
 };
 

@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import React, { ForwardedRef, forwardRef, InputHTMLAttributes } from 'react';
+import React, { ForwardedRef, forwardRef, InputHTMLAttributes, useEffect, useRef } from 'react';
+import mergeRefs from 'react-merge-refs';
 import { focusOutline } from '~common/styles';
 import Colors from '~tokens/colors/Colors';
 import Sizes from '~tokens/sizes/Sizes';
@@ -10,6 +11,7 @@ import Sizes from '~tokens/sizes/Sizes';
  */
 export interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
 	small?: boolean;
+	indeterminate?: boolean;
 }
 
 /**
@@ -17,9 +19,26 @@ export interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
  */
 const Checkbox = forwardRef(
 	(
-		{ id, defaultChecked, checked, disabled, onChange, small, ...rest }: CheckboxProps,
+		{
+			id,
+			defaultChecked,
+			checked,
+			disabled,
+			onChange,
+			small,
+			indeterminate = false,
+			...rest
+		}: CheckboxProps,
 		ref: ForwardedRef<HTMLInputElement>
 	) => {
+		const inputRef = useRef<HTMLInputElement>(null);
+		useEffect(() => {
+			if (!inputRef.current) return;
+			inputRef.current.indeterminate = indeterminate;
+		});
+
+		const mergedRefs = mergeRefs([ref, inputRef]);
+
 		return (
 			<>
 				<StyledCheckbox
@@ -29,11 +48,11 @@ const Checkbox = forwardRef(
 					disabled={disabled}
 					id={id}
 					onChange={onChange}
-					ref={ref}
+					ref={mergedRefs}
 					small={small}
 					{...rest}
 				/>
-				<StyledCheckmark ref={ref} small={small}></StyledCheckmark>
+				<StyledCheckmark small={small}></StyledCheckmark>
 			</>
 		);
 	}
@@ -68,12 +87,17 @@ const StyledCheckbox = styled.input(({ small }: StyledCheckboxProps) => {
 			border: none;
 		}
 
-		&:checked ~ div {
+		&:checked ~ div,
+		&:indeterminate ~ div {
 			background-color: ${Colors.brandBase};
 			border: none;
 		}
 
 		&:checked ~ div::after {
+			opacity: 1;
+		}
+
+		&:indeterminate:not(:checked) ~ div::before {
 			opacity: 1;
 		}
 
@@ -110,6 +134,18 @@ const StyledCheckmark = styled.div(({ small }: StyledCheckboxProps) => {
 			transform: rotate(45deg);
 			transition: opacity 200ms;
 			width: 6px;
+		}
+
+		&::before {
+			background-color: ${Colors.white};
+			content: '';
+			height: ${small ? '3px' : '4px'};
+			left: ${small ? '3px' : '4px'};
+			opacity: 0;
+			position: absolute;
+			top: ${small ? '8px' : '10px'};
+			transition: opacity 200ms;
+			width: ${small ? '12px' : '16px'};
 		}
 	`;
 });
