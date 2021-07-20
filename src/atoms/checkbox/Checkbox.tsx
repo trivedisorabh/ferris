@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, { ForwardedRef, forwardRef, InputHTMLAttributes } from 'react';
+import { focusOutline } from '~common/styles';
 import Colors from '~tokens/colors/Colors';
 import Sizes from '~tokens/sizes/Sizes';
 
@@ -74,6 +75,10 @@ const StyledCheckbox = styled.input(({ small }: StyledCheckboxProps) => {
 
 		&:checked ~ div::after {
 			opacity: 1;
+		}
+
+		&:focus-visible ~ div {
+			${focusOutline}
 		}
 	`;
 });

@@ -10,3 +10,10 @@ export const visuallyHidden = css`
 	position: absolute !important;
 	width: 1px !important;
 `;
+
+export const focusOutline = css`
+	outline-color: rgb(15, 88, 214);
+	outline-offset: 2px;
+	outline-style: solid;
+	outline-width: 2px;
+`;
