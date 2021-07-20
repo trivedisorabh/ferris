@@ -10,7 +10,7 @@ import Spacings from '~tokens/spacings/Spacings';
  */
 export interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
 	children: React.ReactNode;
-	id: string;
+	htmlFor: string;
 	required?: boolean;
 }
 
@@ -18,8 +18,8 @@ export interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
  * @category Template
  */
 const Label = forwardRef(
-	({ id, children, required, ...rest }: LabelProps, ref: ForwardedRef<HTMLLabelElement>) => (
-		<StyledLabel {...rest} htmlFor={id} ref={ref}>
+	({ htmlFor, children, required, ...rest }: LabelProps, ref: ForwardedRef<HTMLLabelElement>) => (
+		<StyledLabel {...rest} htmlFor={htmlFor} ref={ref}>
 			{children}
 			{required && <StyledSymbol aria-hidden="true">*</StyledSymbol>}
 		</StyledLabel>
