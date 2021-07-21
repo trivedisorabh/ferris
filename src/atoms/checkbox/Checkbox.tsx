@@ -40,7 +40,7 @@ const Checkbox = forwardRef(
 		const mergedRefs = mergeRefs([ref, inputRef]);
 
 		return (
-			<>
+			<StyledWrapper {...rest}>
 				<StyledCheckbox
 					type="checkbox"
 					checked={checked}
@@ -50,22 +50,24 @@ const Checkbox = forwardRef(
 					onChange={onChange}
 					ref={mergedRefs}
 					small={small}
-					{...rest}
 				/>
 				<StyledCheckmark small={small}></StyledCheckmark>
-			</>
+			</StyledWrapper>
 		);
 	}
 );
 
-Checkbox.displayName = 'Checkbox';
-export default Checkbox;
-
-/**
- * @category Styles
- */
-
 type StyledCheckboxProps = Pick<CheckboxProps, 'small'>;
+
+const StyledWrapper = styled.div(({ small }: StyledCheckboxProps) => {
+	const widthAndHeight = small ? Sizes.size_1_125 : Sizes.size_1_5;
+
+	return css`
+		height: ${widthAndHeight};
+		position: relative;
+		width: ${widthAndHeight};
+	`;
+});
 
 const StyledCheckbox = styled.input(({ small }: StyledCheckboxProps) => {
 	const widthAndHeight = small ? Sizes.size_1_125 : Sizes.size_1_5;
@@ -116,7 +118,7 @@ const StyledCheckmark = styled.div(({ small }: StyledCheckboxProps) => {
 		border-radius: 2px;
 		height: ${widthAndHeight};
 		pointer-events: none;
-		position: relative;
+		position: absolute;
 		transition: background-color 200ms;
 		width: ${widthAndHeight};
 
@@ -149,3 +151,6 @@ const StyledCheckmark = styled.div(({ small }: StyledCheckboxProps) => {
 		}
 	`;
 });
+
+Checkbox.displayName = 'Checkbox';
+export default Checkbox;
