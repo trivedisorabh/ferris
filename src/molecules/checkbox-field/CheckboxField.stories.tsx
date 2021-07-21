@@ -1,31 +1,55 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
+import { Story } from '~common/interfaces';
 import CheckboxField, { CheckboxFieldProps } from './CheckboxField';
 
 export default {
-	title: 'Molecules/CheckboxField',
+	title: 'Molecules/Checkbox field/Regular',
 	component: CheckboxField,
+	argTypes: {
+		small: { control: 'boolean', defaultValue: false },
+		label: { control: 'string', defaultValue: 'Checkbox label' },
+	},
+	includeStories: /^[A-Z]/,
 };
 
-interface Story<T> {
-	(args: T): ReactElement;
-	args?: Partial<T>;
-	argTypes?: Record<string, unknown>;
-}
-
-const Template: Story<CheckboxFieldProps> = ({
-	checked = true,
-	id,
-	label = 'Label',
+export const template: Story<CheckboxFieldProps> = ({
+	defaultChecked,
+	label,
 	small,
-}: CheckboxFieldProps) => <CheckboxField checked={checked} id={id} label={label} small={small} />;
+	required,
+	indeterminate,
+	disabled,
+}: CheckboxFieldProps) => (
+	<CheckboxField
+		defaultChecked={defaultChecked}
+		label={label}
+		small={small}
+		required={required}
+		indeterminate={indeterminate}
+		disabled={disabled}
+	/>
+);
 
-export const Default = Template.bind({});
-Default.args = {
-	id: 'default-checkbox-field',
-};
+export const Unchecked = template.bind({});
+Unchecked.args = {};
 
-export const Small = Template.bind({});
-Small.args = {
-	id: 'small-checkbox-field',
-	small: true,
-};
+export const Checked = template.bind({});
+Checked.args = { defaultChecked: true };
+
+export const Indeterminate = template.bind({});
+Indeterminate.args = { indeterminate: true };
+
+export const Required = template.bind({});
+Required.args = { required: true };
+
+export const DisabledUnchecked = template.bind({});
+DisabledUnchecked.args = { disabled: true };
+
+export const DisabledChecked = template.bind({});
+DisabledChecked.args = { disabled: true, defaultChecked: true };
+
+export const DisabledIndeterminate = template.bind({});
+DisabledIndeterminate.args = { disabled: true, indeterminate: true };
+
+export const RequiredDisabled = template.bind({});
+RequiredDisabled.args = { disabled: true, required: true };

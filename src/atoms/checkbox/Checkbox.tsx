@@ -40,7 +40,7 @@ const Checkbox = forwardRef(
 		const mergedRefs = mergeRefs([ref, inputRef]);
 
 		return (
-			<StyledWrapper {...rest}>
+			<StyledWrapper {...rest} small={small}>
 				<StyledCheckbox
 					type="checkbox"
 					checked={checked}

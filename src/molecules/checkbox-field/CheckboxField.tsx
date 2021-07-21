@@ -1,46 +1,54 @@
-import React, { ForwardedRef, forwardRef, HTMLAttributes } from 'react';
+import React, { ForwardedRef, forwardRef } from 'react';
 import Checkbox, { CheckboxProps } from '~atoms/checkbox/Checkbox';
 import Label, { LabelProps } from '~atoms/label/Label';
+import Spacings from '~tokens/spacings/Spacings';
 
-/**
- * @category Props
- */
-export interface CheckboxFieldProps extends HTMLAttributes<HTMLInputElement> {
-	id: string;
+export interface CheckboxFieldProps extends CheckboxProps {
+	label: string;
 	checkboxProps?: Partial<CheckboxProps>;
-	checked?: boolean;
-	disabled?: boolean;
-	label?: string;
 	labelProps?: Partial<LabelProps>;
-	small?: boolean;
 }
 
-/**
- * @category Template
- */
 const CheckboxField = forwardRef(
 	(
-		{ id, checked = false, disabled, checkboxProps, label, labelProps, small }: CheckboxFieldProps,
+		{
+			id,
+			checked,
+			defaultChecked,
+			onChange,
+			disabled,
+			checkboxProps,
+			label,
+			labelProps,
+			small,
+			indeterminate,
+			required,
+		}: CheckboxFieldProps,
 		ref: ForwardedRef<HTMLInputElement>
 	) => (
 		<Label
 			{...labelProps}
-			id={id}
-			className={`checkbox-label ${small ? 'small' : ''}`}
-			data-tpl="input-checkbox-field"
+			disabled={disabled}
+			small={small}
+			style={{ display: 'flex', alignItems: 'center', maxWidth: 'max-content' }}
+			required={required}
 		>
-			{label}
 			<Checkbox
 				{...checkboxProps}
 				id={id}
+				checked={checked}
+				onChange={onChange}
 				disabled={disabled}
-				defaultChecked={checked}
-				className="checkbox"
+				defaultChecked={defaultChecked}
 				small={small}
+				indeterminate={indeterminate}
 				ref={ref}
+				style={{ marginInlineEnd: Spacings.xs }}
 			/>
+			{label}
 		</Label>
 	)
 );
+
 CheckboxField.displayName = 'CheckboxField';
 export default CheckboxField;

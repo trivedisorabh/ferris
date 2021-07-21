@@ -8,7 +8,6 @@ export interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
 	required?: boolean;
 	disabled?: boolean;
 	small?: boolean;
-	children: string;
 }
 
 const Label = forwardRef(
@@ -25,7 +24,7 @@ type StyledLabelProps = Pick<LabelProps, 'small' | 'disabled'>;
 const StyledLabel = styled.label(
 	({ small, disabled }: StyledLabelProps) => css`
 		color: ${disabled ? Colors.grayDarker : Colors.blackBrand};
-		display: flex;
+		cursor: ${disabled ? 'not-allowed' : 'pointer'};
 		font-size: ${small ? FontSizes.sm : FontSizes.md};
 		line-height: ${small ? 1.3 : 'initial'};
 		margin: 0;
