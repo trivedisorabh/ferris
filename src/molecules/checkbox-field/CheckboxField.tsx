@@ -7,6 +7,7 @@ export interface CheckboxFieldProps extends CheckboxProps, Pick<LabelProps, 'req
 	label: string;
 	checkboxProps?: Partial<CheckboxProps>;
 	labelProps?: Partial<LabelProps>;
+	required: boolean;
 }
 
 const CheckboxField = forwardRef(
