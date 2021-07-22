@@ -6,13 +6,54 @@ export default {
 	title: 'Molecules/Checkbox field/Regular',
 	component: CheckboxField,
 	argTypes: {
-		small: { control: 'boolean', defaultValue: false },
-		label: { control: 'string', defaultValue: 'Checkbox label' },
+		small: {
+			defaultValue: false,
+			description: 'If true, renders a smaller version of the component.',
+		},
+		label: {
+			defaultValue: 'Checkbox label',
+			description: 'Label text describing the checkbox',
+		},
+		defaultChecked: {
+			control: false,
+			description: 'If the component is uncontrolled, determines the inital state of the checkbox',
+		},
+		required: {
+			description: 'If true, marks the label with a red asterisk.',
+		},
+		indeterminate: {
+			control: 'boolean',
+			description:
+				'If true and the checkbox is not checked, makes the checkbox appear indeterminate.',
+		},
+		disabled: {
+			control: 'boolean',
+			description: 'If true, makes the component unclickable and appear faded.',
+		},
+		onChange: {
+			control: false,
+			description: 'Callback that will fire every time the component changes state',
+		},
+		checked: {
+			control: false,
+			description:
+				'If set the component will be [controlled](https://reactjs.org/docs/forms.html#controlled-components)',
+		},
+		checkboxProps: {
+			control: false,
+			description:
+				'Props that will be passed on the the [checkbox](/?path=/docs/atoms-checkbox-regular--checked) atom',
+		},
+		labelProps: {
+			control: false,
+			description:
+				'Props that will be passed on the the [label](/?path=/docs/atoms-label-regular--regular) atom',
+		},
 	},
 	includeStories: /^[A-Z]/,
 };
 
-export const template: Story<CheckboxFieldProps> = ({
+const template: Story<CheckboxFieldProps> = ({
 	defaultChecked,
 	label,
 	small,
