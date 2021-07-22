@@ -6,26 +6,24 @@ import { focusOutline } from '~common/styles';
 import Colors from '~tokens/colors/Colors';
 import Sizes from '~tokens/sizes/Sizes';
 
-/**
- * @category Props
- */
 export interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
 	small?: boolean;
 	indeterminate?: boolean;
+	disabled?: boolean;
+	onChange?: () => void;
+	checked?: boolean;
+	defaultChecked?: boolean;
 }
 
-/**
- * @category Template
- */
 const Checkbox = forwardRef(
 	(
 		{
 			id,
-			defaultChecked,
-			checked,
-			disabled,
+			defaultChecked = false,
+			checked = undefined,
+			disabled = false,
 			onChange,
-			small,
+			small = false,
 			indeterminate = false,
 			...rest
 		}: CheckboxProps,

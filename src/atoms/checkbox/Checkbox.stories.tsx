@@ -6,16 +6,37 @@ export default {
 	title: 'Atoms/Checkbox/Regular',
 	component: Checkbox,
 	argTypes: {
-		small: { defaultValue: false },
-		disabled: { control: 'boolean' },
-		indeterminate: { control: 'boolean' },
-		onChange: { action: 'Changed', table: { disable: true } },
-		defaultChecked: { table: { disable: true } },
+		small: {
+			defaultValue: false,
+			description: 'If true, renders a smaller version of the component.',
+		},
+		disabled: {
+			control: 'boolean',
+			description: 'If true, makes the component unclickable and appear faded.',
+		},
+		indeterminate: {
+			control: 'boolean',
+			description:
+				'If true and the checkbox is not checked, makes the checkbox appear indeterminate.',
+		},
+		onChange: {
+			control: false,
+			description: 'Callback that will fire everytime the component changes state',
+		},
+		defaultChecked: {
+			control: false,
+			description: 'If the component is uncontrolled, determines the inital state of the checkbox',
+		},
+		checked: {
+			control: false,
+			description:
+				'If set the component will be [controlled](https://reactjs.org/docs/forms.html#controlled-components)',
+		},
 	},
 	includeStories: /^[A-Z]/,
 };
 
-export const template: Story<CheckboxProps> = ({
+const template: Story<CheckboxProps> = ({
 	defaultChecked,
 	disabled,
 	small,
