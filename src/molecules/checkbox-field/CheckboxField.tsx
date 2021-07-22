@@ -7,22 +7,22 @@ export interface CheckboxFieldProps extends CheckboxProps {
 	label: string;
 	checkboxProps?: Partial<CheckboxProps>;
 	labelProps?: Partial<LabelProps>;
+	required: boolean;
 }
 
 const CheckboxField = forwardRef(
 	(
 		{
-			id,
 			checked,
 			defaultChecked,
 			onChange,
-			disabled,
+			disabled = false,
 			checkboxProps,
 			label,
 			labelProps,
-			small,
-			indeterminate,
-			required,
+			small = false,
+			indeterminate = false,
+			required = false,
 		}: CheckboxFieldProps,
 		ref: ForwardedRef<HTMLInputElement>
 	) => (
@@ -35,7 +35,6 @@ const CheckboxField = forwardRef(
 		>
 			<Checkbox
 				{...checkboxProps}
-				id={id}
 				checked={checked}
 				onChange={onChange}
 				disabled={disabled}

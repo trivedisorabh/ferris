@@ -21,7 +21,7 @@ export default {
 		},
 		onChange: {
 			control: false,
-			description: 'Callback that will fire everytime the component changes state',
+			description: 'Callback that will fire every time the component changes state',
 		},
 		defaultChecked: {
 			control: false,
