@@ -8,11 +8,15 @@ export interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
 	required?: boolean;
 	disabled?: boolean;
 	small?: boolean;
+	htmlFor?: string;
 }
 
 const Label = forwardRef(
-	({ htmlFor, children, required, ...rest }: LabelProps, ref: ForwardedRef<HTMLLabelElement>) => (
-		<StyledLabel {...rest} htmlFor={htmlFor} ref={ref}>
+	(
+		{ htmlFor, children, required = false, small = false, disabled = false, ...rest }: LabelProps,
+		ref: ForwardedRef<HTMLLabelElement>
+	) => (
+		<StyledLabel {...rest} htmlFor={htmlFor} ref={ref} small={small} disabled={disabled}>
 			{children}
 			{required && <StyledAsterisk aria-label="Required">*</StyledAsterisk>}
 		</StyledLabel>

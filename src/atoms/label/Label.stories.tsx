@@ -6,9 +6,28 @@ export default {
 	title: 'Atoms/Label/Regular',
 	component: Label,
 	argTypes: {
-		disabled: { control: 'boolean' },
-		small: { control: 'boolean', defaultValue: false },
-		children: { control: 'string', defaultValue: 'Label text' },
+		small: {
+			control: 'boolean',
+			defaultValue: false,
+			description: 'If true, renders a smaller version of the component.',
+		},
+		disabled: {
+			control: 'boolean',
+			description: 'If true, makes the label appear faded and unclickable.',
+		},
+		required: {
+			control: 'boolean',
+			description: 'If true, marks the label with a red asterisk.',
+		},
+		htmlFor: {
+			control: false,
+			description:
+				'If present, sets the "for" attribute on the label element. Not needed if the label is [implicit](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label).',
+		},
+		children: {
+			table: { disable: true },
+			defaultValue: 'Label text',
+		},
 	},
 	includeStories: /^[A-Z]/,
 };
