@@ -20,7 +20,7 @@ const Checkbox = forwardRef(
 		{
 			id,
 			defaultChecked = false,
-			checked = undefined,
+			checked,
 			disabled = false,
 			onChange,
 			small = false,
@@ -42,7 +42,7 @@ const Checkbox = forwardRef(
 				<StyledCheckbox
 					type="checkbox"
 					checked={checked}
-					defaultChecked={defaultChecked}
+					defaultChecked={defaultChecked} // This currently gives a console warning. How to let the user choose controlled/uncontrolled?
 					disabled={disabled}
 					id={id}
 					onChange={onChange}

@@ -6,10 +6,12 @@ import CheckboxField from '~molecules/checkbox-field/CheckboxField';
 
 describe('CheckboxField', () => {
 	test('The checkbox gets checked when user clicks it', () => {
-		const { getByLabelText } = render(<CheckboxField id="myCheckboxField" label="CheckboxField" />);
-		const inputElement = getByLabelText('CheckboxField') as HTMLInputElement;
+		const { getByLabelText } = render(<CheckboxField label="CheckboxField" />);
+
+		const inputElement = getByLabelText('CheckboxField');
 		userEvent.click(inputElement);
-		expect(inputElement.checked).toBeTruthy();
+
+		expect(inputElement).toBeChecked();
 	});
 
 	test('It passes automatic accesibility tests', async () => {
