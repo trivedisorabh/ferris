@@ -32,12 +32,7 @@ export default {
 	includeStories: /^[A-Z]/,
 };
 
-export const template: Story<LabelProps> = ({
-	disabled,
-	small,
-	required,
-	children,
-}: LabelProps) => (
+const template: Story<LabelProps> = ({ disabled, small, required, children }: LabelProps) => (
 	<Label disabled={disabled} small={small} required={required}>
 		{children}
 	</Label>
