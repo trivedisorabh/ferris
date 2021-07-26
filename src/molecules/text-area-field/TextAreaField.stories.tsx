@@ -3,7 +3,7 @@ import { Story } from '~common/interfaces';
 import TextAreaField, { TextAreaFieldProps } from './TextAreaField';
 
 export default {
-	title: 'Molecules/TextAreaField',
+	title: 'Molecules/Text area field',
 	component: TextAreaField,
 };
 

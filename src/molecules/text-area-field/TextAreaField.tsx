@@ -38,7 +38,7 @@ const TextAreaField = forwardRef(
 		ref: ForwardedRef<HTMLDivElement>
 	) => (
 		<StyledTextAreaField {...rest} data-tpl="text-area-field" disabled={disabled} ref={ref}>
-			<Label {...labelProps} id={id} required={required}>
+			<Label {...labelProps} htmlFor={id} required={required}>
 				{label}
 			</Label>
 			{description && <StyledDescription>{description}</StyledDescription>}

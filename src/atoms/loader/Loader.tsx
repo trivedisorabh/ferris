@@ -2,7 +2,7 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, { ForwardedRef, forwardRef, HTMLAttributes } from 'react';
 import Colors from '~tokens/colors/Colors';
-import Spacings from '~tokens/spacings/Spacings';
+import Sizes from '~tokens/sizes/Sizes';
 
 /**
  * @category Props
@@ -58,7 +58,7 @@ type StyledLoaderProps = LoaderProps;
 
 const StyledLoader = styled.div(
 	({ small }: StyledLoaderProps) => css`
-		height: ${small ? `${Spacings.xl}` : `${Spacings.xxxl}`};
-		width: ${small ? `${Spacings.xl}` : `${Spacings.xxxl}`};
+		height: ${small ? `${Sizes.size_1_5}` : `${Sizes.size_3}`};
+		width: ${small ? `${Sizes.size_1_5}` : `${Sizes.size_3}`};
 	`
 );

@@ -1,43 +1,43 @@
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, { ForwardedRef, forwardRef, LabelHTMLAttributes } from 'react';
 import Colors from '~tokens/colors/Colors';
-import FontWeights from '~tokens/font-weights/FontWeights';
-import Spacings from '~tokens/spacings/Spacings';
+import FontSizes from '~tokens/font-sizes/FontSizes';
 
-/**
- * @category Props
- */
 export interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
-	children: string;
-	id: string;
 	required?: boolean;
+	disabled?: boolean;
+	small?: boolean;
+	htmlFor?: string;
 }
 
-/**
- * @category Template
- */
 const Label = forwardRef(
-	({ id, children, required, ...rest }: LabelProps, ref: ForwardedRef<HTMLLabelElement>) => (
-		<StyledLabel {...rest} htmlFor={id} ref={ref}>
+	(
+		{ htmlFor, children, required = false, small = false, disabled = false, ...rest }: LabelProps,
+		ref: ForwardedRef<HTMLLabelElement>
+	) => (
+		<StyledLabel {...rest} htmlFor={htmlFor} ref={ref} small={small} disabled={disabled}>
 			{children}
-			{required && <StyledSymbol aria-hidden="true">*</StyledSymbol>}
+			{required && <StyledAsterisk aria-label="Required">*</StyledAsterisk>}
 		</StyledLabel>
 	)
 );
 
-Label.displayName = 'Label';
-export default Label;
+type StyledLabelProps = Pick<LabelProps, 'small' | 'disabled'>;
 
-/**
- * @category Styles
- */
-const StyledLabel = styled.label`
-	color: ${Colors.blackBrand};
-	display: flex;
-	font-weight: ${FontWeights.bold};
-	margin: 0 0 ${Spacings.xxs};
-`;
+const StyledLabel = styled.label(
+	({ small, disabled }: StyledLabelProps) => css`
+		color: ${disabled ? Colors.grayDarker : Colors.blackBrand};
+		cursor: ${disabled ? 'not-allowed' : 'pointer'};
+		font-size: ${small ? FontSizes.sm : FontSizes.md};
+		line-height: ${small ? 1.3 : 'initial'};
+		margin: 0;
+	`
+);
 
-const StyledSymbol = styled.i`
+const StyledAsterisk = styled.span`
 	color: ${Colors.redBase};
 `;
+
+Label.displayName = 'Label';
+export default Label;

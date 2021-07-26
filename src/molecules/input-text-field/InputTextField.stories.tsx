@@ -3,7 +3,7 @@ import { Story } from '~common/interfaces';
 import InputTextField, { InputTextFieldProps } from './InputTextField';
 
 export default {
-	title: 'Molecules/InputTextField',
+	title: 'Molecules/Input text field',
 	component: InputTextField,
 };
 

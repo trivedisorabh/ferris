@@ -3,7 +3,7 @@ import ProgressBar, { ProgressBarProps } from '~atoms/progress-bar/ProgressBar';
 import { Story } from '~common/interfaces';
 
 export default {
-	title: 'Atoms/ProgressBar',
+	title: 'Atoms/Progress bar',
 	component: ProgressBar,
 };
 

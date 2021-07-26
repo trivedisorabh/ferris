@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, { ButtonHTMLAttributes, ForwardedRef, forwardRef, ReactChild } from 'react';
+import { focusOutline } from '~common/styles';
 
 /**
  * @category Props
@@ -47,10 +48,7 @@ const StyledButton = styled.button(
 		transition-property: background-color, color;
 
 		&:focus-visible {
-			outline-color: rgb(15, 88, 214);
-			outline-offset: 2px;
-			outline-style: solid;
-			outline-width: 2px;
+			${focusOutline}
 		}
 
 		@supports not selector(:focus-visible) {

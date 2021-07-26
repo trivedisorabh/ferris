@@ -10,6 +10,8 @@
  */
 export { default as Button } from './atoms/button/Button';
 export type { ButtonProps } from './atoms/button/Button';
+export { default as Checkbox } from './atoms/checkbox/Checkbox';
+export type { CheckboxProps } from './atoms/checkbox/Checkbox';
 export { default as Heading } from './atoms/heading/Heading';
 export type { HeadingProps } from './atoms/heading/Heading';
 export { default as Icon } from './atoms/icon/Icon';
@@ -37,6 +39,8 @@ export { default as GlobalStyles } from './common/global-styles/GlobalStyles';
 /**
  * Molecules
  */
+export { default as CheckboxField } from './molecules/checkbox-field/CheckboxField';
+export type { CheckboxFieldProps } from './molecules/checkbox-field/CheckboxField';
 export { default as InputTextField } from './molecules/input-text-field/InputTextField';
 export type { InputTextFieldProps } from './molecules/input-text-field/InputTextField';
 export { default as Modal } from './molecules/modal/Modal';
