@@ -5,9 +5,6 @@ import InputText, { InputTextProps } from '~atoms/input-text/InputText';
 import Label, { LabelProps } from '~atoms/label/Label';
 import Colors from '~tokens/colors/Colors';
 
-/**
- * @category Props
- */
 export interface InputTextFieldProps extends HTMLAttributes<HTMLDivElement> {
 	id: string;
 	label: string;
@@ -20,9 +17,6 @@ export interface InputTextFieldProps extends HTMLAttributes<HTMLDivElement> {
 	type?: InputTextProps['type'];
 }
 
-/**
- * @category Template
- */
 const InputTextField = forwardRef(
 	(
 		{
@@ -40,7 +34,7 @@ const InputTextField = forwardRef(
 		ref: ForwardedRef<HTMLDivElement>
 	) => (
 		<StyledInputTextField {...rest} data-tpl="input-text-field" disabled={disabled} ref={ref}>
-			<Label {...labelProps} htmlFor={id} required={required}>
+			<Label {...labelProps} htmlFor={id} required={required} disabled={disabled}>
 				{label}
 			</Label>
 			{description && <StyledDescription>{description}</StyledDescription>}
@@ -56,16 +50,12 @@ const InputTextField = forwardRef(
 	)
 );
 
-InputTextField.displayName = 'InputTextField';
-export default InputTextField;
-
-/**
- * @category Styles
- */
 type StyledInputTextFieldProps = Pick<InputTextFieldProps, 'disabled'>;
 
 const StyledInputTextField = styled.div(
 	({ disabled }: StyledInputTextFieldProps) => css`
+		display: flex;
+		flex-direction: column;
 		opacity: ${disabled && '0.5'};
 	`
 );
@@ -73,3 +63,6 @@ const StyledInputTextField = styled.div(
 const StyledDescription = styled.div`
 	color: ${Colors.grayDarkest};
 `;
+
+InputTextField.displayName = 'InputTextField';
+export default InputTextField;
