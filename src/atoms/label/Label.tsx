@@ -4,25 +4,37 @@ import React, { ForwardedRef, forwardRef, LabelHTMLAttributes } from 'react';
 import Colors from '~tokens/colors/Colors';
 import FontSizes from '~tokens/font-sizes/FontSizes';
 
+/**
+ * @category Props
+ */
 export interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
-	required?: boolean;
 	disabled?: boolean;
-	small?: boolean;
 	htmlFor?: string;
+	required?: boolean;
+	small?: boolean;
 }
 
+/**
+ * @category Template
+ */
 const Label = forwardRef(
 	(
-		{ htmlFor, children, required = false, small = false, disabled = false, ...rest }: LabelProps,
+		{ children, disabled = false, htmlFor, required = false, small = false, ...rest }: LabelProps,
 		ref: ForwardedRef<HTMLLabelElement>
 	) => (
-		<StyledLabel {...rest} htmlFor={htmlFor} ref={ref} small={small} disabled={disabled}>
+		<StyledLabel {...rest} disabled={disabled} htmlFor={htmlFor} ref={ref} small={small}>
 			{children}
 			{required && <StyledAsterisk aria-label="Required">*</StyledAsterisk>}
 		</StyledLabel>
 	)
 );
 
+Label.displayName = 'Label';
+export default Label;
+
+/**
+ * @category Styles
+ */
 type StyledLabelProps = Pick<LabelProps, 'small' | 'disabled'>;
 
 const StyledLabel = styled.label(
@@ -38,6 +50,3 @@ const StyledLabel = styled.label(
 const StyledAsterisk = styled.span`
 	color: ${Colors.redBase};
 `;
-
-Label.displayName = 'Label';
-export default Label;
