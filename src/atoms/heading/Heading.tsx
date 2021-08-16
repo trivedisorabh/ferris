@@ -11,8 +11,8 @@ export type HeadingLevel = 'h1' | 'h2' | 'h3' | 'h4';
 
 export interface HeadingProps extends HTMLAttributes<HTMLHeadingElement> {
 	as: HeadingLevel;
-	styledAs?: HeadingLevel;
 	children: ReactNode;
+	styledAs?: HeadingLevel;
 }
 
 /**
@@ -34,31 +34,31 @@ export default Heading;
  */
 type StyledHeadingProps = Pick<HeadingProps, 'as' | 'styledAs'>;
 
-const StyledHeading = styled.h1((props: StyledHeadingProps) => {
-	const stylingLevel = props.styledAs || props.as;
+const StyledHeading = styled.h1(({ as, styledAs }: StyledHeadingProps) => {
+	const style = styledAs || as;
 
 	return css`
 		line-height: ${LineHeights.compact};
 
-		${stylingLevel === 'h1' &&
+		${style === 'h1' &&
 		css`
 			font-size: ${Headings.h1Size};
 			font-weight: ${Headings.h1Weight};
 		`}
 
-		${stylingLevel === 'h2' &&
+		${style === 'h2' &&
 		css`
 			font-size: ${Headings.h2Size};
 			font-weight: ${Headings.h2Weight};
 		`}
 
-		${stylingLevel === 'h3' &&
+		${style === 'h3' &&
 		css`
 			font-size: ${Headings.h3Size};
 			font-weight: ${Headings.h3Weight};
 		`}
 
-		${stylingLevel === 'h4' &&
+		${style === 'h4' &&
 		css`
 			font-size: ${Headings.h4Size};
 			font-weight: ${Headings.h4Weight};

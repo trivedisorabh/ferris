@@ -6,29 +6,35 @@ import React, { HTMLAttributes, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import Heading from '~atoms/heading/Heading';
 import Icon from '~atoms/icon/Icon';
-import { visuallyHidden } from '~common/styles';
+import VisuallyHidden from '~atoms/visually-hidden/VisuallyHidden';
 import Colors from '~tokens/colors/Colors';
 import FontSizes from '~tokens/font-sizes/FontSizes';
 import IconSizes from '~tokens/icon-sizes/IconSizes';
 import Icons from '~tokens/icons/Icons';
 import Spacings from '~tokens/spacings/Spacings';
 
+/**
+ * @category Props
+ */
 export interface ModalProps extends HTMLAttributes<HTMLDivElement> {
-	open: boolean;
-	onClose?: () => void;
-	showCloseButton?: boolean;
-	headerText?: string;
-	focusTrapOptions?: FocusTrapOptions;
 	children: React.ReactNode;
+	focusTrapOptions?: FocusTrapOptions;
+	headerText?: string;
+	onClose?: () => void;
+	open: boolean;
+	showCloseButton?: boolean;
 }
 
+/**
+ * @category Templates
+ */
 const Modal = ({
-	open = false,
-	onClose,
-	showCloseButton = false,
-	headerText = '',
-	focusTrapOptions,
 	children,
+	focusTrapOptions,
+	headerText = '',
+	onClose,
+	open = false,
+	showCloseButton = false,
 }: ModalProps) => {
 	if (!open) return null;
 
@@ -64,16 +70,12 @@ const Modal = ({
 				<ModalWindow>
 					{(headerText || showCloseButton) && (
 						<ModalHeaderRow>
-							{headerText && (
-								<Heading as={'h1'} style={{ fontSize: FontSizes.xl }}>
-									{headerText}
-								</Heading>
-							)}
+							{headerText && <StyledHeading as="h1">{headerText}</StyledHeading>}
 							{showCloseButton && (
 								<ModalCloseButton onClick={closeModal}>
 									<Icon icon={Icons.Close} color={Colors.white} size={IconSizes.lg} />
 									{/* This button name might need localization support in the future */}
-									<ModalCloseButtonName>Close</ModalCloseButtonName>
+									<VisuallyHidden>Close</VisuallyHidden>
 								</ModalCloseButton>
 							)}
 						</ModalHeaderRow>
@@ -86,6 +88,12 @@ const Modal = ({
 	);
 };
 
+Modal.displayName = 'Modal';
+export default Modal;
+
+/**
+ * @category Styles
+ */
 const fadeIn = css`
 	@keyframes fadeIn {
 		from {
@@ -137,6 +145,10 @@ const ModalHeaderRow = styled.div`
 	padding: ${Spacings.sm} ${Spacings.md};
 `;
 
+const StyledHeading = styled(Heading)`
+	font-size: ${FontSizes.xl};
+`;
+
 const ModalCloseButton = styled.button`
 	background: none;
 	border: none;
@@ -153,13 +165,6 @@ const ModalCloseButton = styled.button`
 	}
 `;
 
-const ModalCloseButtonName = styled.span`
-	${visuallyHidden}
-`;
-
 const ModalContentWrapper = styled.div`
 	padding: ${Spacings.lg};
 `;
-
-Modal.displayName = 'Modal';
-export default Modal;
