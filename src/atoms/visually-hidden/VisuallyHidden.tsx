@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import React, { ForwardedRef, forwardRef, HTMLAttributes } from 'react';
+import { visuallyHidden } from '~common/styles';
 
 /**
  * @category Props
@@ -26,11 +27,5 @@ export default VisuallyHidden;
  * @category Styles
  */
 const StyledVisuallyHidden = styled.span`
-	border: 0 !important;
-	clip: rect(1px, 1px, 1px, 1px) !important;
-	height: 1px !important;
-	overflow: hidden !important;
-	padding: 0 !important;
-	position: absolute !important;
-	width: 1px !important;
+	${visuallyHidden};
 `;
