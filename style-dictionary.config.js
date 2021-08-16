@@ -117,7 +117,7 @@ StyleDictionary.registerAction({
 						ref: true,
 						typescript: true,
 					},
-					{ glyphName }
+					{ componentName: glyphName }
 				);
 
 				// TODO: Replace next line with svgr outDir
