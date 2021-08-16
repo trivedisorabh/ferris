@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-function CloseFault(props: React.SVGProps<SVGSVGElement>, svgRef?: React.Ref<SVGSVGElement>) {
+function SvgComponent(props: React.SVGProps<SVGSVGElement>, svgRef?: React.Ref<SVGSVGElement>) {
 	return (
 		<svg
 			{...props}
@@ -17,5 +17,5 @@ function CloseFault(props: React.SVGProps<SVGSVGElement>, svgRef?: React.Ref<SVG
 	);
 }
 
-const ForwardRef = React.forwardRef(CloseFault);
+const ForwardRef = React.forwardRef(SvgComponent);
 export default ForwardRef;

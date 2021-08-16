@@ -1,8 +1,8 @@
-import Check from './components/Check';
-import Close from './components/Close';
-import CloseAllFaults from './components/CloseAllFaults';
-import CloseFault from './components/CloseFault';
-import OpenInNew from './components/OpenInNew';
+import Check from './assets/Check';
+import Close from './assets/Close';
+import CloseAllFaults from './assets/CloseAllFaults';
+import CloseFault from './assets/CloseFault';
+import OpenInNew from './assets/OpenInNew';
 import { ForwardRefExoticComponent, SVGAttributes } from 'react';
 
 export type IconData = {

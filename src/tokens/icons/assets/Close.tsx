@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-function Close(props: React.SVGProps<SVGSVGElement>, svgRef?: React.Ref<SVGSVGElement>) {
+function SvgComponent(props: React.SVGProps<SVGSVGElement>, svgRef?: React.Ref<SVGSVGElement>) {
 	return (
 		<svg
 			{...props}
@@ -18,5 +18,5 @@ function Close(props: React.SVGProps<SVGSVGElement>, svgRef?: React.Ref<SVGSVGEl
 	);
 }
 
-const ForwardRef = React.forwardRef(Close);
+const ForwardRef = React.forwardRef(SvgComponent);
 export default ForwardRef;

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-function Check(props: React.SVGProps<SVGSVGElement>, svgRef?: React.Ref<SVGSVGElement>) {
+function SvgComponent(props: React.SVGProps<SVGSVGElement>, svgRef?: React.Ref<SVGSVGElement>) {
 	return (
 		<svg
 			{...props}
@@ -17,5 +17,5 @@ function Check(props: React.SVGProps<SVGSVGElement>, svgRef?: React.Ref<SVGSVGEl
 	);
 }
 
-const ForwardRef = React.forwardRef(Check);
+const ForwardRef = React.forwardRef(SvgComponent);
 export default ForwardRef;

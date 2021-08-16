@@ -30,6 +30,8 @@ export { default as Spacer } from './atoms/spacer/Spacer';
 export type { SpacerProps } from './atoms/spacer/Spacer';
 export { default as TextArea } from './atoms/text-area/TextArea';
 export type { TextAreaProps } from './atoms/text-area/TextArea';
+export { default as VisuallyHidden } from './atoms/visually-hidden/VisuallyHidden';
+export type { VisuallyHiddenProps } from './atoms/visually-hidden/VisuallyHidden';
 
 /**
  * Common
