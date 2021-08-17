@@ -17,7 +17,7 @@ async function generateIndex(options) {
 			'**/*.stories*',
 			'**/*.Stories*',
 			'**/*.test*',
-			'**/icons/components/*',
+			'**/icons/assets/*',
 		],
 	});
 

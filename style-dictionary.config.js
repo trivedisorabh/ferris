@@ -70,12 +70,12 @@ StyleDictionary.registerAction({
 		console.log('Create icon folder in src/tokens...');
 		if (fs.existsSync(destination)) rimraf.sync(destination);
 		fs.mkdirSync(destination);
-		fs.mkdirSync(destination + '/components');
+		fs.mkdirSync(destination + '/assets');
 
 		console.log('Create react components from icons...');
 		fs.readdir(source, function (err, icons) {
 			icons.forEach((i) => {
-				const componentName = path.basename(i, '.svg');
+				const glyphName = path.basename(i, '.svg');
 				const svgFilename = path.join(source, i);
 				const svg = fs.readFileSync(svgFilename, { encoding: 'utf-8' });
 
@@ -117,15 +117,15 @@ StyleDictionary.registerAction({
 						ref: true,
 						typescript: true,
 					},
-					{ componentName }
+					{ componentName: glyphName }
 				);
 
 				// TODO: Replace next line with svgr outDir
-				fs.writeFile(`${destination}/components/${componentName}.tsx`, ts);
+				fs.writeFile(`${destination}/assets/${glyphName}.tsx`, ts);
 
 				// Start adding to icon template for Icons.ts
-				iconSet += `${componentName}: { glyph: ${componentName} },\n`;
-				iconsTemplate += `import ${componentName} from './components/${componentName}';`;
+				iconSet += `${glyphName}: { glyph: ${glyphName} },\n`;
+				iconsTemplate += `import ${glyphName} from './assets/${glyphName}';`;
 			});
 
 			// Create icons.ts
