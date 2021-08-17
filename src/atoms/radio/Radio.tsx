@@ -4,13 +4,16 @@ import React, { ForwardedRef, forwardRef, useEffect, useRef } from 'react';
 import mergeRefs from 'react-merge-refs';
 import { focusOutline } from '~common/styles';
 import Colors from '~tokens/colors/Colors';
+import FontSizes from '~tokens/font-sizes/FontSizes';
 import Sizes from '~tokens/sizes/Sizes';
+import Spacings from '~tokens/spacings/Spacings';
 
 export interface RadioProps {
 	id: string;
 	small?: boolean;
 	indeterminate?: boolean;
 	disabled?: boolean;
+	groupName?: string;
 	onChange?: () => void;
 	checked?: boolean;
 	defaultChecked?: boolean;
@@ -23,6 +26,7 @@ const Radio = forwardRef(
 			defaultChecked = false,
 			checked,
 			disabled = false,
+			groupName,
 			onChange,
 			small = false,
 			indeterminate = false,
@@ -39,7 +43,10 @@ const Radio = forwardRef(
 		const mergedRefs = mergeRefs([ref, inputRef]);
 
 		return (
-			<StyledWrapper {...rest} small={small}>
+			<StyledWrapper
+				{...rest}
+				// small={small}
+			>
 				<StyledRadio
 					type="radio"
 					checked={checked}
@@ -47,8 +54,9 @@ const Radio = forwardRef(
 					disabled={disabled}
 					id={id}
 					onChange={onChange}
+					name={groupName}
 					ref={mergedRefs}
-					small={small}
+					// small={small}
 				/>
 				<StyledCheckmark small={small}></StyledCheckmark>
 			</StyledWrapper>
@@ -58,26 +66,32 @@ const Radio = forwardRef(
 
 type StyledRadioProps = Pick<RadioProps, 'small'>;
 
-const StyledWrapper = styled.div(({ small }: StyledRadioProps) => {
-	const widthAndHeight = small ? Sizes.size_1_125 : Sizes.size_1_5;
-
+// const StyledWrapper = styled.div(({ small }: StyledRadioProps) => {
+const StyledWrapper = styled.div(() => {
 	return css`
-		height: ${widthAndHeight};
+		cursor: pointer;
+		display: block;
+		font-size: ${FontSizes.lg};
+		margin-bottom: ${Spacings.sm};
+		padding-left: ${Spacings.xxl};
 		position: relative;
-		width: ${widthAndHeight};
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
 	`;
 });
 
-const StyledRadio = styled.input(({ small }: StyledRadioProps) => {
-	const widthAndHeight = small ? Sizes.size_1_125 : Sizes.size_1_5;
+// const StyledRadio = styled.input(({ small }: StyledRadioProps) => {
+const StyledRadio = styled.input(() => {
+	// const widthAndHeight = small ? Sizes.size_1_125 : Sizes.size_1_5;
 
 	return css`
 		cursor: pointer;
-		height: ${widthAndHeight};
-		margin: 0;
+		height: 0;
 		opacity: 0;
 		position: absolute;
-		width: ${widthAndHeight};
+		width: 0;
 
 		&:disabled {
 			cursor: not-allowed;
@@ -95,7 +109,10 @@ const StyledRadio = styled.input(({ small }: StyledRadioProps) => {
 		}
 
 		&:checked ~ div::after {
+			content: '';
+			display: none;
 			opacity: 1;
+			position: absolute;
 		}
 
 		&:indeterminate:not(:checked) ~ div::before {
@@ -113,16 +130,16 @@ const StyledCheckmark = styled.div(({ small }: StyledRadioProps) => {
 
 	return css`
 		background-color: ${Colors.white};
-		border: solid 1px ${Colors.grayDark};
-		border-radius: 2px;
+		border-radius: 50%;
 		height: ${widthAndHeight};
-		pointer-events: none;
+		left: 0;
 		position: absolute;
-		transition: background-color 200ms;
+		top: 0;
 		width: ${widthAndHeight};
 
 		&::after {
 			border: solid ${Colors.white};
+			border-radius: 50%;
 			border-width: 0 3px 3px 0;
 			content: '';
 			height: ${small ? '12px' : '14px'};
@@ -137,6 +154,7 @@ const StyledCheckmark = styled.div(({ small }: StyledRadioProps) => {
 			width: 6px;
 		}
 
+		/*
 		&::before {
 			background-color: ${Colors.white};
 			content: '';
@@ -147,7 +165,7 @@ const StyledCheckmark = styled.div(({ small }: StyledRadioProps) => {
 			top: ${small ? '8px' : '10px'};
 			transition: opacity 200ms;
 			width: ${small ? '12px' : '16px'};
-		}
+		} */
 	`;
 });
 

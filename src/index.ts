@@ -26,6 +26,8 @@ export { default as Paragraph } from './atoms/paragraph/Paragraph';
 export type { ParagraphProps } from './atoms/paragraph/Paragraph';
 export { default as ProgressBar } from './atoms/progress-bar/ProgressBar';
 export type { ProgressBarProps } from './atoms/progress-bar/ProgressBar';
+export { default as Radio } from './atoms/radio/Radio';
+export type { RadioProps } from './atoms/radio/Radio';
 export { default as Row } from './atoms/row/Row';
 export type { RowProps } from './atoms/row/Row';
 export { default as Spacer } from './atoms/spacer/Spacer';
