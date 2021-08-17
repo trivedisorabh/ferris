@@ -1,13 +1,13 @@
 import React from 'react';
 import { Story } from '~common/interfaces';
-import InputTextField, { InputTextFieldProps } from './InputTextField';
+import TextField, { TextFieldProps } from './TextField';
 
 export default {
-	title: 'Molecules/Input text field',
-	component: InputTextField,
+	title: 'Molecules/Text field',
+	component: TextField,
 };
 
-const Template: Story<InputTextFieldProps> = ({
+const Template: Story<TextFieldProps> = ({
 	description,
 	id,
 	label,
@@ -15,8 +15,8 @@ const Template: Story<InputTextFieldProps> = ({
 	disabled,
 	required,
 	value,
-}: InputTextFieldProps) => (
-	<InputTextField
+}: TextFieldProps) => (
+	<TextField
 		description={description}
 		disabled={disabled}
 		id={id}
