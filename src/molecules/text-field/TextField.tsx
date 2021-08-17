@@ -33,7 +33,7 @@ const TextField = forwardRef(
 		}: TextFieldProps,
 		ref: ForwardedRef<HTMLDivElement>
 	) => (
-		<StyledTextField {...rest} data-tpl="input-text-field" disabled={disabled} ref={ref}>
+		<StyledTextField {...rest} data-tpl="text-field" disabled={disabled} ref={ref}>
 			<Label {...labelProps} htmlFor={id} required={required} disabled={disabled}>
 				{label}
 			</Label>
