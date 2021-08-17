@@ -22,6 +22,8 @@ export { default as Label } from './atoms/label/Label';
 export type { LabelProps } from './atoms/label/Label';
 export { default as Loader } from './atoms/loader/Loader';
 export type { LoaderProps } from './atoms/loader/Loader';
+export { default as Paragraph } from './atoms/paragraph/Paragraph';
+export type { ParagraphProps } from './atoms/paragraph/Paragraph';
 export { default as ProgressBar } from './atoms/progress-bar/ProgressBar';
 export type { ProgressBarProps } from './atoms/progress-bar/ProgressBar';
 export { default as Row } from './atoms/row/Row';
@@ -43,12 +45,12 @@ export { default as GlobalStyles } from './common/global-styles/GlobalStyles';
  */
 export { default as CheckboxField } from './molecules/checkbox-field/CheckboxField';
 export type { CheckboxFieldProps } from './molecules/checkbox-field/CheckboxField';
-export { default as InputTextField } from './molecules/input-text-field/InputTextField';
-export type { InputTextFieldProps } from './molecules/input-text-field/InputTextField';
 export { default as Modal } from './molecules/modal/Modal';
 export type { ModalProps } from './molecules/modal/Modal';
 export { default as TextAreaField } from './molecules/text-area-field/TextAreaField';
 export type { TextAreaFieldProps } from './molecules/text-area-field/TextAreaField';
+export { default as TextField } from './molecules/text-field/TextField';
+export type { TextFieldProps } from './molecules/text-field/TextField';
 
 /**
  * Tokens
