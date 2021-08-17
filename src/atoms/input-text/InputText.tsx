@@ -15,7 +15,7 @@ type InputTextTypes = Extract<
 	| 'email'
 	| 'hidden'
 	| 'month'
-	| 'password'
+	| 'password' // TODO: Remove once InputPasswordField is done
 	| 'tel'
 	| 'text'
 	| 'time'
