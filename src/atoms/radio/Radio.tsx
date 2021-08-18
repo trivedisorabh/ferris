@@ -9,27 +9,27 @@ import Sizes from '~tokens/sizes/Sizes';
 import Spacings from '~tokens/spacings/Spacings';
 
 export interface RadioProps {
-	id: string;
-	small?: boolean;
-	indeterminate?: boolean;
-	disabled?: boolean;
-	groupName?: string;
-	onChange?: () => void;
 	checked?: boolean;
 	defaultChecked?: boolean;
+	disabled?: boolean;
+	groupName?: string;
+	id: string;
+	onChange?: () => void;
+	small?: boolean;
+	value?: string;
 }
 
 const Radio = forwardRef(
 	(
 		{
-			id,
-			defaultChecked = false,
 			checked,
+			defaultChecked = false,
 			disabled = false,
 			groupName,
+			id,
 			onChange,
 			small = false,
-			indeterminate = false,
+			value,
 			...rest
 		}: RadioProps,
 		ref: ForwardedRef<HTMLInputElement>
@@ -37,7 +37,6 @@ const Radio = forwardRef(
 		const inputRef = useRef<HTMLInputElement>(null);
 		useEffect(() => {
 			if (!inputRef.current) return;
-			inputRef.current.indeterminate = indeterminate;
 		});
 
 		const mergedRefs = mergeRefs([ref, inputRef]);
@@ -48,14 +47,15 @@ const Radio = forwardRef(
 				// small={small}
 			>
 				<StyledRadio
-					type="radio"
 					checked={checked}
 					defaultChecked={defaultChecked} // This currently gives a console warning. How to let the user choose controlled/uncontrolled?
 					disabled={disabled}
 					id={id}
-					onChange={onChange}
 					name={groupName}
+					onChange={onChange}
 					ref={mergedRefs}
+					type="radio"
+					value={value}
 					// small={small}
 				/>
 				<StyledCheckmark small={small}></StyledCheckmark>
@@ -153,19 +153,6 @@ const StyledCheckmark = styled.div(({ small }: StyledRadioProps) => {
 			transition: opacity 200ms;
 			width: 6px;
 		}
-
-		/*
-		&::before {
-			background-color: ${Colors.white};
-			content: '';
-			height: ${small ? '3px' : '4px'};
-			left: ${small ? '3px' : '4px'};
-			opacity: 0;
-			position: absolute;
-			top: ${small ? '8px' : '10px'};
-			transition: opacity 200ms;
-			width: ${small ? '12px' : '16px'};
-		} */
 	`;
 });
 

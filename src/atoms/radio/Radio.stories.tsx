@@ -14,10 +14,6 @@ export default {
 			control: 'boolean',
 			description: 'If true, makes the component unclickable and appear faded.',
 		},
-		indeterminate: {
-			control: 'boolean',
-			description: 'If true and the Radio is not checked, makes the Radio appear indeterminate.',
-		},
 		onChange: {
 			control: false,
 			description: 'Callback that will fire every time the component changes state',
@@ -35,20 +31,13 @@ export default {
 	includeStories: /^[A-Z]/,
 };
 
-const template: Story<RadioProps> = ({
-	defaultChecked,
-	disabled,
-	small,
-	onChange,
-	indeterminate,
-}: RadioProps) => (
+const template: Story<RadioProps> = ({ defaultChecked, disabled, small, onChange }: RadioProps) => (
 	<Radio
 		id={'uncontrolled-Radio'}
 		disabled={disabled}
 		defaultChecked={defaultChecked}
 		small={small}
 		onChange={onChange}
-		indeterminate={indeterminate}
 	/>
 );
 
@@ -58,19 +47,13 @@ Checked.args = { defaultChecked: true };
 export const Unchecked = template.bind({});
 Unchecked.args = {};
 
-export const Indeterminate = template.bind({});
-Indeterminate.args = { indeterminate: true };
-
 export const CheckedDisabled = template.bind({});
 CheckedDisabled.args = { defaultChecked: true, disabled: true };
 
 export const UncheckedDisabled = template.bind({});
 UncheckedDisabled.args = { disabled: true };
 
-export const IndeterminateDisabled = template.bind({});
-IndeterminateDisabled.args = { indeterminate: true, disabled: true };
-
-export const Controlled = ({ disabled, small, indeterminate }: RadioProps) => {
+export const Controlled = ({ disabled, small }: RadioProps) => {
 	const [checked, setChecked] = useState(true);
 	return (
 		<Radio
@@ -78,7 +61,6 @@ export const Controlled = ({ disabled, small, indeterminate }: RadioProps) => {
 			checked={checked}
 			disabled={disabled}
 			small={small}
-			indeterminate={indeterminate}
 			onChange={() => setChecked(!checked)}
 		/>
 	);
