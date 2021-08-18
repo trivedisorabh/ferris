@@ -18,6 +18,7 @@ const Template: Story<SearchFieldProps> = ({
 	label,
 	labelHidden,
 	placeholder,
+	value,
 }: SearchFieldProps) => (
 	<SearchField
 		disabled={disabled}
@@ -26,6 +27,7 @@ const Template: Story<SearchFieldProps> = ({
 		labelHidden={labelHidden}
 		placeholder={placeholder}
 		resetLabel="Clear"
+		value={value}
 	/>
 );
 
@@ -34,6 +36,14 @@ Default.args = {
 	id: 'search-field',
 	label: 'Search label',
 	labelHidden: false,
+};
+
+export const WithDefaultValue = Template.bind({});
+WithDefaultValue.args = {
+	id: 'search-field',
+	label: 'Search label',
+	labelHidden: false,
+	value: 'Default value',
 };
 
 export const WithPlaceholder = Template.bind({});
