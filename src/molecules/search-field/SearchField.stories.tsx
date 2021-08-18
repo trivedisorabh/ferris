@@ -5,6 +5,11 @@ import SearchField, { SearchFieldProps } from './SearchField';
 export default {
 	title: 'Molecules/Search field',
 	component: SearchField,
+	argTypes: {
+		required: {
+			control: false,
+		},
+	},
 };
 
 const Template: Story<SearchFieldProps> = ({
@@ -12,7 +17,7 @@ const Template: Story<SearchFieldProps> = ({
 	id,
 	label,
 	labelHidden,
-	placeholder = 'Search...',
+	placeholder,
 }: SearchFieldProps) => (
 	<SearchField
 		disabled={disabled}
@@ -29,6 +34,14 @@ Default.args = {
 	id: 'search-field',
 	label: 'Search label',
 	labelHidden: false,
+};
+
+export const WithPlaceholder = Template.bind({});
+WithPlaceholder.args = {
+	id: 'search-field',
+	label: 'Search label',
+	labelHidden: false,
+	placeholder: 'Search...',
 };
 
 export const LabelHidden = Template.bind({});

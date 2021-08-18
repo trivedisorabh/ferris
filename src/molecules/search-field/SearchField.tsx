@@ -55,11 +55,13 @@ const SearchField = forwardRef(
 		ref: ForwardedRef<HTMLDivElement>
 	) => {
 		const [displayResetButton, setDisplayResetButton] = useState(false);
+
 		const inputChangeHandler: ChangeEventHandler = (e: ChangeEvent) => {
 			const element = e.target as HTMLInputElement;
 			setDisplayResetButton(false);
 			if (element.value !== '') setDisplayResetButton(true);
 		};
+
 		const resetButtonHandler = (): void => {
 			const element = document.getElementById(id) as HTMLButtonElement;
 			element.value = '';
@@ -91,7 +93,7 @@ const SearchField = forwardRef(
 						value={value}
 					/>
 					{displayResetButton && (
-						<StyledButton type="reset" onClick={resetButtonHandler}>
+						<StyledButton disabled={disabled} onClick={resetButtonHandler} type="reset">
 							<VisuallyHidden>{resetLabel}</VisuallyHidden>
 							<Icon icon={Icons.Close} size={IconSizes.lg} />
 						</StyledButton>
@@ -153,4 +155,8 @@ const StyledButton = styled.button`
 	right: ${Spacings.xs};
 	top: 50%;
 	transform: translateY(-50%);
+
+	&:disabled {
+		pointer-events: none;
+	}
 `;
