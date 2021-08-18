@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import React, { ForwardedRef, forwardRef, InputHTMLAttributes } from 'react';
+import React, { ChangeEvent, ForwardedRef, forwardRef, InputHTMLAttributes } from 'react';
 import Colors from '~tokens/colors/Colors';
 import Spacings from '~tokens/spacings/Spacings';
 import { InputType } from '~types/InputType';
@@ -26,15 +26,17 @@ type InputTextTypes = Extract<
 export interface InputTextProps extends InputHTMLAttributes<HTMLInputElement> {
 	id: string;
 	type?: InputTextTypes;
+	onChange?: (event: ChangeEvent) => void;
 }
 
 /**
  * @category Template
  */
 const InputText = forwardRef(
-	({ id, type = 'text', ...rest }: InputTextProps, ref: ForwardedRef<HTMLInputElement>) => (
-		<StyledInputText {...rest} id={id} ref={ref} type={type} />
-	)
+	(
+		{ id, onChange, type = 'text', ...rest }: InputTextProps,
+		ref: ForwardedRef<HTMLInputElement>
+	) => <StyledInputText {...rest} id={id} ref={ref} type={type} onChange={onChange} />
 );
 
 InputText.displayName = 'InputText';

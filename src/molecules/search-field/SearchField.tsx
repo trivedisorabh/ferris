@@ -1,6 +1,13 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import React, { ForwardedRef, forwardRef, HTMLAttributes } from 'react';
+import React, {
+	ChangeEvent,
+	ChangeEventHandler,
+	ForwardedRef,
+	forwardRef,
+	HTMLAttributes,
+	useState,
+} from 'react';
 import Icon from '~atoms/icon/Icon';
 import InputText, { InputTextProps } from '~atoms/input-text/InputText';
 import Label, { LabelProps } from '~atoms/label/Label';
@@ -21,6 +28,7 @@ export interface SearchFieldProps extends HTMLAttributes<HTMLDivElement> {
 	label: string;
 	labelHidden?: boolean;
 	labelProps?: Partial<LabelProps>;
+	placeholder?: string;
 	required?: boolean;
 	resetLabel: string;
 	value?: string;
@@ -38,41 +46,60 @@ const SearchField = forwardRef(
 			label,
 			labelHidden,
 			labelProps,
+			placeholder,
 			required,
 			resetLabel,
 			value,
 			...rest
 		}: SearchFieldProps,
 		ref: ForwardedRef<HTMLDivElement>
-	) => (
-		<StyledSearchField {...rest} data-tpl="search-field" disabled={disabled} ref={ref}>
-			<StyledLabel
-				{...labelProps}
-				htmlFor={id}
-				labelHidden={labelHidden}
-				required={required}
-				disabled={disabled}
-			>
-				{label}
-			</StyledLabel>
-			<Spacer orientation="vertical" spacing={Spacings.xxs} />
-			<StyledInputWrapper>
-				<StyledIcon icon={Icons.Search} size={IconSizes.lg} />
-				<StyledInputText
-					{...inputTextProps}
-					id={id}
-					disabled={disabled}
+	) => {
+		const [displayResetButton, setDisplayResetButton] = useState(false);
+		const inputChangeHandler: ChangeEventHandler = (e: ChangeEvent) => {
+			const element = e.target as HTMLInputElement;
+			setDisplayResetButton(false);
+			if (element.value !== '') setDisplayResetButton(true);
+		};
+		const resetButtonHandler = (): void => {
+			const element = document.getElementById(id) as HTMLButtonElement;
+			element.value = '';
+			setDisplayResetButton(false);
+		};
+
+		return (
+			<StyledSearchField {...rest} data-tpl="search-field" disabled={disabled} ref={ref}>
+				<StyledLabel
+					{...labelProps}
+					htmlFor={id}
+					labelHidden={labelHidden}
 					required={required}
-					type="search"
-					value={value}
-				/>
-				<StyledButton type="reset">
-					<VisuallyHidden>{resetLabel}</VisuallyHidden>
-					<Icon icon={Icons.Close} size={IconSizes.lg} />
-				</StyledButton>
-			</StyledInputWrapper>
-		</StyledSearchField>
-	)
+					disabled={disabled}
+				>
+					{label}
+				</StyledLabel>
+				<Spacer orientation="vertical" spacing={Spacings.xxs} />
+				<StyledInputWrapper>
+					<StyledIcon icon={Icons.Search} size={IconSizes.lg} />
+					<StyledInputText
+						{...inputTextProps}
+						disabled={disabled}
+						id={id}
+						onChange={inputChangeHandler}
+						placeholder={placeholder}
+						required={required}
+						type="search"
+						value={value}
+					/>
+					{displayResetButton && (
+						<StyledButton type="reset" onClick={resetButtonHandler}>
+							<VisuallyHidden>{resetLabel}</VisuallyHidden>
+							<Icon icon={Icons.Close} size={IconSizes.lg} />
+						</StyledButton>
+					)}
+				</StyledInputWrapper>
+			</StyledSearchField>
+		);
+	}
 );
 
 SearchField.displayName = 'SearchField';
