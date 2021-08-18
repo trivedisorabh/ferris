@@ -7,6 +7,7 @@ import React, {
 	forwardRef,
 	InputHTMLAttributes,
 	useEffect,
+	useRef,
 	useState,
 } from 'react';
 import Icon from '~atoms/icon/Icon';
@@ -62,6 +63,8 @@ const SearchField = forwardRef(
 		ref: ForwardedRef<HTMLDivElement>
 	) => {
 		const [displayResetButton, setDisplayResetButton] = useState(false);
+		const inputRef = useRef<HTMLInputElement>(null);
+
 		useEffect(() => {
 			if (defaultValue) setDisplayResetButton(true);
 			else setDisplayResetButton(false);
@@ -75,8 +78,7 @@ const SearchField = forwardRef(
 
 		const resetButtonHandler = (): void => {
 			onReset && onReset();
-			const element = document.getElementById(id) as HTMLButtonElement;
-			element.value = '';
+			if (inputRef.current) inputRef.current.value = '';
 			setDisplayResetButton(false);
 		};
 
@@ -104,6 +106,7 @@ const SearchField = forwardRef(
 						type="search"
 						value={value}
 						defaultValue={defaultValue}
+						ref={inputRef}
 					/>
 					{displayResetButton && (
 						<StyledButton disabled={disabled} onClick={resetButtonHandler} type="reset">
