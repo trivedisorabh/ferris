@@ -5,7 +5,8 @@ import React, {
 	ChangeEventHandler,
 	ForwardedRef,
 	forwardRef,
-	HTMLAttributes,
+	InputHTMLAttributes,
+	useEffect,
 	useState,
 } from 'react';
 import Icon from '~atoms/icon/Icon';
@@ -21,13 +22,16 @@ import Spacings from '~tokens/spacings/Spacings';
 /**
  * @category Props
  */
-export interface SearchFieldProps extends HTMLAttributes<HTMLDivElement> {
+export interface SearchFieldProps extends InputHTMLAttributes<HTMLInputElement> {
+	defaultValue?: string;
 	disabled?: boolean;
 	id: string;
 	inputTextProps?: Partial<InputTextProps>;
 	label: string;
 	labelHidden?: boolean;
 	labelProps?: Partial<LabelProps>;
+	onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+	onReset?: () => void;
 	placeholder?: string;
 	required?: boolean;
 	resetLabel: string;
@@ -40,12 +44,15 @@ export interface SearchFieldProps extends HTMLAttributes<HTMLDivElement> {
 const SearchField = forwardRef(
 	(
 		{
+			defaultValue,
 			disabled,
 			id,
 			inputTextProps,
 			label,
 			labelHidden,
 			labelProps,
+			onChange,
+			onReset,
 			placeholder,
 			required,
 			resetLabel,
@@ -55,14 +62,19 @@ const SearchField = forwardRef(
 		ref: ForwardedRef<HTMLDivElement>
 	) => {
 		const [displayResetButton, setDisplayResetButton] = useState(false);
+		useEffect(() => {
+			if (defaultValue) setDisplayResetButton(true);
+			else setDisplayResetButton(false);
+		}, [defaultValue]);
 
-		const inputChangeHandler: ChangeEventHandler = (e: ChangeEvent) => {
-			const element = e.target as HTMLInputElement;
+		const inputChangeHandler: ChangeEventHandler = (e: ChangeEvent<HTMLInputElement>) => {
+			onChange(e);
 			setDisplayResetButton(false);
-			if (element.value !== '') setDisplayResetButton(true);
+			if (e.target.value !== '') setDisplayResetButton(true);
 		};
 
 		const resetButtonHandler = (): void => {
+			onReset && onReset();
 			const element = document.getElementById(id) as HTMLButtonElement;
 			element.value = '';
 			setDisplayResetButton(false);
@@ -91,6 +103,7 @@ const SearchField = forwardRef(
 						required={required}
 						type="search"
 						value={value}
+						defaultValue={defaultValue}
 					/>
 					{displayResetButton && (
 						<StyledButton disabled={disabled} onClick={resetButtonHandler} type="reset">

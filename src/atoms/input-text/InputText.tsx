@@ -25,6 +25,7 @@ type InputTextTypes = Extract<
 >;
 
 export interface InputTextProps extends InputHTMLAttributes<HTMLInputElement> {
+	defaultValue?: string;
 	id: string;
 	type?: InputTextTypes;
 	onChange?: (event: ChangeEvent) => void;
@@ -35,9 +36,18 @@ export interface InputTextProps extends InputHTMLAttributes<HTMLInputElement> {
  */
 const InputText = forwardRef(
 	(
-		{ id, onChange, type = 'text', ...rest }: InputTextProps,
+		{ defaultValue, id, onChange, type = 'text', ...rest }: InputTextProps,
 		ref: ForwardedRef<HTMLInputElement>
-	) => <StyledInputText {...rest} id={id} ref={ref} type={type} onChange={onChange} />
+	) => (
+		<StyledInputText
+			{...rest}
+			defaultValue={defaultValue}
+			id={id}
+			onChange={onChange}
+			ref={ref}
+			type={type}
+		/>
+	)
 );
 
 InputText.displayName = 'InputText';

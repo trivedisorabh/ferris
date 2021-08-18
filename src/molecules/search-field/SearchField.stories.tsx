@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Story } from '~common/interfaces';
 import SearchField, { SearchFieldProps } from './SearchField';
 
@@ -13,21 +13,23 @@ export default {
 };
 
 const Template: Story<SearchFieldProps> = ({
+	defaultValue,
 	disabled,
 	id,
 	label,
 	labelHidden,
+	onChange,
 	placeholder,
-	value,
 }: SearchFieldProps) => (
 	<SearchField
+		defaultValue={defaultValue}
 		disabled={disabled}
 		id={id}
 		label={label}
 		labelHidden={labelHidden}
 		placeholder={placeholder}
 		resetLabel="Clear"
-		value={value}
+		onChange={onChange}
 	/>
 );
 
@@ -43,7 +45,7 @@ WithDefaultValue.args = {
 	id: 'search-field',
 	label: 'Search label',
 	labelHidden: false,
-	value: 'Default value',
+	defaultValue: 'Default value',
 };
 
 export const WithPlaceholder = Template.bind({});
@@ -59,4 +61,20 @@ LabelHidden.args = {
 	id: 'search-field',
 	label: 'Search label',
 	labelHidden: true,
+};
+
+export const Controlled = () => {
+	const [value, setValue] = useState('');
+	return (
+		<SearchField
+			id="controlled-checkbox"
+			label="Search label"
+			onChange={(event) => setValue(event.target.value)}
+			onReset={() => {
+				setValue('');
+			}}
+			resetLabel="Reset"
+			value={value}
+		/>
+	);
 };
