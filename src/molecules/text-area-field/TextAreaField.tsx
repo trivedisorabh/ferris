@@ -9,11 +9,13 @@ import Colors from '~tokens/colors/Colors';
  * @category Props
  */
 export interface TextAreaFieldProps extends HTMLAttributes<HTMLDivElement> {
-	id: string;
-	label: string;
+	defaultValue?: string;
 	description?: string;
 	disabled?: boolean;
+	id: string;
+	label: string;
 	labelProps?: LabelProps;
+	onChange?: () => void;
 	required?: boolean;
 	textAreaProps?: Partial<TextAreaProps>;
 	value?: string;
@@ -27,12 +29,14 @@ const TextAreaField = forwardRef(
 		{
 			id,
 			label,
+			defaultValue,
 			description,
 			disabled,
 			labelProps,
 			required,
 			textAreaProps,
 			value,
+			onChange,
 			...rest
 		}: TextAreaFieldProps,
 		ref: ForwardedRef<HTMLDivElement>
@@ -42,7 +46,15 @@ const TextAreaField = forwardRef(
 				{label}
 			</Label>
 			{description && <StyledDescription>{description}</StyledDescription>}
-			<TextArea {...textAreaProps} id={id} disabled={disabled} required={required} value={value} />
+			<TextArea
+				{...textAreaProps}
+				id={id}
+				disabled={disabled}
+				required={required}
+				value={value}
+				defaultValue={defaultValue}
+				onChange={onChange}
+			/>
 		</StyledTextAreaField>
 	)
 );

@@ -14,6 +14,7 @@ const Template: Story<TextAreaFieldProps> = ({
 	description,
 	disabled,
 	required,
+	onChange,
 }: TextAreaFieldProps) => (
 	<TextAreaField
 		description={description}
@@ -22,6 +23,8 @@ const Template: Story<TextAreaFieldProps> = ({
 		label={label}
 		required={required}
 		value={value}
+		onChange={onChange}
+		defaultValue={'This is a text area'}
 	/>
 );
 
