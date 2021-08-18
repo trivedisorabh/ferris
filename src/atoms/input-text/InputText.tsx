@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import React, { ChangeEvent, ForwardedRef, forwardRef, InputHTMLAttributes } from 'react';
+import { focusOutline } from '~common/styles';
 import Colors from '~tokens/colors/Colors';
 import Spacings from '~tokens/spacings/Spacings';
 import { InputType } from '~types/InputType';
@@ -55,7 +56,7 @@ const StyledInputText = styled.input`
 	}
 
 	&:focus {
-		border-color: #2563eb;
+		${focusOutline}
 	}
 
 	&:disabled {
