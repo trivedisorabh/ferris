@@ -8,7 +8,9 @@ import Spacings from '~tokens/spacings/Spacings';
  */
 export interface TextAreaProps
 	extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'children'> {
+	defaultValue?: string;
 	id: string;
+	onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 	value?: string;
 }
 
@@ -16,10 +18,18 @@ export interface TextAreaProps
  * @category Template
  */
 const TextArea = forwardRef(
-	({ id, value, ...rest }: TextAreaProps, ref: ForwardedRef<HTMLTextAreaElement>) => (
-		<StyledTextArea {...rest} id={id} ref={ref}>
-			{value}
-		</StyledTextArea>
+	(
+		{ defaultValue, id, value, onChange, ...rest }: TextAreaProps,
+		ref: ForwardedRef<HTMLTextAreaElement>
+	) => (
+		<StyledTextArea
+			{...rest}
+			id={id}
+			ref={ref}
+			value={value}
+			onChange={onChange}
+			defaultValue={defaultValue}
+		></StyledTextArea>
 	)
 );
 
