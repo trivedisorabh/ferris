@@ -7,13 +7,20 @@ export default {
 	component: SearchField,
 };
 
-const Template: Story<SearchFieldProps> = ({ id, placerholder, resetLabel }: SearchFieldProps) => (
-	<SearchField id={id} placerholder={placerholder} resetLabel={resetLabel} />
+const Template: Story<SearchFieldProps> = ({ id, label, labelHidden }: SearchFieldProps) => (
+	<SearchField id={id} label={label} labelHidden={labelHidden} resetLabel="Clear" />
 );
 
 export const Default = Template.bind({});
 Default.args = {
 	id: 'search-field',
-	placeholder: 'Search...',
-	resetLabel: 'Clear',
+	label: 'Search label',
+	labelHidden: false,
+};
+
+export const LabelHidden = Template.bind({});
+LabelHidden.args = {
+	id: 'search-field',
+	label: 'Search label',
+	labelHidden: true,
 };

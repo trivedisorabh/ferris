@@ -3,6 +3,7 @@ import Close from './assets/Close';
 import CloseAllFaults from './assets/CloseAllFaults';
 import CloseFault from './assets/CloseFault';
 import OpenInNew from './assets/OpenInNew';
+import Search from './assets/Search';
 import { ForwardRefExoticComponent, SVGAttributes } from 'react';
 
 export type IconData = {
@@ -17,6 +18,7 @@ const Icons: Readonly<{
 	CloseAllFaults: { glyph: CloseAllFaults },
 	CloseFault: { glyph: CloseFault },
 	OpenInNew: { glyph: OpenInNew },
+	Search: { glyph: Search },
 };
 
 export default Icons;

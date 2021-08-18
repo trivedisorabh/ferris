@@ -15,7 +15,8 @@ type InputTextTypes = Extract<
 	| 'email'
 	| 'hidden'
 	| 'month'
-	| 'password' // TODO: Remove once InputPasswordField is done
+	| 'password'
+	| 'search'
 	| 'tel'
 	| 'text'
 	| 'time'
@@ -46,6 +47,10 @@ const StyledInputText = styled.input`
 	background: #fff;
 	border: 1px solid ${Colors.grayDark};
 	padding: ${Spacings.xxs};
+
+	&[type='search']::-webkit-search-cancel-button {
+		display: none;
+	}
 
 	&:focus {
 		border-color: #2563eb;
