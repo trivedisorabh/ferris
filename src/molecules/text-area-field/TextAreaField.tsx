@@ -63,9 +63,11 @@ export interface TextAreaFieldProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 /**
- * TextAreaField component
+ * TextAreaField
  *
- * @see {@link https://skf.invisionapp.com/dsm/ab-skf/4-web-applications/nav/5fa7caf78c01200018354495/asset/5ea69e3b60bb930a70de53bd | DSM Documentation}
+ * This component renders a text area with corresponding label and other functionality, to be used in a form.
+ * For more information, @see {@link https://skf.invisionapp.com/dsm/ab-skf/4-web-applications/nav/5fa7caf78c01200018354495/asset/5ea69e3b60bb930a70de53bd | DSM Documentation}
+ *
  * @beta
  */
 const TextAreaField = forwardRef(
