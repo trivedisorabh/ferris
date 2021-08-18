@@ -8,7 +8,7 @@ import Colors from '~tokens/colors/Colors';
 /**
  * @category Props
  */
-export interface InputTextFieldProps extends HTMLAttributes<HTMLDivElement> {
+export interface TextFieldProps extends HTMLAttributes<HTMLDivElement> {
 	description?: string;
 	disabled?: boolean;
 	id: string;
@@ -23,7 +23,7 @@ export interface InputTextFieldProps extends HTMLAttributes<HTMLDivElement> {
 /**
  * @category Template
  */
-const InputTextField = forwardRef(
+const TextField = forwardRef(
 	(
 		{
 			description,
@@ -36,10 +36,10 @@ const InputTextField = forwardRef(
 			type = 'text',
 			value,
 			...rest
-		}: InputTextFieldProps,
+		}: TextFieldProps,
 		ref: ForwardedRef<HTMLDivElement>
 	) => (
-		<StyledInputTextField {...rest} data-tpl="input-text-field" disabled={disabled} ref={ref}>
+		<StyledTextField {...rest} data-tpl="text-field" disabled={disabled} ref={ref}>
 			<Label {...labelProps} htmlFor={id} required={required} disabled={disabled}>
 				{label}
 			</Label>
@@ -52,20 +52,20 @@ const InputTextField = forwardRef(
 				type={type}
 				value={value}
 			/>
-		</StyledInputTextField>
+		</StyledTextField>
 	)
 );
 
-InputTextField.displayName = 'InputTextField';
-export default InputTextField;
+TextField.displayName = 'TextField';
+export default TextField;
 
 /**
  * @category Styles
  */
-type StyledInputTextFieldProps = Pick<InputTextFieldProps, 'disabled'>;
+type StyledTextFieldProps = Pick<TextFieldProps, 'disabled'>;
 
-const StyledInputTextField = styled.div(
-	({ disabled }: StyledInputTextFieldProps) => css`
+const StyledTextField = styled.div(
+	({ disabled }: StyledTextFieldProps) => css`
 		display: flex;
 		flex-direction: column;
 		opacity: ${disabled && '0.5'};
