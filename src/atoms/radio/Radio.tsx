@@ -4,9 +4,7 @@ import React, { ForwardedRef, forwardRef, useEffect, useRef } from 'react';
 import mergeRefs from 'react-merge-refs';
 import { focusOutline } from '~common/styles';
 import Colors from '~tokens/colors/Colors';
-import FontSizes from '~tokens/font-sizes/FontSizes';
 import Sizes from '~tokens/sizes/Sizes';
-import Spacings from '~tokens/spacings/Spacings';
 
 /**
  * @category Props
@@ -19,7 +17,7 @@ export interface RadioProps {
 	id: string;
 	onChange?: () => void;
 	small?: boolean;
-	value?: string;
+	value?: string | number;
 }
 
 /**
@@ -48,7 +46,7 @@ const Radio = forwardRef(
 		const mergedRefs = mergeRefs([ref, inputRef]);
 
 		return (
-			<StyledRadio {...rest}>
+			<StyledRadio {...rest} data-tpl="radio">
 				<StyledInput
 					checked={checked}
 					defaultChecked={defaultChecked} // This currently gives a console warning. How to let the user choose controlled/uncontrolled?
@@ -75,10 +73,7 @@ export default Radio;
 type StyledRadioProps = Pick<RadioProps, 'small'>;
 
 const StyledRadio = styled.div`
-	cursor: pointer;
 	display: block;
-	font-size: ${FontSizes.lg};
-	margin-bottom: ${Spacings.sm};
 	position: relative;
 `;
 
@@ -90,7 +85,6 @@ const StyledInput = styled.input(({ small }: StyledRadioProps) => {
 		height: ${widthAndHeight};
 		margin: 0;
 		opacity: 0;
-		position: absolute;
 		width: ${widthAndHeight};
 
 		&:disabled {

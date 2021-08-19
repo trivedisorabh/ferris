@@ -3,7 +3,7 @@ import { Story } from '~common/interfaces';
 import Radio, { RadioProps } from './Radio';
 
 export default {
-	title: 'Atoms/Radio/Regular',
+	title: 'Atoms/Radio',
 	component: Radio,
 	argTypes: {
 		small: {
