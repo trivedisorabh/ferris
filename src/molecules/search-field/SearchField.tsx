@@ -68,7 +68,7 @@ const SearchField = forwardRef(
 		useEffect(() => {
 			if (defaultValue) setDisplayResetButton(true);
 			else setDisplayResetButton(false);
-		}, [defaultValue]);
+		}, []);
 
 		const inputChangeHandler: ChangeEventHandler = (e: ChangeEvent<HTMLInputElement>) => {
 			onChange(e);
