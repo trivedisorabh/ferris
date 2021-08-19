@@ -16,7 +16,7 @@ export interface TextFieldProps extends HTMLAttributes<HTMLDivElement> {
 	label: string;
 	labelProps?: Partial<LabelProps>;
 	required?: boolean;
-	type?: Exclude<InputTextProps['type'], 'search'>;
+	type?: Exclude<InputTextProps['type'], 'number' | 'search'>;
 	value?: string;
 }
 

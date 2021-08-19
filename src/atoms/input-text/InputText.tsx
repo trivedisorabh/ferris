@@ -16,6 +16,7 @@ type InputTextTypes = Extract<
 	| 'email'
 	| 'hidden'
 	| 'month'
+	| 'number'
 	| 'password'
 	| 'search'
 	| 'tel'
@@ -59,8 +60,9 @@ export default InputText;
 const StyledInputText = styled.input`
 	background: #fff;
 	border: 1px solid ${Colors.grayDark};
-	padding: ${Spacings.xxs};
+	padding: ${Spacings.xs} ${Spacings.sm};
 
+	&[type='number']::-webkit-inner-spin-button,
 	&[type='search']::-webkit-search-cancel-button {
 		display: none;
 	}

@@ -49,6 +49,8 @@ export { default as CheckboxField } from './molecules/checkbox-field/CheckboxFie
 export type { CheckboxFieldProps } from './molecules/checkbox-field/CheckboxField';
 export { default as Modal } from './molecules/modal/Modal';
 export type { ModalProps } from './molecules/modal/Modal';
+export { default as NumberField } from './molecules/number-field/NumberField';
+export type { NumberFieldProps } from './molecules/number-field/NumberField';
 export { default as RadioField } from './molecules/radio-field/RadioField';
 export type { RadioFieldProps } from './molecules/radio-field/RadioField';
 export { default as SearchField } from './molecules/search-field/SearchField';

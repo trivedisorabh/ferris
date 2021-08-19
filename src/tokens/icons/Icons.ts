@@ -1,4 +1,6 @@
 import Check from './assets/Check';
+import ChevronDown from './assets/ChevronDown';
+import ChevronUp from './assets/ChevronUp';
 import Close from './assets/Close';
 import CloseAllFaults from './assets/CloseAllFaults';
 import CloseFault from './assets/CloseFault';
@@ -14,6 +16,8 @@ const Icons: Readonly<{
 	[key: string]: IconData;
 }> = {
 	Check: { glyph: Check },
+	ChevronDown: { glyph: ChevronDown },
+	ChevronUp: { glyph: ChevronUp },
 	Close: { glyph: Close },
 	CloseAllFaults: { glyph: CloseAllFaults },
 	CloseFault: { glyph: CloseFault },
