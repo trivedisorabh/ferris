@@ -20,7 +20,7 @@ export default {
 		},
 		defaultChecked: {
 			control: false,
-			description: 'If the component is uncontrolled, determines the inital state of the Radio',
+			description: 'If the component is uncontrolled, determines the inital state of the radio',
 		},
 		checked: {
 			control: false,
@@ -33,35 +33,38 @@ export default {
 
 const template: Story<RadioProps> = ({ defaultChecked, disabled, small, onChange }: RadioProps) => (
 	<Radio
-		id={'uncontrolled-Radio'}
-		disabled={disabled}
 		defaultChecked={defaultChecked}
-		small={small}
+		disabled={disabled}
+		id={'uncontrolled-radio'}
 		onChange={onChange}
+		small={small}
 	/>
 );
+
+export const Default = template.bind({});
+Default.args = {};
 
 export const Checked = template.bind({});
 Checked.args = { defaultChecked: true };
 
-export const Unchecked = template.bind({});
-Unchecked.args = {};
+export const Disabled = template.bind({});
+Disabled.args = { disabled: true };
 
-export const CheckedDisabled = template.bind({});
-CheckedDisabled.args = { defaultChecked: true, disabled: true };
+export const DisabledSelected = template.bind({});
+DisabledSelected.args = { defaultChecked: true, disabled: true };
 
-export const UncheckedDisabled = template.bind({});
-UncheckedDisabled.args = { disabled: true };
+export const Small = template.bind({});
+Small.args = { small: true };
 
 export const Controlled = ({ disabled, small }: RadioProps) => {
-	const [checked, setChecked] = useState(true);
+	const [checked, setChecked] = useState(false);
 	return (
 		<Radio
-			id={'controlled-Radio'}
 			checked={checked}
 			disabled={disabled}
-			small={small}
+			id={'controlled-radio'}
 			onChange={() => setChecked(!checked)}
+			small={small}
 		/>
 	);
 };
