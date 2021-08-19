@@ -5,30 +5,36 @@ import InputText, { InputTextProps } from '~atoms/input-text/InputText';
 import Label, { LabelProps } from '~atoms/label/Label';
 import Colors from '~tokens/colors/Colors';
 
+/**
+ * @category Props
+ */
 export interface TextFieldProps extends HTMLAttributes<HTMLDivElement> {
-	id: string;
-	label: string;
-	value?: string;
 	description?: string;
 	disabled?: boolean;
+	id: string;
 	inputTextProps?: Partial<InputTextProps>;
+	label: string;
 	labelProps?: Partial<LabelProps>;
 	required?: boolean;
-	type?: InputTextProps['type'];
+	type?: Exclude<InputTextProps['type'], 'search'>;
+	value?: string;
 }
 
+/**
+ * @category Template
+ */
 const TextField = forwardRef(
 	(
 		{
-			id,
-			label,
-			type = 'text',
-			value,
 			description,
 			disabled,
-			labelProps,
+			id,
 			inputTextProps,
+			label,
+			labelProps,
 			required,
+			type = 'text',
+			value,
 			...rest
 		}: TextFieldProps,
 		ref: ForwardedRef<HTMLDivElement>
@@ -50,6 +56,12 @@ const TextField = forwardRef(
 	)
 );
 
+TextField.displayName = 'TextField';
+export default TextField;
+
+/**
+ * @category Styles
+ */
 type StyledTextFieldProps = Pick<TextFieldProps, 'disabled'>;
 
 const StyledTextField = styled.div(
@@ -63,6 +75,3 @@ const StyledTextField = styled.div(
 const StyledDescription = styled.div`
 	color: ${Colors.grayDarkest};
 `;
-
-TextField.displayName = 'TextField';
-export default TextField;
