@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import React, { ForwardedRef, forwardRef, LabelHTMLAttributes } from 'react';
 import Colors from '~tokens/colors/Colors';
 import FontSizes from '~tokens/font-sizes/FontSizes';
+import LineHeights from '~tokens/line-heights/LineHeights';
 
 /**
  * @category Props
@@ -42,7 +43,7 @@ const StyledLabel = styled.label(
 		color: ${disabled ? Colors.grayDarker : Colors.blackBrand};
 		cursor: ${disabled ? 'not-allowed' : 'pointer'};
 		font-size: ${small ? FontSizes.sm : FontSizes.md};
-		line-height: ${small ? 1.3 : 'initial'};
+		line-height: ${LineHeights.compact};
 		margin: 0;
 	`
 );
