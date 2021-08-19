@@ -26,6 +26,7 @@ import Spacings from '~tokens/spacings/Spacings';
  */
 export interface NumberFieldProps extends InputHTMLAttributes<HTMLInputElement> {
 	defaultValue?: string;
+	description?: string;
 	disabled?: boolean;
 	id: string;
 	inputTextProps?: Partial<InputTextProps>;
@@ -46,6 +47,7 @@ const NumberField = forwardRef(
 	(
 		{
 			defaultValue,
+			description,
 			disabled,
 			id,
 			inputTextProps,
@@ -87,6 +89,12 @@ const NumberField = forwardRef(
 					{label}
 				</Label>
 				<Spacer orientation="vertical" spacing={Spacings.xxs} />
+				{description && (
+					<>
+						<StyledDescription>{description}</StyledDescription>
+						<Spacer orientation="vertical" spacing={Spacings.xxs} />
+					</>
+				)}
 				<StyledInputWrapper>
 					<StyledInputText
 						{...inputTextProps}
@@ -131,6 +139,10 @@ const StyledNumberField = styled.div(
 		opacity: ${disabled && '0.5'};
 	`
 );
+
+const StyledDescription = styled.div`
+	color: ${Colors.grayDarkest};
+`;
 
 const StyledInputWrapper = styled.div`
 	position: relative;
