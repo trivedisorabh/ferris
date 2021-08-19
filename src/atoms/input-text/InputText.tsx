@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
-import React, { ForwardedRef, forwardRef, InputHTMLAttributes } from 'react';
+import React, { ChangeEvent, ForwardedRef, forwardRef, InputHTMLAttributes } from 'react';
+import { focusOutline } from '~common/styles';
 import Colors from '~tokens/colors/Colors';
 import Spacings from '~tokens/spacings/Spacings';
 import { InputType } from '~types/InputType';
@@ -15,7 +16,8 @@ type InputTextTypes = Extract<
 	| 'email'
 	| 'hidden'
 	| 'month'
-	| 'password' // TODO: Remove once InputPasswordField is done
+	| 'password'
+	| 'search'
 	| 'tel'
 	| 'text'
 	| 'time'
@@ -23,16 +25,28 @@ type InputTextTypes = Extract<
 >;
 
 export interface InputTextProps extends InputHTMLAttributes<HTMLInputElement> {
+	defaultValue?: string;
 	id: string;
 	type?: InputTextTypes;
+	onChange?: (event: ChangeEvent) => void;
 }
 
 /**
  * @category Template
  */
 const InputText = forwardRef(
-	({ id, type = 'text', ...rest }: InputTextProps, ref: ForwardedRef<HTMLInputElement>) => (
-		<StyledInputText {...rest} id={id} ref={ref} type={type} />
+	(
+		{ defaultValue, id, onChange, type = 'text', ...rest }: InputTextProps,
+		ref: ForwardedRef<HTMLInputElement>
+	) => (
+		<StyledInputText
+			{...rest}
+			defaultValue={defaultValue}
+			id={id}
+			onChange={onChange}
+			ref={ref}
+			type={type}
+		/>
 	)
 );
 
@@ -47,8 +61,12 @@ const StyledInputText = styled.input`
 	border: 1px solid ${Colors.grayDark};
 	padding: ${Spacings.xxs};
 
+	&[type='search']::-webkit-search-cancel-button {
+		display: none;
+	}
+
 	&:focus {
-		border-color: #2563eb;
+		${focusOutline}
 	}
 
 	&:disabled {
