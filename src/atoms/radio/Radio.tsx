@@ -55,6 +55,7 @@ const Radio = forwardRef(
 					name={groupName}
 					onChange={onChange}
 					ref={mergedRefs}
+					small={small}
 					type="radio"
 					value={value}
 				/>
@@ -70,14 +71,15 @@ export default Radio;
 /**
  * @category Styles
  */
-type StyledRadioProps = Pick<RadioProps, 'small'>;
+type StyleProps = Pick<RadioProps, 'small'>;
 
 const StyledRadio = styled.div`
 	display: block;
+	line-height: 0;
 	position: relative;
 `;
 
-const StyledInput = styled.input(({ small }: StyledRadioProps) => {
+const StyledInput = styled.input(({ small }: StyleProps) => {
 	const widthAndHeight = small ? Sizes.size_1_125 : Sizes.size_1_5;
 
 	return css`
@@ -115,7 +117,7 @@ const StyledInput = styled.input(({ small }: StyledRadioProps) => {
 	`;
 });
 
-const StyledCheckmark = styled.div(({ small }: StyledRadioProps) => {
+const StyledCheckmark = styled.div(({ small }: StyleProps) => {
 	const widthAndHeight = small ? Sizes.size_1_125 : Sizes.size_1_5;
 
 	return css`
