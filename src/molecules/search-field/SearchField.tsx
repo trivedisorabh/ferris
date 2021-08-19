@@ -86,10 +86,10 @@ const SearchField = forwardRef(
 			<StyledSearchField {...rest} data-tpl="search-field" disabled={disabled} ref={ref}>
 				<StyledLabel
 					{...labelProps}
+					disabled={disabled}
 					htmlFor={id}
 					labelHidden={labelHidden}
 					required={required}
-					disabled={disabled}
 				>
 					{label}
 				</StyledLabel>
@@ -98,15 +98,15 @@ const SearchField = forwardRef(
 					<StyledIcon icon={Icons.Search} size={IconSizes.lg} />
 					<StyledInputText
 						{...inputTextProps}
+						defaultValue={defaultValue}
 						disabled={disabled}
 						id={id}
 						onChange={inputChangeHandler}
 						placeholder={placeholder}
+						ref={inputRef}
 						required={required}
 						type="search"
 						value={value}
-						defaultValue={defaultValue}
-						ref={inputRef}
 					/>
 					{displayResetButton && (
 						<StyledButton disabled={disabled} onClick={resetButtonHandler} type="reset">

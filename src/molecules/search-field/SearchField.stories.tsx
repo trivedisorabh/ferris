@@ -27,9 +27,9 @@ const Template: Story<SearchFieldProps> = ({
 		id={id}
 		label={label}
 		labelHidden={labelHidden}
+		onChange={onChange}
 		placeholder={placeholder}
 		resetLabel="Clear"
-		onChange={onChange}
 	/>
 );
 
@@ -42,10 +42,10 @@ Default.args = {
 
 export const WithDefaultValue = Template.bind({});
 WithDefaultValue.args = {
+	defaultValue: 'Default value',
 	id: 'search-field',
 	label: 'Search label',
 	labelHidden: false,
-	defaultValue: 'Default value',
 };
 
 export const WithPlaceholder = Template.bind({});
