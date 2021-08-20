@@ -1,15 +1,6 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import React, {
-	ChangeEvent,
-	ChangeEventHandler,
-	ForwardedRef,
-	forwardRef,
-	InputHTMLAttributes,
-	useEffect,
-	useRef,
-	useState,
-} from 'react';
+import React, { ChangeEvent, ForwardedRef, forwardRef, InputHTMLAttributes, useRef } from 'react';
 import Icon from '~atoms/icon/Icon';
 import InputText, { InputTextProps } from '~atoms/input-text/InputText';
 import Label, { LabelProps } from '~atoms/label/Label';
@@ -25,18 +16,19 @@ import Spacings from '~tokens/spacings/Spacings';
  * @category Props
  */
 export interface NumberFieldProps extends InputHTMLAttributes<HTMLInputElement> {
+	decrementLabel: string;
 	defaultValue?: string;
 	description?: string;
 	disabled?: boolean;
 	id: string;
+	incrementLabel: string;
 	inputTextProps?: Partial<InputTextProps>;
 	label: string;
 	labelProps?: Partial<LabelProps>;
 	onChange: (event: ChangeEvent<HTMLInputElement>) => void;
-	onReset?: () => void;
 	placeholder?: string;
 	required?: boolean;
-	resetLabel: string;
+	step?: number;
 	value?: string;
 }
 
@@ -46,41 +38,31 @@ export interface NumberFieldProps extends InputHTMLAttributes<HTMLInputElement> 
 const NumberField = forwardRef(
 	(
 		{
+			decrementLabel,
 			defaultValue,
 			description,
 			disabled,
 			id,
+			incrementLabel,
 			inputTextProps,
 			label,
 			labelProps,
 			onChange,
-			onReset,
 			placeholder,
 			required,
-			resetLabel,
+			step,
 			value,
 			...rest
 		}: NumberFieldProps,
 		ref: ForwardedRef<HTMLDivElement>
 	) => {
-		const [displayResetButton, setDisplayResetButton] = useState(false);
 		const inputRef = useRef<HTMLInputElement>(null);
 
-		useEffect(() => {
-			if (defaultValue) setDisplayResetButton(true);
-			else setDisplayResetButton(false);
-		}, []);
-
-		const inputChangeHandler: ChangeEventHandler = (e: ChangeEvent<HTMLInputElement>) => {
-			onChange(e);
-			setDisplayResetButton(false);
-			if (e.target.value !== '') setDisplayResetButton(true);
+		const incrementNumber = () => {
+			if (inputRef.current) inputRef.current.stepUp();
 		};
-
-		const resetButtonHandler = (): void => {
-			onReset && onReset();
-			if (inputRef.current) inputRef.current.value = '';
-			setDisplayResetButton(false);
+		const decrementNumber = () => {
+			if (inputRef.current) inputRef.current.stepDown();
 		};
 
 		return (
@@ -101,20 +83,21 @@ const NumberField = forwardRef(
 						defaultValue={defaultValue}
 						disabled={disabled}
 						id={id}
-						onChange={inputChangeHandler}
 						placeholder={placeholder}
 						ref={inputRef}
 						required={required}
+						step={step}
 						type="number"
 						value={value}
+						onChange={onChange}
 					/>
 					<StyledControls>
-						<StyledButton disabled={disabled} onClick={resetButtonHandler} type="button">
-							<VisuallyHidden>{resetLabel}</VisuallyHidden>
+						<StyledButton disabled={disabled} onClick={incrementNumber} type="button">
+							<VisuallyHidden>{incrementLabel}</VisuallyHidden>
 							<StyledIcon icon={Icons.ChevronUp} size={IconSizes.lg} />
 						</StyledButton>
-						<StyledButton disabled={disabled} onClick={resetButtonHandler} type="button">
-							<VisuallyHidden>{resetLabel}</VisuallyHidden>
+						<StyledButton disabled={disabled} onClick={decrementNumber} type="button">
+							<VisuallyHidden>{decrementLabel}</VisuallyHidden>
 							<StyledIcon icon={Icons.ChevronDown} size={IconSizes.lg} />
 						</StyledButton>
 					</StyledControls>

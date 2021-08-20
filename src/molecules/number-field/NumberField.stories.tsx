@@ -16,54 +16,52 @@ const Template: Story<NumberFieldProps> = ({
 	defaultValue,
 	disabled,
 	id = 'number-field',
-	label,
+	label = 'Number field',
 	onChange,
 	placeholder,
+	step,
 }: NumberFieldProps) => (
 	<NumberField
+		decrementLabel="Decrement"
 		defaultValue={defaultValue}
 		disabled={disabled}
 		id={id}
+		incrementLabel="Increment"
 		label={label}
 		onChange={onChange}
 		placeholder={placeholder}
-		resetLabel="Clear"
+		step={step}
 	/>
 );
 
 export const Default = Template.bind({});
-Default.args = {
-	label: 'Search label',
-};
+Default.args = {};
 
 export const WithDefaultValue = Template.bind({});
 WithDefaultValue.args = {
 	defaultValue: 'Default value',
-	label: 'Search label',
 };
 
 export const WithPlaceholder = Template.bind({});
 WithPlaceholder.args = {
-	label: 'Search label',
-	placeholder: 'Search...',
+	placeholder: 'Input number...',
 };
 
 export const LabelHidden = Template.bind({});
-LabelHidden.args = {
-	label: 'Search label',
-};
+LabelHidden.args = {};
+
+export const Step = Template.bind({});
+Step.args = { step: 0.5 };
 
 export const Controlled = () => {
 	const [value, setValue] = useState('');
 	return (
 		<NumberField
+			decrementLabel="Decrement"
 			id="controlled-checkbox"
-			label="Search label"
+			incrementLabel="Increment"
+			label="Number field"
 			onChange={(event) => setValue(event.target.value)}
-			onReset={() => {
-				setValue('');
-			}}
-			resetLabel="Reset"
 			value={value}
 		/>
 	);

@@ -29,7 +29,7 @@ export interface InputTextProps extends InputHTMLAttributes<HTMLInputElement> {
 	defaultValue?: string;
 	id: string;
 	type?: InputTextTypes;
-	onChange?: (event: ChangeEvent) => void;
+	onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
 /**
